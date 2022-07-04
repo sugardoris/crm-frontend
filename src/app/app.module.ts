@@ -8,6 +8,7 @@ import { SidenavContentComponent } from './common/sidenav-content/sidenav-conten
 import { HeaderComponent } from './common/header/header.component';
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {MatIconModule} from "@angular/material/icon";
     BrowserAnimationsModule,
     MatSidenavModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

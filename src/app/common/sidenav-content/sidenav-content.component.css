@@ -1,3 +1,27 @@
 .nav-item {
-  color: gray;
+  color: #004aad;
+  width: 100%;
+}
+
+a {
+  padding-left: 10px;
+  padding-right: 30px;
+}
+
+.nav-list {
+  width: 100%;
+  padding-top: 30px;
+}
+
+.logo {
+  width: 200px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.nav-divider {
+  width: 80%;
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: #004aad;
 }

@@ -1,11 +1,20 @@
 .nav-item {
-  color: #004aad;
+  color: #6781a1;
   width: 100%;
 }
 
+.nav-item:hover {
+  color: #004aad;
+  background-color: #e6f0fc;
+}
+
 a {
-  padding-left: 10px;
-  padding-right: 30px;
+  padding-right: 40px;
+}
+
+mat-icon {
+  padding-left: 20px;
+  margin-right: 30px;
 }
 
 .nav-list {
@@ -24,4 +33,9 @@ a {
   margin-left: 20px;
   margin-top: 20px;
   background-color: #004aad;
+}
+
+.sidenav-bottom {
+  position: absolute;
+  bottom: 30px;
 }

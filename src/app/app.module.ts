@@ -21,6 +21,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import { SubscriberInfoComponent } from './subscriber/subscriber-info/subscriber-info.component';
 import { SubscriptionsComponent } from './subscriber/subscriptions/subscriptions.component';
 import { SubscriberTicketsComponent } from './subscriber/subscriber-tickets/subscriber-tickets.component';
+import { SubscriberPaymentsComponent } from './subscriber/subscriber-payments/subscriber-payments.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SubscriberTicketsComponent } from './subscriber/subscriber-tickets/subs
     SubscriberInfoComponent,
     SubscriptionsComponent,
     SubscriberTicketsComponent,
+    SubscriberPaymentsComponent,
   ],
   imports: [
     BrowserModule,

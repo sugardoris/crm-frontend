@@ -1,41 +1,36 @@
-<div>
-  <div class="search-container">
+<div class="subsciber-table">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
 
-  </div>
-  <div class="table-container">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-      </ng-container>
+    <ng-container matColumnDef="oib">
+      <th mat-header-cell *matHeaderCellDef> OIB</th>
+      <td mat-cell *matCellDef="let element"> {{element.oib}} </td>
+    </ng-container>
 
-      <ng-container matColumnDef="oib">
-        <th mat-header-cell *matHeaderCellDef> OIB </th>
-        <td mat-cell *matCellDef="let element"> {{element.oib}} </td>
-      </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email</th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
 
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-      </ng-container>
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Phone</th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
 
-      <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef> Phone </th>
-        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
-      </ng-container>
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> Address</th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
 
-      <ng-container matColumnDef="address">
-        <th mat-header-cell *matHeaderCellDef> Address </th>
-        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
-      </ng-container>
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef> City</th>
+      <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+    </ng-container>
 
-      <ng-container matColumnDef="city">
-        <th mat-header-cell *matHeaderCellDef> City </th>
-        <td mat-cell *matCellDef="let element"> {{element.city}} </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
-    </table>
-  </div>
+    <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+  </table>
 </div>

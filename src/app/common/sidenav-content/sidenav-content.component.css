@@ -37,5 +37,6 @@ mat-icon {
 
 .sidenav-bottom {
   position: absolute;
-  bottom: 30px;
+  bottom: 20px;
+  width: 100%;
 }

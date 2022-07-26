@@ -1,0 +1,17 @@
+.subscriber-search {
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.input-field {
+  margin-right: 8px;
+}
+
+button {
+  padding: 7px 30px 7px 30px;
+}
+
+.search-button {
+  margin-top: 5px;
+}

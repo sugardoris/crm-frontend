@@ -22,6 +22,7 @@ import { SubscriberInfoComponent } from './subscriber/subscriber-info/subscriber
 import { SubscriptionsComponent } from './subscriber/subscriptions/subscriptions.component';
 import { SubscriberTicketsComponent } from './subscriber/subscriber-tickets/subscriber-tickets.component';
 import { SubscriberPaymentsComponent } from './subscriber/subscriber-payments/subscriber-payments.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SubscriberPaymentsComponent } from './subscriber/subscriber-payments/su
     MatInputModule,
     MatAutocompleteModule,
     MatButtonModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

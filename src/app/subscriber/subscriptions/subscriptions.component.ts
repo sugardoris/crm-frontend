@@ -25,5 +25,4 @@ const TABLE_DATA: Subscription[] = [
   {publicationName: "Publication Name", dateStarted: "dd.MM.YYYY", dateEnded: "dd.MM.YYYY", discount: "10%", price: "15.00 EUR"},
   {publicationName: "Publication Name", dateStarted: "dd.MM.YYYY", dateEnded: "dd.MM.YYYY", discount: "10%", price: "15.00 EUR"},
   {publicationName: "Publication Name", dateStarted: "dd.MM.YYYY", dateEnded: "dd.MM.YYYY", discount: "10%", price: "15.00 EUR"}
-
 ]

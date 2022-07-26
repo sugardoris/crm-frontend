@@ -16,6 +16,11 @@ import { SubscriberSearchComponent } from './subscriber/subscriber-search/subscr
 import {MatInputModule} from "@angular/material/input";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatButtonModule} from "@angular/material/button";
+import { SubscriberDetailsPageComponent } from './subscriber/subscriber-details-page/subscriber-details-page.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import { SubscriberInfoComponent } from './subscriber/subscriber-info/subscriber-info.component';
+import { SubscriptionsComponent } from './subscriber/subscriptions/subscriptions.component';
+import { SubscriberTicketsComponent } from './subscriber/subscriber-tickets/subscriber-tickets.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,10 @@ import {MatButtonModule} from "@angular/material/button";
     SubscriberTableComponent,
     SubscriberLandingPageComponent,
     SubscriberSearchComponent,
+    SubscriberDetailsPageComponent,
+    SubscriberInfoComponent,
+    SubscriptionsComponent,
+    SubscriberTicketsComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +45,8 @@ import {MatButtonModule} from "@angular/material/button";
     MatTableModule,
     MatInputModule,
     MatAutocompleteModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

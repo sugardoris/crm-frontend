@@ -2,3 +2,9 @@
   width: 100%;
   box-sizing: border-box;
 }
+
+.button-new {
+  margin-bottom: 20px;
+  padding: 5px 25px 5px 25px;
+  font-size: 16px;
+}

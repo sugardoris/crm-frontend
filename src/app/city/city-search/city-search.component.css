@@ -1,11 +1,7 @@
-.subscriber-search {
+.city-search {
   width: 100%;
   display: flex;
   margin-bottom: 10px;
-}
-
-.input-field {
-  margin-right: 15px;
 }
 
 .search-button {
@@ -14,4 +10,12 @@
 
 .mat-stroked-button:hover {
   background-color: #e6f0fc;
+}
+
+.input-field {
+  margin-right: 15px;
+}
+
+mat-form-field {
+  width: 800px;
 }

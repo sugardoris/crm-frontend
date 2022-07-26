@@ -23,6 +23,9 @@ import { SubscriptionsComponent } from './subscriber/subscriptions/subscriptions
 import { SubscriberTicketsComponent } from './subscriber/subscriber-tickets/subscriber-tickets.component';
 import { SubscriberPaymentsComponent } from './subscriber/subscriber-payments/subscriber-payments.component';
 import {MatCardModule} from "@angular/material/card";
+import { CityTableComponent } from './city/city-table/city-table.component';
+import { CitySearchComponent } from './city/city-search/city-search.component';
+import { CityLandingPageComponent } from './city/city-landing-page/city-landing-page.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,9 @@ import {MatCardModule} from "@angular/material/card";
     SubscriptionsComponent,
     SubscriberTicketsComponent,
     SubscriberPaymentsComponent,
+    CityTableComponent,
+    CitySearchComponent,
+    CityLandingPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+.user-search {
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: flex-end;
+}
+
+.search-button {
+  margin-top: 18px;
+}
+
+.mat-stroked-button:hover {
+  background-color: #e6f0fc;
+}
+
+.input-field {
+  margin-right: 15px;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}

@@ -1,0 +1,18 @@
+table {
+  width: 100%
+}
+
+th {
+  color: #004aad;
+  font-size: 16px;
+}
+
+.mat-row .mat-cell {
+  border-top: 1px solid;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  background-color: #e6f0fc;
+}

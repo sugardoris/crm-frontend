@@ -12,6 +12,13 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableColumns;" [matMenuTriggerFor]="menu"></tr>
   </table>
 </div>
+
+<mat-menu #menu="matMenu" xPosition="after" yPosition="below">
+  <button mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    <span>Delete</span>
+  </button>
+</mat-menu>

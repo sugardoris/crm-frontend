@@ -33,6 +33,7 @@ import { PublicationCardComponent } from './publication/publication-card/publica
 import { PublicationsLandingPageComponent } from './publication/publications-landing-page/publications-landing-page.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import { PublicationTableComponent } from './publication/publication-table/publication-table.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { PublicationTableComponent } from './publication/publication-table/publi
     MatButtonModule,
     MatTabsModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

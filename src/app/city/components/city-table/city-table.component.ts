@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {City} from "../../domain/city";
+import {City} from "../../../domain/city";
 
 @Component({
   selector: 'app-city-table',

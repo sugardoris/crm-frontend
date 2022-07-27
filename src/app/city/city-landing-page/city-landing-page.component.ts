@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-city-landing-page',
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./city-landing-page.component.css']
 })
 export class CityLandingPageComponent implements OnInit {
+
+  newCity = new FormGroup({
+    name: new FormControl(''),
+    postNumber: new FormControl('')
+  });
 
   constructor() { }
 

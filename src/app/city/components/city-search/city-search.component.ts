@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from "@angular/forms";
-import {City} from "../../domain/city";
+import {City} from "../../../domain/city";
 import {map, Observable, startWith} from "rxjs";
 
 @Component({

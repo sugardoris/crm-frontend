@@ -1,5 +1,6 @@
 table {
-  width: 80%;
+  width: 100%;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -16,4 +17,12 @@ th {
 
 .mat-row:hover .mat-cell {
   background-color: #e6f0fc;
+}
+
+.done {
+  color: cadetblue;
+}
+
+.problem {
+  color: orangered;
 }

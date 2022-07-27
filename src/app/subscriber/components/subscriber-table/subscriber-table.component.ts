@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Subscriber} from "../../domain/subscriber";
+import {Subscriber} from "../../../domain/subscriber";
 
 @Component({
   selector: 'app-subscriber-table',

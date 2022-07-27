@@ -1,7 +1,8 @@
-.city-search {
+.user-search {
   width: 100%;
   display: flex;
   margin-bottom: 10px;
+  justify-content: flex-end;
 }
 
 .search-button {
@@ -14,8 +15,9 @@
 
 .input-field {
   margin-right: 15px;
+  width: 100%;
 }
 
 mat-form-field {
-  width: 800px;
+  width: 100%;
 }

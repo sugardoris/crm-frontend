@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Ticket} from "../../domain/ticket";
+import {Ticket} from "../../../domain/ticket";
 
 @Component({
   selector: 'app-subscriber-tickets',

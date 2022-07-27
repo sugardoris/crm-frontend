@@ -1,10 +1,44 @@
-.search-container {
-  width: 100%;
-  box-sizing: border-box;
-}
-
 .button-new {
   margin-bottom: 20px;
   padding: 5px 25px 5px 25px;
   font-size: 16px;
+}
+
+.main-title {
+  font-size: 27px;
+  color: #004aad;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.subtitle {
+  color: #004aad;
+  font-size: 22px;
+  padding-bottom: 10px;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.add {
+  width: 40%;
+  margin-top: 30px;
+}
+
+.view {
+  width: 60%;
+}
+
+.form-card {
+  width: 90%;
+}
+
+.button-new {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  margin-bottom: 10px;
 }

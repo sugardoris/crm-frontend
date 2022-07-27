@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Payment} from "../../domain/payment";
+import {Payment} from "../../../domain/payment";
 
 @Component({
   selector: 'app-subscriber-payments',

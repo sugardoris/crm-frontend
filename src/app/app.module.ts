@@ -9,23 +9,26 @@ import { SidenavContentComponent } from './common/sidenav-content/sidenav-conten
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import { SubscriberTableComponent } from './subscriber/subscriber-table/subscriber-table.component';
+import { SubscriberTableComponent } from './subscriber/components/subscriber-table/subscriber-table.component';
 import {MatTableModule} from "@angular/material/table";
 import { SubscriberLandingPageComponent } from './subscriber/subscriber-landing-page/subscriber-landing-page.component';
-import { SubscriberSearchComponent } from './subscriber/subscriber-search/subscriber-search.component';
+import { SubscriberSearchComponent } from './subscriber/components/subscriber-search/subscriber-search.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatButtonModule} from "@angular/material/button";
 import { SubscriberDetailsPageComponent } from './subscriber/subscriber-details-page/subscriber-details-page.component';
 import {MatTabsModule} from "@angular/material/tabs";
-import { SubscriberInfoComponent } from './subscriber/subscriber-info/subscriber-info.component';
-import { SubscriptionsComponent } from './subscriber/subscriptions/subscriptions.component';
-import { SubscriberTicketsComponent } from './subscriber/subscriber-tickets/subscriber-tickets.component';
-import { SubscriberPaymentsComponent } from './subscriber/subscriber-payments/subscriber-payments.component';
+import { SubscriberInfoComponent } from './subscriber/components/subscriber-info/subscriber-info.component';
+import { SubscriptionsComponent } from './subscriber/components/subscriptions/subscriptions.component';
+import { SubscriberTicketsComponent } from './subscriber/components/subscriber-tickets/subscriber-tickets.component';
+import { SubscriberPaymentsComponent } from './subscriber/components/subscriber-payments/subscriber-payments.component';
 import {MatCardModule} from "@angular/material/card";
-import { CityTableComponent } from './city/city-table/city-table.component';
-import { CitySearchComponent } from './city/city-search/city-search.component';
+import { CityTableComponent } from './city/components/city-table/city-table.component';
+import { CitySearchComponent } from './city/components/city-search/city-search.component';
 import { CityLandingPageComponent } from './city/city-landing-page/city-landing-page.component';
+import { UserLandingPageComponent } from './user/user-landing-page/user-landing-page.component';
+import { UserTableComponent } from './user/components/user-table/user-table.component';
+import { UserSearchComponent } from './user/components/user-search/user-search.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { CityLandingPageComponent } from './city/city-landing-page/city-landing-
     CityTableComponent,
     CitySearchComponent,
     CityLandingPageComponent,
+    UserLandingPageComponent,
+    UserTableComponent,
+    UserSearchComponent,
   ],
   imports: [
     BrowserModule,

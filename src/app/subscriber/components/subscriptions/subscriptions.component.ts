@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Subscription} from "../../domain/subscription";
+import {Subscription} from "../../../domain/subscription";
 
 @Component({
   selector: 'app-subscriptions',

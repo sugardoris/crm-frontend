@@ -29,6 +29,10 @@ import { CityLandingPageComponent } from './city/city-landing-page/city-landing-
 import { UserLandingPageComponent } from './user/user-landing-page/user-landing-page.component';
 import { UserTableComponent } from './user/components/user-table/user-table.component';
 import { UserSearchComponent } from './user/components/user-search/user-search.component';
+import { PublicationCardComponent } from './publication/publication-card/publication-card.component';
+import { PublicationsLandingPageComponent } from './publication/publications-landing-page/publications-landing-page.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import { PublicationTableComponent } from './publication/publication-table/publication-table.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,9 @@ import { UserSearchComponent } from './user/components/user-search/user-search.c
     UserLandingPageComponent,
     UserTableComponent,
     UserSearchComponent,
+    PublicationCardComponent,
+    PublicationsLandingPageComponent,
+    PublicationTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +69,8 @@ import { UserSearchComponent } from './user/components/user-search/user-search.c
     MatAutocompleteModule,
     MatButtonModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

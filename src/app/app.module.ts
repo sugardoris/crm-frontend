@@ -29,11 +29,22 @@ import { CityLandingPageComponent } from './city/city-landing-page/city-landing-
 import { UserLandingPageComponent } from './user/user-landing-page/user-landing-page.component';
 import { UserTableComponent } from './user/components/user-table/user-table.component';
 import { UserSearchComponent } from './user/components/user-search/user-search.component';
-import { PublicationCardComponent } from './publication/publication-card/publication-card.component';
 import { PublicationsLandingPageComponent } from './publication/publications-landing-page/publications-landing-page.component';
 import {MatGridListModule} from "@angular/material/grid-list";
-import { PublicationTableComponent } from './publication/publication-table/publication-table.component';
+import { PublicationTableComponent } from './publication/components/publication-table/publication-table.component';
 import {MatMenuModule} from "@angular/material/menu";
+import { SubscriberInputPageComponent } from './subscriber/subscriber-input-page/subscriber-input-page.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { PublicationsInputPageComponent } from './publication/publications-input-page/publications-input-page.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
+import { UserInputDialogComponent } from './user/components/user-input-dialog/user-input-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { SubscriptionInputComponent } from './subscriber/components/subscription-input/subscription-input.component';
+import { TicketInputComponent } from './subscriber/components/ticket-input/ticket-input.component';
+import { SubscriptionDetailsComponent } from './subscriber/components/subscription-details/subscription-details.component';
+import { TicketDetailsComponent } from './subscriber/components/ticket-details/ticket-details.component';
 
 @NgModule({
   declarations: [
@@ -53,9 +64,15 @@ import {MatMenuModule} from "@angular/material/menu";
     UserLandingPageComponent,
     UserTableComponent,
     UserSearchComponent,
-    PublicationCardComponent,
     PublicationsLandingPageComponent,
     PublicationTableComponent,
+    SubscriberInputPageComponent,
+    PublicationsInputPageComponent,
+    UserInputDialogComponent,
+    SubscriptionInputComponent,
+    TicketInputComponent,
+    SubscriptionDetailsComponent,
+    TicketDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +89,12 @@ import {MatMenuModule} from "@angular/material/menu";
     MatTabsModule,
     MatCardModule,
     MatGridListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

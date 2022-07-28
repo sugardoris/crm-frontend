@@ -1,6 +1,5 @@
 .title {
-  color: #004aad;
-  margin-bottom: 30px;
+  color: #FF4081;
 }
 
 .labels {
@@ -11,11 +10,11 @@
   width: 200px;
 }
 
-.publication-data {
+.user-data {
   font-weight: normal;
   margin-left: 30px;
 }
 
-.card-wrapper {
-  width: 100%;
+mat-dialog-content {
+  width: 600px;
 }

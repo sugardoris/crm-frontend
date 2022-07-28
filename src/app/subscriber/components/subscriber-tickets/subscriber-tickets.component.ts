@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Ticket} from "../../../domain/ticket";
+import {TicketDetailsComponent} from "../ticket-details/ticket-details.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-subscriber-tickets',
@@ -11,9 +13,17 @@ export class SubscriberTicketsComponent implements OnInit {
   tableColumns: string[] = ["type", "dateCreated", "lastUpdate", "updatedBy", "resolved"];
   dataSource = TABLE_DATA;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openDetailsDialog() {
+    const dialogRef = this.dialog.open(TicketDetailsComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

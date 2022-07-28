@@ -26,9 +26,9 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableColumns;" (click)="openDetailsDialog()"></tr>
   </table>
 </div>
 <div class="add-button">
-  <button mat-raised-button color="primary" class="button-new">Add New Subscription</button>
+  <button mat-raised-button color="accent" class="button-new">Add New Subscription</button>
 </div>

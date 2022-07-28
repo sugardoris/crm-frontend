@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Period, Publication} from "../../domain/publication";
+import {Period, Publication} from "../../../domain/publication";
 
 @Component({
   selector: 'app-publication-table',

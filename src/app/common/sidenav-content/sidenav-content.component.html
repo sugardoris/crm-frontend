@@ -25,9 +25,18 @@
 <div class="sidenav-bottom">
   <mat-divider class="nav-divider"></mat-divider>
   <mat-nav-list>
-    <mat-list-item class="nav-item">
+    <mat-list-item class="nav-item" [matMenuTriggerFor]="menu">
       <mat-icon>face</mat-icon>
       <a>Account</a>
     </mat-list-item>
   </mat-nav-list>
 </div>
+
+<mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+  <button mat-menu-item>
+    <span>Change password</span>
+  </button>
+  <button mat-menu-item>
+    <span>Logout</span>
+  </button>
+</mat-menu>

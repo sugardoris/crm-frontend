@@ -1,0 +1,30 @@
+.input-field {
+  margin-right: 30px;
+  width: 300px;
+}
+
+.checkbox {
+  margin-bottom: 20px;
+}
+
+.main-container {
+  padding-left: 30px;
+}
+
+.main-title {
+  font-size: 27px;
+  color: #004aad;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.button-new-wrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}
+
+form {
+  width: fit-content;
+}

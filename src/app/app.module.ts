@@ -45,6 +45,10 @@ import { SubscriptionInputComponent } from './subscriber/components/subscription
 import { TicketInputComponent } from './subscriber/components/ticket-input/ticket-input.component';
 import { SubscriptionDetailsComponent } from './subscriber/components/subscription-details/subscription-details.component';
 import { TicketDetailsComponent } from './subscriber/components/ticket-details/ticket-details.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SubscriptionTypesLandingComponent } from './subscription_type/subscription-types-landing/subscription-types-landing.component';
+import { SubscriptionTypeTableComponent } from './subscription_type/components/subscription-type-table/subscription-type-table.component';
+import { SubscriptionTypeInputComponent } from './subscription_type/components/subscription-type-input/subscription-type-input.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +77,10 @@ import { TicketDetailsComponent } from './subscriber/components/ticket-details/t
     TicketInputComponent,
     SubscriptionDetailsComponent,
     TicketDetailsComponent,
+    LoginComponent,
+    SubscriptionTypesLandingComponent,
+    SubscriptionTypeTableComponent,
+    SubscriptionTypeInputComponent,
   ],
   imports: [
     BrowserModule,

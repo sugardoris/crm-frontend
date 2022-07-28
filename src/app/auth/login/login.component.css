@@ -1,0 +1,25 @@
+.logo {
+  width: 300px;
+  padding: 0 0 20px 10px;
+}
+
+.login-container {
+  position: absolute;
+  left: 40%;
+  top: 20%;
+}
+
+.login-field {
+  width: 300px;
+}
+
+.login-button {
+  padding: 5px 25px 5px 25px;
+  font-size: 16px;
+}
+
+.button-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}

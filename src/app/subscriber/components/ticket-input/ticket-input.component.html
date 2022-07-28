@@ -1,1 +1,26 @@
-<p>ticket-input works!</p>
+<h1 class="main-title">{{editMode ? 'Edit Ticket' : 'Add Ticket'}}</h1>
+<mat-dialog-content>
+  <form [formGroup]="ticketForm">
+    <div>
+      <mat-form-field appearance="outline" class="input-field">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of typeOptions" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" rows="8"></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary">Submit</button>
+</mat-dialog-actions>
+

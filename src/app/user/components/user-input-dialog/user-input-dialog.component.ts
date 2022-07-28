@@ -14,9 +14,9 @@ export class UserInputDialogComponent implements OnInit {
   roleOptions = Object.values(Role);
 
   userForm = new FormGroup({
-    username: new FormControl(('')),
-    fullName: new FormControl(('')),
-    role: new FormControl(('')),
+    username: new FormControl(''),
+    fullName: new FormControl(''),
+    role: new FormControl(''),
   })
 
   constructor() { }

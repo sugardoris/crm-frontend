@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Period, Publication} from "../../../domain/publication";
+import {PublicationPeriod, Publication} from "../../../domain/publication";
 
 @Component({
   selector: 'app-publication-table',
@@ -8,7 +8,7 @@ import {Period, Publication} from "../../../domain/publication";
 })
 export class PublicationTableComponent implements OnInit {
 
-  tableColumns: string[] = ["name", "firstIssue", "issuePeriod", "comesOut", "nextIssue", "active"];
+  tableColumns: string[] = ["name", "firstIssue", "issuePeriod", "comesOut", "nextIssue", "price", "active"];
   dataSource = TABLE_DATA;
 
   constructor() { }
@@ -19,15 +19,15 @@ export class PublicationTableComponent implements OnInit {
 }
 
 const TABLE_DATA: Publication[] = [
-  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: Period.DAILY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true},
-  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: Period.WEEKLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true},
-  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: Period.BIWEEKLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true},
-  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: Period.MONTHLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true},
-  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: Period.BIANNUALLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true},
-  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: Period.ANNUALLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true},
-  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: Period.DAILY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true},
-  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: Period.DAILY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: false},
-  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: Period.DAILY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true},
-  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: Period.DAILY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: false},
-  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: Period.DAILY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true},
+  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: PublicationPeriod.DAILY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true, price: "15.00 EUR"},
+  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: PublicationPeriod.WEEKLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true, price: "15.00 EUR"},
+  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: PublicationPeriod.BIWEEKLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true, price: "15.00 EUR"},
+  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: PublicationPeriod.MONTHLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true, price: "15.00 EUR"},
+  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: PublicationPeriod.BIANNUALLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true, price: "15.00 EUR"},
+  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: PublicationPeriod.ANNUALLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true, price: "15.00 EUR"},
+  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: PublicationPeriod.DAILY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true,price: "15.00 EUR"},
+  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: PublicationPeriod.DAILY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: false, price: "15.00 EUR"},
+  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: PublicationPeriod.DAILY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true, price: "15.00 EUR"},
+  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: PublicationPeriod.DAILY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: false,price: "15.00 EUR"},
+  {name: "Publication Name", firstIssue: "dd.MM.YYYY", issuePeriod: PublicationPeriod.DAILY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true, price: "15.00 EUR"},
 ]

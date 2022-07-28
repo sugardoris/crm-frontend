@@ -23,16 +23,16 @@ export class SubscriberInputPageComponent implements OnInit {
   checkboxColor: ThemePalette = 'primary';
 
   subscriberForm = new FormGroup({
-    name: new FormControl(('')),
-    lastName: new FormControl(('')),
-    companyName: new FormControl(('')),
-    oib: new FormControl(('')),
-    email: new FormControl(('')),
-    phone1: new FormControl(('')),
-    phone2: new FormControl(('')),
-    address: new FormControl(('')),
-    city: new FormControl(('')),
-    legalEntity: new FormControl(('')),
+    name: new FormControl(''),
+    lastName: new FormControl(''),
+    companyName: new FormControl(''),
+    oib: new FormControl(''),
+    email: new FormControl(''),
+    phone1: new FormControl(''),
+    phone2: new FormControl(''),
+    address: new FormControl(''),
+    city: new FormControl(''),
+    legalEntity: new FormControl(''),
   })
 
   constructor() { }

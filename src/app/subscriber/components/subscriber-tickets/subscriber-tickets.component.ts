@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Ticket} from "../../../domain/ticket";
 import {TicketDetailsComponent} from "../ticket-details/ticket-details.component";
 import {MatDialog} from "@angular/material/dialog";
+import {TicketInputComponent} from "../ticket-input/ticket-input.component";
 
 @Component({
   selector: 'app-subscriber-tickets',
@@ -20,6 +21,14 @@ export class SubscriberTicketsComponent implements OnInit {
 
   openDetailsDialog() {
     const dialogRef = this.dialog.open(TicketDetailsComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openAddDialog() {
+    const dialogRef = this.dialog.open(TicketInputComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

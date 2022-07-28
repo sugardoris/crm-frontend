@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Period, Publication} from "../../domain/publication";
+import {PublicationPeriod, Publication} from "../../domain/publication";
 import {FormControl, FormGroup} from "@angular/forms";
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
@@ -18,13 +18,14 @@ export class PublicationsInputPageComponent implements OnInit {
 
   editMode: boolean = false;
   publication?: Publication;
-  periodOptions = Object.values(Period);
+  periodOptions = Object.values(PublicationPeriod);
 
   publicationForm = new FormGroup({
-    name: new FormControl(('')),
-    firstIssue: new FormControl(('')),
-    issuePeriod: new FormControl(('')),
-    comesOut: new FormControl((''))
+    name: new FormControl(''),
+    firstIssue: new FormControl(''),
+    issuePeriod: new FormControl(''),
+    price: new FormControl(''),
+    comesOut: new FormControl('')
   })
 
   constructor() { }

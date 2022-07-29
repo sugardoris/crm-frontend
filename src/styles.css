@@ -2,3 +2,85 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h1 {font-family: Roboto, "Helvetica Neue", sans-serif;}
+
+.main-title {
+  font-size: 27px;
+  color: #004aad;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.main-title-input {
+  color: #9a1f21;
+  padding-bottom: 20px;
+}
+
+.button-new-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+.search-button {
+  margin-top: 18px;
+}
+
+.search-field {
+  margin-right: 15px;
+  width: 100%;
+}
+
+.full-width-search {
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: flex-end;
+}
+
+.search-container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mat-row .mat-cell {
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  background-color:  #e0e9f5;
+}
+
+.card-labels {
+  font-size: medium;
+  font-weight: bold;
+  margin-top: 15px;
+  display: inline-block;
+  width: 200px;
+}
+
+.card-data {
+  font-weight: normal;
+  padding-left: 30px;
+}
+
+.card-title {
+  color: #004aad;
+  padding-bottom: 30px;
+}
+
+.table-margin {
+  margin-top: 50px;
+}
+
+.details-title {
+  color: #004aad;
+  padding-bottom: 20px;
+}

@@ -1,0 +1,9 @@
+.card-wrapper {
+  max-width: 800px;
+  margin-top: 50px;
+}
+
+.user-details {
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+}

@@ -5,3 +5,11 @@ export interface Ticket {
   updatedBy: string,
   resolved: boolean
 }
+
+export enum TicketType {
+  COMPLAINT = "Complaint",
+  INFO = "Info",
+  PAYMENT = "Payment",
+  NEW = "New subscription",
+  CANCELLATION = "Cancellation"
+}

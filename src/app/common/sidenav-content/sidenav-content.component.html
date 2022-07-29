@@ -9,25 +9,38 @@
     <a class="nav-text">Subscribers</a>
   </mat-list-item>
   <mat-list-item class="nav-item">
-    <mat-icon>library_books</mat-icon>
+    <mat-icon>menu_book</mat-icon>
     <a>Publications</a>
   </mat-list-item>
   <mat-list-item class="nav-item">
+    <mat-icon>library_books</mat-icon>
+    <a>Subscription Types</a>
+  </mat-list-item>
+  <mat-list-item class="nav-item">
     <mat-icon>location_city</mat-icon>
-    <a>City Management</a>
+    <a>Cities</a>
   </mat-list-item>
   <mat-list-item class="nav-item">
     <mat-icon>group_add</mat-icon>
-    <a>User Management</a>
+    <a>Users</a>
   </mat-list-item>
 </mat-nav-list>
 
 <div class="sidenav-bottom">
   <mat-divider class="nav-divider"></mat-divider>
   <mat-nav-list>
-    <mat-list-item class="nav-item">
+    <mat-list-item class="nav-item" [matMenuTriggerFor]="menu">
       <mat-icon>face</mat-icon>
       <a>Account</a>
     </mat-list-item>
   </mat-nav-list>
 </div>
+
+<mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+  <button mat-menu-item>
+    <span>Change password</span>
+  </button>
+  <button mat-menu-item>
+    <span>Logout</span>
+  </button>
+</mat-menu>

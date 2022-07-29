@@ -1,24 +1,5 @@
-.search-container {
-  width: 100%;
-  box-sizing: border-box;
-}
-
 .button-new {
-  margin-bottom: 20px;
   padding: 5px 25px 5px 25px;
   font-size: 16px;
 }
 
-.main-title {
-  font-size: 27px;
-  color: #004aad;
-  margin-top: 20px;
-  margin-bottom: 30px;
-}
-
-.button-new-wrapper {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-end;
-  margin-bottom: 10px;
-}

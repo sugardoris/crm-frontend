@@ -1,7 +1,10 @@
+import {Publication} from "./publication";
+import {SubscriptionType} from "./subscriptionType";
+
 export interface Subscription {
+  publication?: Publication,
   publicationName: string,
   dateStarted: string,
   dateEnded: string,
-  discount: string,
-  price: string
+  subscriptionType: SubscriptionType
 }

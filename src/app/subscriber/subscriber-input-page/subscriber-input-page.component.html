@@ -1,0 +1,63 @@
+<!--<button mat-flat-button class="ms-4 mt-4 back" (click)="goBack()">Back</button>-->
+
+<div class="main-container">
+  <h1 class="main-title">{{editMode ? 'Edit Subscriber' : 'Add Subscriber'}}</h1>
+  <form [formGroup]="subscriberForm">
+    <div>
+      <mat-form-field appearance="outline" class="input-field">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="input-field">
+        <mat-label>Last name</mat-label>
+        <input matInput formControlName="lastName">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field">
+        <mat-label>Company name</mat-label>
+        <input matInput formControlName="companyName">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="input-field">
+        <mat-label>OIB</mat-label>
+        <input matInput formControlName="oib">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field">
+        <mat-label>Phone 1</mat-label>
+        <input matInput formControlName="phone1">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="input-field">
+        <mat-label>Phone 2</mat-label>
+        <input matInput formControlName="phone2">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="input-field">
+        <mat-label>City</mat-label>
+        <mat-select formControlName="city">
+          <mat-option *ngFor="let city of cities" [value]="city.name">
+            {{city.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="checkbox">
+      <mat-checkbox formControlName="legalEntity" [color]="checkboxColor">Legal entity</mat-checkbox>
+    </div>
+    <div class="button-new-wrapper pe-4">
+      <button mat-raised-button color="primary" class="mt-3">Submit</button>
+    </div>
+  </form>
+</div>

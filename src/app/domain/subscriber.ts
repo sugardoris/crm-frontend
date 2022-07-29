@@ -8,7 +8,7 @@ export interface Subscriber {
   phone2?: string,
   address: string,
   city: string,
-  isLegalEntity?: boolean,
+  legalEntity?: boolean,
   isActive?: boolean,
   createDate?: string,
   lastUpdate?: string,

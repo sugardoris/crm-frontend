@@ -1,17 +1,18 @@
 export interface Publication {
   name: string,
   firstIssue: string,
-  issuePeriod: Period,
+  issuePeriod: PublicationPeriod,
   comesOut: string,
   nextIssue: string,
-  active: boolean
+  active: boolean,
+  price: string
 }
 
-export enum Period {
+export enum PublicationPeriod {
   DAILY = "Daily",
   WEEKLY = "Weekly",
-  BIWEEKLY = "Biweekly",
+  BIWEEKLY = "Every two weeks",
   MONTHLY = "Monthly",
-  BIANNUALLY = "Biannually",
-  ANNUALLY = "Annually"
+  BIANNUALLY = "Every six months",
+  ANNUALLY = "Yearly"
 }

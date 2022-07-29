@@ -1,1 +1,41 @@
-<p>subscription-type-input works!</p>
+<h1 mat-dialog-title class="main-title-input">
+  {{editMode ? 'Edit Subscription Type' : 'Add Subscription Type'}}
+</h1>
+<mat-dialog-content>
+  <form [formGroup]="subscriptionTypeForm">
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>Discount</mat-label>
+        <input matInput formControlName="discount">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>Subscription Period</mat-label>
+        <mat-select formControlName="period">
+          <mat-option *ngFor="let period of periodOptions" [value]="period">
+            {{period}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>Expiration date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="accent">Submit</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

@@ -1,20 +1,20 @@
-<h1 class="main-title" color="accent" >Add User</h1>
+<h1 class="main-title-input">Add User</h1>
 <mat-dialog-content>
   <form [formGroup]="userForm">
     <div>
-      <mat-form-field appearance="outline" class="input-field">
+      <mat-form-field appearance="outline" class="input-field" color="accent">
         <mat-label>Username</mat-label>
         <input matInput formControlName="username">
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="outline" class="input-field">
+      <mat-form-field appearance="outline" class="input-field" color="accent">
         <mat-label>Full name</mat-label>
         <input matInput formControlName="fullName">
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="outline" class="input-field">
+      <mat-form-field appearance="outline" class="input-field" color="accent">
         <mat-label>Role</mat-label>
         <mat-select formControlName="role">
           <mat-option *ngFor="let role of roleOptions" [value]="role">
@@ -26,6 +26,6 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary">Submit</button>
+  <button mat-raised-button color="accent">Submit</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>

@@ -1,0 +1,48 @@
+<h1 mat-dialog-title class="main-title-input">
+  {{editMode ? 'Edit Publication' : 'Add Publication'}}
+</h1>
+<mat-dialog-content>
+  <form [formGroup]="publicationForm">
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>First issue</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>Issue period</mat-label>
+        <mat-select formControlName="issuePeriod">
+          <mat-option *ngFor="let period of periodOptions" [value]="period">
+            {{period}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>Price</mat-label>
+        <input matInput formControlName="price">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>Comes out</mat-label>
+        <mat-hint>e.g. ''Every other Wednesday''</mat-hint>
+        <input matInput formControlName="comesOut">
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="accent">Submit</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

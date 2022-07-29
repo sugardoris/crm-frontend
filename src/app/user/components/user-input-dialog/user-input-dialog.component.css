@@ -1,3 +1,7 @@
-.main-title {
-  color: #004aad;
+mat-dialog-content {
+  width: 400px;
+}
+
+.input-field {
+  width: 300px;
 }

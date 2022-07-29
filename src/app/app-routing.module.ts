@@ -10,10 +10,14 @@ import {
   SubscriptionTypesLandingComponent
 } from "./subscription_type/subscription-types-landing/subscription-types-landing.component";
 import {UserLandingPageComponent} from "./user/user-landing-page/user-landing-page.component";
+import {SubscriberInputPageComponent} from "./subscriber/subscriber-input-page/subscriber-input-page.component";
 
 const routes: Routes = [
+  {path: '', redirectTo: 'subscribers', pathMatch: 'full'},
   {path: 'subscribers', component: SubscriberLandingPageComponent},
   {path: 'subscribers/:id', component: SubscriberDetailsPageComponent},
+  {path: 'subscriber/:mode', component: SubscriberInputPageComponent},
+  {path: 'subscriber/:mode/:id', component: SubscriberInputPageComponent},
   {path: 'cities', component: CityLandingPageComponent},
   {path: 'publications', component: PublicationsLandingPageComponent},
   {path: 'subscription-types', component: SubscriptionTypesLandingComponent},

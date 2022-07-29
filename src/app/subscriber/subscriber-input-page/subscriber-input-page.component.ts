@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import {Subscriber} from "../../domain/subscriber";
 import {FormControl, FormGroup} from "@angular/forms";
 import {City} from "../../domain/city";
@@ -35,9 +37,23 @@ export class SubscriberInputPageComponent implements OnInit {
     legalEntity: new FormControl(''),
   })
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location,
+  ) { }
 
   ngOnInit(): void {
+    this.checkMode();
+  }
+
+  checkMode() {
+    const mode = this.route.snapshot.params['mode'];
+    this.editMode = mode == 'edit';
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

@@ -49,6 +49,7 @@ import { SubscriptionTypesLandingComponent } from './subscription_type/subscript
 import { SubscriptionTypeTableComponent } from './subscription_type/components/subscription-type-table/subscription-type-table.component';
 import { SubscriptionTypeInputComponent } from './subscription_type/components/subscription-type-input/subscription-type-input.component';
 import { PublicationInputComponent } from './publication/components/publication-input/publication-input.component';
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -82,28 +83,29 @@ import { PublicationInputComponent } from './publication/components/publication-
     SubscriptionTypeInputComponent,
     PublicationInputComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatTableModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatTabsModule,
-    MatCardModule,
-    MatGridListModule,
-    MatMenuModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatMomentDateModule,
-    MatDialogModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatTableModule,
+        MatInputModule,
+        MatAutocompleteModule,
+        MatButtonModule,
+        MatTabsModule,
+        MatCardModule,
+        MatGridListModule,
+        MatMenuModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatDatepickerModule,
+        MatMomentDateModule,
+        MatDialogModule,
+        AppRoutingModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

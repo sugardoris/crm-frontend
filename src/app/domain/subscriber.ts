@@ -1,16 +1,22 @@
 export interface Subscriber {
-  name: string,
+  id: number,
+  contactinfo: ContactInfo
+  createdBy?: string,
+  updatedBy?: string,
+  createDate?: string,
+  lastUpdate?: string,
+}
+
+export interface ContactInfo {
+  firstName?: string,
   lastName?: string,
   companyName?: string,
   oib: string,
   email: string,
-  phone: string,
+  phone1: string,
   phone2?: string,
-  address: string,
+  billingAddress: string,
   city: string,
   legalEntity?: boolean,
-  isActive?: boolean,
-  createDate?: string,
-  lastUpdate?: string,
-  updatedBy?: string
+  active?: boolean,
 }

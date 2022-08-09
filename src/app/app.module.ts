@@ -2,27 +2,35 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from "@angular/material/sidenav";
-import { SidenavContentComponent } from './common/sidenav-content/sidenav-content.component';
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import { SubscriberTableComponent } from './subscriber/components/subscriber/subscriber-table/subscriber-table.component';
 import {MatTableModule} from "@angular/material/table";
-import { SubscriberLandingPageComponent } from './subscriber/subscriber-landing-page/subscriber-landing-page.component';
-import { SubscriberSearchComponent } from './subscriber/components/subscriber/subscriber-search/subscriber-search.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatButtonModule} from "@angular/material/button";
-import { SubscriberDetailsPageComponent } from './subscriber/subscriber-details-page/subscriber-details-page.component';
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatCardModule} from "@angular/material/card";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatSelectModule} from "@angular/material/select";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
+import {MatDialogModule} from "@angular/material/dialog";
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SidenavContentComponent } from './common/sidenav-content/sidenav-content.component';
+import { SubscriberTableComponent } from './subscriber/components/subscriber/subscriber-table/subscriber-table.component';
+import { SubscriberLandingPageComponent } from './subscriber/subscriber-landing-page/subscriber-landing-page.component';
+import { SubscriberSearchComponent } from './subscriber/components/subscriber/subscriber-search/subscriber-search.component';
+import { SubscriberDetailsPageComponent } from './subscriber/subscriber-details-page/subscriber-details-page.component';
 import { SubscriberInfoComponent } from './subscriber/components/subscriber/subscriber-info/subscriber-info.component';
 import { SubscriptionsTableComponent } from './subscriber/components/subscription/subscriptions-table/subscriptions-table.component';
 import { SubscriberTicketsComponent } from './subscriber/components/ticket/subscriber-tickets/subscriber-tickets.component';
-import { SubscriberPaymentsComponent } from './subscriber/components/payment/subscriber-payments/subscriber-payments.component';
-import {MatCardModule} from "@angular/material/card";
 import { CityTableComponent } from './city/components/city-table/city-table.component';
 import { CitySearchComponent } from './city/components/city-search/city-search.component';
 import { CityLandingPageComponent } from './city/city-landing-page/city-landing-page.component';
@@ -30,16 +38,9 @@ import { UserLandingPageComponent } from './user/user-landing-page/user-landing-
 import { UserTableComponent } from './user/components/user-table/user-table.component';
 import { UserSearchComponent } from './user/components/user-search/user-search.component';
 import { PublicationsLandingPageComponent } from './publication/publications-landing-page/publications-landing-page.component';
-import {MatGridListModule} from "@angular/material/grid-list";
 import { PublicationTableComponent } from './publication/components/publication-table/publication-table.component';
-import {MatMenuModule} from "@angular/material/menu";
 import { SubscriberInputPageComponent } from './subscriber/subscriber-input-page/subscriber-input-page.component';
-import {MatSelectModule} from "@angular/material/select";
-import {MatCheckboxModule} from "@angular/material/checkbox";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import { UserInputDialogComponent } from './user/components/user-input-dialog/user-input-dialog.component';
-import {MatDialogModule} from "@angular/material/dialog";
 import { SubscriptionInputComponent } from './subscriber/components/subscription/subscription-input/subscription-input.component';
 import { TicketInputComponent } from './subscriber/components/ticket/ticket-input/ticket-input.component';
 import { SubscriptionDetailsComponent } from './subscriber/components/subscription/subscription-details/subscription-details.component';
@@ -49,7 +50,8 @@ import { SubscriptionTypesLandingComponent } from './subscription_type/subscript
 import { SubscriptionTypeTableComponent } from './subscription_type/components/subscription-type-table/subscription-type-table.component';
 import { SubscriptionTypeInputComponent } from './subscription_type/components/subscription-type-input/subscription-type-input.component';
 import { PublicationInputComponent } from './publication/components/publication-input/publication-input.component';
-import {AppRoutingModule} from "./app-routing.module";
+import { LoginLayoutComponent } from './common/layouts/login-layout/login-layout.component';
+import { HomeLayoutComponent } from './common/layouts/home-layout/home-layout.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,6 @@ import {AppRoutingModule} from "./app-routing.module";
     SubscriberInfoComponent,
     SubscriptionsTableComponent,
     SubscriberTicketsComponent,
-    SubscriberPaymentsComponent,
     CityTableComponent,
     CitySearchComponent,
     CityLandingPageComponent,
@@ -82,6 +83,8 @@ import {AppRoutingModule} from "./app-routing.module";
     SubscriptionTypeTableComponent,
     SubscriptionTypeInputComponent,
     PublicationInputComponent,
+    LoginLayoutComponent,
+    HomeLayoutComponent,
   ],
     imports: [
         BrowserModule,

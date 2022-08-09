@@ -11,7 +11,7 @@ import {map, Observable, startWith} from "rxjs";
 export class CitySearchComponent implements OnInit {
 
   searchFormControl = new FormControl('');
-  cityOptions: string[] = TABLE_DATA.map(value => value.name + ", " + value.postNumber);
+  cityOptions: string[] = TABLE_DATA.map(value => value.name + ", " + value.postcode);
   filteredCityOptions: Observable<string[]> | undefined;
 
   constructor() { }
@@ -32,9 +32,9 @@ export class CitySearchComponent implements OnInit {
 }
 
 const TABLE_DATA: City[] = [
-  {name: "Zagreb", postNumber: 10000},
-  {name: "Split", postNumber: 21000},
-  {name: "Rijeka", postNumber: 51000},
-  {name: "Zadar", postNumber: 23000},
-  {name: "Osijek", postNumber: 31000}
+  {name: "Zagreb", postcode: 10000},
+  {name: "Split", postcode: 21000},
+  {name: "Rijeka", postcode: 51000},
+  {name: "Zadar", postcode: 23000},
+  {name: "Osijek", postcode: 31000}
 ]

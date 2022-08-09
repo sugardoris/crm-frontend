@@ -19,16 +19,16 @@ export class SubscriberTableComponent implements OnInit {
 }
 
 const TABLE_DATA: Subscriber[] = [
-  {name: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone: "123-234", address: "address", city: "city"},
-  {name: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone: "123-234", address: "address", city: "city"},
-  {name: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone: "123-234", address: "address", city: "city"},
-  {name: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone: "123-234", address: "address", city: "city"},
-  {name: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone: "123-234", address: "address", city: "city"},
-  {name: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone: "123-234", address: "address", city: "city"},
-  {name: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone: "123-234", address: "address", city: "city"},
-  {name: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone: "123-234", address: "address", city: "city"},
-  {name: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone: "123-234", address: "address", city: "city"},
-  {name: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone: "123-234", address: "address", city: "city"},
-  {name: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone: "123-234", address: "address", city: "city"},
-  {name: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone: "123-234", address: "address", city: "city"},
+  {firstName: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone1: "123-234", billingAddress: "address", city: "city"},
+  {firstName: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone1: "123-234", billingAddress: "address", city: "city"},
+  {firstName: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone1: "123-234", billingAddress: "address", city: "city"},
+  {firstName: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone1: "123-234", billingAddress: "address", city: "city"},
+  {firstName: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone1: "123-234", billingAddress: "address", city: "city"},
+  {firstName: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone1: "123-234", billingAddress: "address", city: "city"},
+  {firstName: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone1: "123-234", billingAddress: "address", city: "city"},
+  {firstName: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone1: "123-234", billingAddress: "address", city: "city"},
+  {firstName: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone1: "123-234", billingAddress: "address", city: "city"},
+  {firstName: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone1: "123-234", billingAddress: "address", city: "city"},
+  {firstName: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone1: "123-234", billingAddress: "address", city: "city"},
+  {firstName: "Ime Prezime", oib: "12345678901", email: "email@email.com", phone1: "123-234", billingAddress: "address", city: "city"},
 ]

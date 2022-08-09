@@ -1,6 +1,7 @@
 export interface Subscriber {
   id: number,
-  contactinfo: ContactInfo
+  contactinfo: ContactInfo,
+  active?: boolean,
   createdBy?: string,
   updatedBy?: string,
   createDate?: string,
@@ -18,5 +19,4 @@ export interface ContactInfo {
   billingAddress: string,
   city: string,
   legalEntity?: boolean,
-  active?: boolean,
 }

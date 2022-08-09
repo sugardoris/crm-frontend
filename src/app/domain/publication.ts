@@ -2,6 +2,7 @@ export interface Publication {
   id: number,
   name: string,
   publishingInfo: PublishingInfo,
+  active: boolean,
   createdBy?: string,
   updatedBy?: string,
   createDate?: string,
@@ -12,9 +13,7 @@ export interface PublishingInfo {
   firstIssueDate: string,
   issuePeriod: PublicationPeriod,
   comesOut: string,
-  nextIssue: string,
-  price: string,
-  active: boolean
+  price: string
 }
 
 export enum PublicationPeriod {

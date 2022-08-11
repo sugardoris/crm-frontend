@@ -20,7 +20,4 @@ export class SubscriptionTypeTableComponent implements OnInit {
 }
 
 const TABLE_DATA: SubscriptionType[] = [
-  {name: "New subcribers offer - MONTHLY", subscriptionPeriod: SubscriptionPeriod.MONTHLY, discount: "10%", expirationDate: "MM/DD/YYYY", active: true},
-  {name: "Summer sports offer - TRIMONTHLY", subscriptionPeriod: SubscriptionPeriod.TRIMONTHLY, discount: "15%", expirationDate: "MM/DD/YYYY", active: true},
-  {name: "Daily news offer - ANNUALLY", subscriptionPeriod: SubscriptionPeriod.ANNUALLY, discount: "25%", expirationDate: "MM/DD/YYYY", active: false}
 ]

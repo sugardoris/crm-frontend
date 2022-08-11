@@ -1,18 +1,24 @@
 export interface Publication {
+  id: number,
   name: string,
-  firstIssue: string,
+  publishingInfo: PublishingInfo,
+  active: boolean,
+  createdBy?: string,
+  updatedBy?: string,
+  createDate?: string,
+  lastUpdate?: string
+}
+
+export interface PublishingInfo {
+  id: number,
+  firstIssueDate: string,
   issuePeriod: PublicationPeriod,
   comesOut: string,
-  nextIssue: string,
-  active: boolean,
   price: string
 }
 
 export enum PublicationPeriod {
   DAILY = "Daily",
   WEEKLY = "Weekly",
-  BIWEEKLY = "Every two weeks",
   MONTHLY = "Monthly",
-  BIANNUALLY = "Every six months",
-  ANNUALLY = "Yearly"
 }

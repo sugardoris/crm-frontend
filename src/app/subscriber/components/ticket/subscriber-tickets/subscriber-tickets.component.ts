@@ -38,11 +38,4 @@ export class SubscriberTicketsComponent implements OnInit {
 }
 
 const TABLE_DATA: Ticket[] = [
-  {type: "Ticket type", dateCreated: "dd.MM.YYYY", lastUpdate: "dd.MM.YYYY", updatedBy: "admin", resolved: true},
-  {type: "Ticket type", dateCreated: "dd.MM.YYYY", lastUpdate: "dd.MM.YYYY", updatedBy: "admin", resolved: false},
-  {type: "Ticket type", dateCreated: "dd.MM.YYYY", lastUpdate: "dd.MM.YYYY", updatedBy: "admin", resolved: true},
-  {type: "Ticket type", dateCreated: "dd.MM.YYYY", lastUpdate: "dd.MM.YYYY", updatedBy: "admin", resolved: false},
-  {type: "Ticket type", dateCreated: "dd.MM.YYYY", lastUpdate: "dd.MM.YYYY", updatedBy: "admin", resolved: true},
-  {type: "Ticket type", dateCreated: "dd.MM.YYYY", lastUpdate: "dd.MM.YYYY", updatedBy: "admin", resolved: false},
-  {type: "Ticket type", dateCreated: "dd.MM.YYYY", lastUpdate: "dd.MM.YYYY", updatedBy: "admin", resolved: true}
 ]

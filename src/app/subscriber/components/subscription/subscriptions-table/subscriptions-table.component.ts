@@ -39,16 +39,4 @@ export class SubscriptionsTableComponent implements OnInit {
 }
 
 const TABLE_DATA: Subscription[] = [
-  {publicationName: "Publication Name", dateStarted: "dd.MM.YYYY", dateEnded: "dd.MM.YYYY",
-    subscriptionType: {name: "New subcribers offer - MONTHLY", subscriptionPeriod: SubscriptionPeriod.MONTHLY, discount: "10%", active: true}},
-  {publicationName: "Publication Name", dateStarted: "dd.MM.YYYY", dateEnded: "dd.MM.YYYY",
-    subscriptionType: {name: "New subcribers offer - MONTHLY", subscriptionPeriod: SubscriptionPeriod.MONTHLY, discount: "10%", active: true}},
-  {publicationName: "Publication Name", dateStarted: "dd.MM.YYYY", dateEnded: "dd.MM.YYYY",
-    subscriptionType: {name: "Summer sports offer - TRIMONTHLY", subscriptionPeriod: SubscriptionPeriod.TRIMONTHLY, discount: "15%", active: true}},
-  {publicationName: "Publication Name", dateStarted: "dd.MM.YYYY", dateEnded: "dd.MM.YYYY",
-    subscriptionType: {name: "Summer sports offer - TRIMONTHLY", subscriptionPeriod: SubscriptionPeriod.TRIMONTHLY, discount: "15%", active: true}},
-  {publicationName: "Publication Name", dateStarted: "dd.MM.YYYY", dateEnded: "dd.MM.YYYY",
-    subscriptionType: {name: "Daily news offer - ANNUALLY", subscriptionPeriod: SubscriptionPeriod.ANNUALLY, discount: "25%", active: true}},
-  {publicationName: "Publication Name", dateStarted: "dd.MM.YYYY", dateEnded: "dd.MM.YYYY",
-    subscriptionType: {name: "Daily news offer - ANNUALLY", subscriptionPeriod: SubscriptionPeriod.ANNUALLY, discount: "25%", active: true}}
 ]

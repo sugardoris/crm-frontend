@@ -1,16 +1,25 @@
+import {City} from "./city";
+
 export interface Subscriber {
-  name: string,
+  id: number,
+  contactinfo: ContactInfo,
+  active?: boolean,
+  createdBy?: string,
+  updatedBy?: string,
+  createDate?: string,
+  lastUpdate?: string,
+}
+
+export interface ContactInfo {
+  id: number,
+  firstName?: string,
   lastName?: string,
   companyName?: string,
   oib: string,
   email: string,
-  phone: string,
+  phone1: string,
   phone2?: string,
-  address: string,
-  city: string,
+  billingAddress: string,
+  city: City,
   legalEntity?: boolean,
-  isActive?: boolean,
-  createDate?: string,
-  lastUpdate?: string,
-  updatedBy?: string
 }

@@ -10,14 +10,35 @@ import {
   SubscriptionTypesLandingComponent
 } from "./subscription_type/subscription-types-landing/subscription-types-landing.component";
 import {UserLandingPageComponent} from "./user/user-landing-page/user-landing-page.component";
+import {SubscriberInputPageComponent} from "./subscriber/subscriber-input-page/subscriber-input-page.component";
+import {LoginComponent} from "./auth/login/login.component";
+import {HomeLayoutComponent} from "./common/layouts/home-layout/home-layout.component";
+import {LoginLayoutComponent} from "./common/layouts/login-layout/login-layout.component";
+import {AuthGuardService} from "./auth/guards/auth-guard.service";
 
 const routes: Routes = [
-  {path: 'subscribers', component: SubscriberLandingPageComponent},
-  {path: 'subscribers/:id', component: SubscriberDetailsPageComponent},
-  {path: 'cities', component: CityLandingPageComponent},
-  {path: 'publications', component: PublicationsLandingPageComponent},
-  {path: 'subscription-types', component: SubscriptionTypesLandingComponent},
-  {path: 'users', component: UserLandingPageComponent}
+  {
+    path: '',
+    component: HomeLayoutComponent,
+    children: [
+      {path: 'subscriber/:mode/:id', component: SubscriberInputPageComponent},
+      {path: 'subscriber/:mode', component: SubscriberInputPageComponent},
+      {path: 'subscribers/:id', component: SubscriberDetailsPageComponent},
+      {path: 'subscribers', component: SubscriberLandingPageComponent},
+      {path: 'cities', component: CityLandingPageComponent},
+      {path: 'publications', component: PublicationsLandingPageComponent},
+      {path: 'subscription-types', component: SubscriptionTypesLandingComponent},
+      {path: 'users', component: UserLandingPageComponent},
+      {path: '', redirectTo: 'subscribers', pathMatch: 'full'},
+    ],
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: '',
+    component: LoginLayoutComponent,
+    children: [
+      {path: 'login', component: LoginComponent}
+    ]},
 ];
 
 @NgModule({

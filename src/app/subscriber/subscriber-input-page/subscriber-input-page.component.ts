@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import {Subscriber} from "../../domain/subscriber";
 import {FormControl, FormGroup} from "@angular/forms";
 import {City} from "../../domain/city";
@@ -14,11 +16,11 @@ export class SubscriberInputPageComponent implements OnInit {
   editMode: boolean = false;
   subscriber?: Subscriber;
   cities: City[] = [
-    {name: "Zagreb", postNumber: 10000},
-    {name: "Split", postNumber: 21000},
-    {name: "Rijeka", postNumber: 51000},
-    {name: "Zadar", postNumber: 23000},
-    {name: "Osijek", postNumber: 31000}
+    {name: "Zagreb", postcode: 10000},
+    {name: "Split", postcode: 21000},
+    {name: "Rijeka", postcode: 51000},
+    {name: "Zadar", postcode: 23000},
+    {name: "Osijek", postcode: 31000}
   ];
   checkboxColor: ThemePalette = 'primary';
 
@@ -35,9 +37,23 @@ export class SubscriberInputPageComponent implements OnInit {
     legalEntity: new FormControl(''),
   })
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location,
+  ) { }
 
   ngOnInit(): void {
+    this.checkMode();
+  }
+
+  checkMode() {
+    const mode = this.route.snapshot.params['mode'];
+    this.editMode = mode == 'edit';
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

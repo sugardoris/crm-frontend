@@ -16,7 +16,13 @@
       </mat-form-field>
     </div>
     <div class="button-container">
-      <button mat-raised-button color="primary" type="submit" class="login-button">Login</button>
+      <button (click)="login()" mat-raised-button color="primary" type="submit" class="login-button">
+        Login
+        <span *ngIf="loading"><mat-spinner></mat-spinner></span>
+      </button>
     </div>
   </form>
+  <div *ngIf="loginError">
+    Login failed! Check your credentials and try again.
+  </div>
 </div>

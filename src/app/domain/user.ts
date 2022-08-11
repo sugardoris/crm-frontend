@@ -1,12 +1,17 @@
 export interface User {
+  id: number,
   username: string,
   password?: string,
-  fullName: string,
+  name: string,
   role: Role,
-  active: boolean
+  active: boolean,
+  createdBy?: string,
+  updatedBy?: string,
+  createDate?: string,
+  lastUpdate?: string,
 }
 
 export enum Role {
-  USER = "User",
+  EMPLOYEE = "Employee",
   ADMIN = "Admin"
 }

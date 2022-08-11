@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SubscriptionPeriod, SubscriptionType} from "../../../domain/subscriptionType";
 import {SubscriptionTypeInputComponent} from "../subscription-type-input/subscription-type-input.component";
+import {SubscriptionTypeService} from "../../subscription-type.service";
 
 @Component({
   selector: 'app-subscription-type-table',
@@ -9,15 +10,27 @@ import {SubscriptionTypeInputComponent} from "../subscription-type-input/subscri
 })
 export class SubscriptionTypeTableComponent implements OnInit {
 
-  tableColumns: string[] = ["name", "period", "discount", "expirationDate", "active"];
-  dataSource = TABLE_DATA;
+  tableColumns: string[] = ["name", "period", "discount", "active"];
+  subscriptionTypes: SubscriptionType[] = [];
+  dataSource: SubscriptionType[] = [];
+  loading: boolean = false;
 
-  constructor() { }
+
+  constructor(
+    private subscriptionTypeService: SubscriptionTypeService
+  ) { }
 
   ngOnInit(): void {
+    this.loading = true;
+    this.getSubscriptionTypes();
   }
 
+  getSubscriptionTypes() {
+    this.subscriptionTypeService.getSubscriptionTypes().subscribe(
+      (data) => {
+        this.subscriptionTypes = data;
+        console.log(this.subscriptionTypes);
+        this.dataSource = this.subscriptionTypes;
+      }).add(() => this.loading = false);
+  }
 }
-
-const TABLE_DATA: SubscriptionType[] = [
-]

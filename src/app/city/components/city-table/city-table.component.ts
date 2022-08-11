@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {City} from "../../../domain/city";
+import {CityService} from "../../city.service";
 
 @Component({
   selector: 'app-city-table',
@@ -9,19 +10,27 @@ import {City} from "../../../domain/city";
 export class CityTableComponent implements OnInit {
 
   tableColumns: string[] = ["name", "postNumber"];
-  dataSource = TABLE_DATA;
+  cities: City[] = [];
+  dataSource: City[] = [];
+  loading: boolean = false;
 
-  constructor() { }
+  constructor(
+    private cityService: CityService
+  ) { }
 
   ngOnInit(): void {
+    this.loading = true;
+    this.getCities();
+  }
+
+  getCities() {
+    this.cityService.getCities().subscribe(
+      (data) => {
+        this.cities = data;
+        console.log(this.cities);
+        this.dataSource = this.cities;
+      }).add(() => this.loading = false);
   }
 
 }
 
-const TABLE_DATA: City[] = [
-  {name: "Zagreb", postcode: 10000},
-  {name: "Split", postcode: 21000},
-  {name: "Rijeka", postcode: 51000},
-  {name: "Zadar", postcode: 23000},
-  {name: "Osijek", postcode: 31000}
-]

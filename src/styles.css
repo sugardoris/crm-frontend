@@ -50,6 +50,14 @@ table {
   margin-bottom: 20px;
 }
 
+.table-loading {
+  width: 100%;
+  margin-top: 200px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
 .mat-row .mat-cell {
   cursor: pointer;
 }

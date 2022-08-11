@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Role, User} from "../domain/user";
-import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {catchError, Observable, of, tap} from "rxjs";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {USER_API_URL} from "../common/constants";
 
 @Injectable({
@@ -11,10 +11,31 @@ export class UserService {
 
   currentUser: User | undefined;
 
-  constructor(private http: HttpClient) { }
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
+
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getCurrentUser(): Observable<User> {
     return this.http.get<User>(`${USER_API_URL}/current-user`);
+  }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(USER_API_URL).pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError<User[]>('getUsers', []))
+    );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(operation);
+      console.error(error);
+      return of(result as T);
+    }
   }
 
   isRoleAdmin(): boolean {
@@ -24,4 +45,6 @@ export class UserService {
       return false;
     }
   }
+
+
 }

@@ -2,12 +2,12 @@ import {City} from "./city";
 
 export interface Subscriber {
   id: number,
-  contactinfo: ContactInfo,
-  active?: boolean,
-  createdBy?: string,
+  active: boolean,
+  createdBy: string,
   updatedBy?: string,
   createDate?: string,
-  lastUpdate?: string,
+  lastUpdate: string,
+  contactInfo: ContactInfo,
 }
 
 export interface ContactInfo {
@@ -20,6 +20,6 @@ export interface ContactInfo {
   phone1: string,
   phone2?: string,
   billingAddress: string,
-  city: City,
   legalEntity?: boolean,
+  city: City
 }

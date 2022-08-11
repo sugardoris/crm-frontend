@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Subscriber} from "../../../../domain/subscriber";
+import {SubscriberService} from "../../../subscriber.service";
 
 @Component({
   selector: 'app-subscriber-table',
@@ -8,15 +9,28 @@ import {Subscriber} from "../../../../domain/subscriber";
 })
 export class SubscriberTableComponent implements OnInit {
 
-  tableColumns: string[] = ["name", "oib", "email", "phone", "address", "city"];
-  dataSource = TABLE_DATA;
+  tableColumns: string[] = ["name", "oib", "email", "phone", "address", "city", "active"];
+  subscribers: Subscriber[] = [];
+  dataSource: Subscriber[] = [];
+  loading: boolean = false;
 
-  constructor() { }
+  constructor(
+    private subscriberService: SubscriberService
+  ) { }
 
   ngOnInit(): void {
+    this.loading = true;
+    this.getSubscribers();
+  }
+
+  getSubscribers() {
+    this.subscriberService.getSubscribers().subscribe(
+      (data) => {
+        this.subscribers = data;
+        console.log(this.subscribers);
+        this.dataSource = this.subscribers;
+      }).add(() => this.loading = false);
   }
 
 }
 
-const TABLE_DATA: Subscriber[] = [
-]

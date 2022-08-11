@@ -3,8 +3,9 @@ import {SubscriptionType} from "./subscriptionType";
 
 export interface Subscription {
   id: number,
-  subscriptionType: SubscriptionType,
-  publication?: Publication,
+  subscriptionTypeId: number,
+  subscriberId: number,
+  publicationId: number,
   dateStarted: string,
   dateEnded: string,
   price: string,

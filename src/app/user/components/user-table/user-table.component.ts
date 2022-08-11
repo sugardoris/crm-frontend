@@ -19,12 +19,5 @@ export class UserTableComponent implements OnInit {
 }
 
 const TABLE_DATA: User[] = [
-  {username: "Username", name: "Full Name", role: Role.EMPLOYEE, active: true},
-  {username: "Username", name: "Full Name", role: Role.ADMIN, active: true},
-  {username: "Username", name: "Full Name", role: Role.EMPLOYEE, active: false},
-  {username: "Username", name: "Full Name", role: Role.ADMIN, active: true},
-  {username: "Username", name: "Full Name", role: Role.EMPLOYEE, active: false},
-  {username: "Username", name: "Full Name", role: Role.ADMIN, active: false},
-  {username: "Username", name: "Full Name", role: Role.EMPLOYEE, active: true},
-  {username: "Username", name: "Full Name", role: Role.ADMIN, active: true}
+
 ]

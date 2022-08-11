@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {LoginService} from "./login.service";
+import {Router} from "@angular/router";
+import {JwtToken} from "../../domain/jwt-token";
+import {UserService} from "../../user/user.service";
+import {User} from "../../domain/user";
+import {UserCredentials} from "../../domain/user-credentials";
 
 @Component({
   selector: 'app-login',
@@ -8,14 +14,39 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 
+  loading: boolean = false;
+  loginError: boolean = false;
+
   loginFormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
   });
 
-  constructor() { }
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  login(): void {
+    let userCredentials: UserCredentials = {
+      username: this.loginFormGroup.value.username,
+      password: this.loginFormGroup.value.password
+    }
+
+    this.loginService.authenticate(userCredentials).subscribe(
+      (jwtToken: JwtToken) => this.successfulLogin(jwtToken),
+      () => this.loginError = true
+    ).add(() => this.loading = false);
+  }
+
+  successfulLogin(jwtToken: JwtToken): void {
+    localStorage.setItem('token', jwtToken.token);
+    this.userService.getCurrentUser().subscribe((currentUser: User) => this.userService.currentUser = currentUser);
+    this.router.navigate(['/']);
   }
 
 }

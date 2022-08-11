@@ -39,16 +39,8 @@ export class SubscriptionInputComponent implements OnInit {
 }
 
 const PUBLICATIONS: Publication[] = [
-  {name: "Publication Name", firstIssueDate: "dd.MM.YYYY", issuePeriod: PublicationPeriod.DAILY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true, price: "15.00 EUR"},
-  {name: "Publication Name", firstIssueDate: "dd.MM.YYYY", issuePeriod: PublicationPeriod.WEEKLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true, price: "15.00 EUR"},
-  {name: "Publication Name", firstIssueDate: "dd.MM.YYYY", issuePeriod: PublicationPeriod.BIWEEKLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true, price: "15.00 EUR"},
-  {name: "Publication Name", firstIssueDate: "dd.MM.YYYY", issuePeriod: PublicationPeriod.MONTHLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true, price: "15.00 EUR"},
-  {name: "Publication Name", firstIssueDate: "dd.MM.YYYY", issuePeriod: PublicationPeriod.BIANNUALLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true, price: "15.00 EUR"},
-  {name: "Publication Name", firstIssueDate: "dd.MM.YYYY", issuePeriod: PublicationPeriod.ANNUALLY, comesOut: "Every day", nextIssue: "dd.MM.YYYY", active: true, price: "15.00 EUR"},
 ]
 
 const SUBSCRIPTION_TYPES: SubscriptionType[] = [
-  {name: "New subcribers offer - MONTHLY", subscriptionPeriod: SubscriptionPeriod.MONTHLY, discount: "10%", active: true},
-  {name: "Summer sports offer - TRIMONTHLY", subscriptionPeriod: SubscriptionPeriod.TRIMONTHLY, discount: "15%", active: true},
-  {name: "Daily news offer - ANNUALLY", subscriptionPeriod: SubscriptionPeriod.ANNUALLY, discount: "25%", active: true}
+
 ]

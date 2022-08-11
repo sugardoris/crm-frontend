@@ -37,10 +37,7 @@
 </div>
 
 <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
-  <button mat-menu-item>
-    <span>Change password</span>
-  </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="logout()">
     <span>Logout</span>
   </button>
 </mat-menu>

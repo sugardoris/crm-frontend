@@ -10,6 +10,7 @@ export interface Publication {
 }
 
 export interface PublishingInfo {
+  id: number,
   firstIssueDate: string,
   issuePeriod: PublicationPeriod,
   comesOut: string,
@@ -19,8 +20,5 @@ export interface PublishingInfo {
 export enum PublicationPeriod {
   DAILY = "Daily",
   WEEKLY = "Weekly",
-  BIWEEKLY = "Every two weeks",
   MONTHLY = "Monthly",
-  BIANNUALLY = "Every six months",
-  ANNUALLY = "Yearly"
 }

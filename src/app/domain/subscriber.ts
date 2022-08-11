@@ -1,3 +1,5 @@
+import {City} from "./city";
+
 export interface Subscriber {
   id: number,
   contactinfo: ContactInfo,
@@ -9,6 +11,7 @@ export interface Subscriber {
 }
 
 export interface ContactInfo {
+  id: number,
   firstName?: string,
   lastName?: string,
   companyName?: string,
@@ -17,6 +20,6 @@ export interface ContactInfo {
   phone1: string,
   phone2?: string,
   billingAddress: string,
-  city: string,
+  city: City,
   legalEntity?: boolean,
 }

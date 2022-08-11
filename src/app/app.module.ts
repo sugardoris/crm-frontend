@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule, HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
@@ -52,6 +53,9 @@ import { SubscriptionTypeInputComponent } from './subscription_type/components/s
 import { PublicationInputComponent } from './publication/components/publication-input/publication-input.component';
 import { LoginLayoutComponent } from './common/layouts/login-layout/login-layout.component';
 import { HomeLayoutComponent } from './common/layouts/home-layout/home-layout.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {AuthInterceptor} from "./auth/interceptors/auth.interceptor";
+import {AuthExpiredInterceptor} from "./auth/interceptors/auth-expired.interceptor";
 
 @NgModule({
   declarations: [
@@ -107,9 +111,22 @@ import { HomeLayoutComponent } from './common/layouts/home-layout/home-layout.co
         MatDatepickerModule,
         MatMomentDateModule,
         MatDialogModule,
-        AppRoutingModule
+        AppRoutingModule,
+        MatProgressSpinnerModule,
+        HttpClientModule,
     ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthExpiredInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

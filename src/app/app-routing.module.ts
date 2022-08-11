@@ -14,6 +14,7 @@ import {SubscriberInputPageComponent} from "./subscriber/subscriber-input-page/s
 import {LoginComponent} from "./auth/login/login.component";
 import {HomeLayoutComponent} from "./common/layouts/home-layout/home-layout.component";
 import {LoginLayoutComponent} from "./common/layouts/login-layout/login-layout.component";
+import {AuthGuardService} from "./auth/guards/auth-guard.service";
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
       {path: 'subscription-types', component: SubscriptionTypesLandingComponent},
       {path: 'users', component: UserLandingPageComponent},
       {path: '', redirectTo: 'subscribers', pathMatch: 'full'},
-    ]
+    ],
+    canActivate: [AuthGuardService]
   },
   {
     path: '',

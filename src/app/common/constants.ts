@@ -6,3 +6,4 @@ export const PUBLICATION_API_URL = SERVER_API_URL + '/publications';
 export const CITY_API_URL = SERVER_API_URL + '/cities';
 export const SUBSCRIPTION_TYPE_API_URL = SERVER_API_URL + '/subscription-types';
 export const SUBSCRIPTION_API_URL = SERVER_API_URL + '/subscriptions';
+export const TICKET_API_URL = SERVER_API_URL + '/tickets';

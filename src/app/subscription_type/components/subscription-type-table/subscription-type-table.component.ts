@@ -29,7 +29,6 @@ export class SubscriptionTypeTableComponent implements OnInit {
     this.subscriptionTypeService.getSubscriptionTypes().subscribe(
       (data) => {
         this.subscriptionTypes = data;
-        console.log(this.subscriptionTypes);
         this.dataSource = this.subscriptionTypes;
       }).add(() => this.loading = false);
   }

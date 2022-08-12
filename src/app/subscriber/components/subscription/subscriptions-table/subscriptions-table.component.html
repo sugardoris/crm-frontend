@@ -1,34 +1,46 @@
 <div class="button-new-wrapper table-margin">
   <button mat-raised-button color="primary" class="button-new" (click)="openAddDialog()">Add New Subscription</button>
 </div>
-<div>
+
+<div class="table-loading" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!loading">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="publicationName">
       <th mat-header-cell *matHeaderCellDef> Publication Name</th>
-      <td mat-cell *matCellDef="let element"> {{element.publicationName}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="dateStarted">
-      <th mat-header-cell *matHeaderCellDef> Date Started</th>
-      <td mat-cell *matCellDef="let element"> {{element.dateStarted}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="dateEnded">
-      <th mat-header-cell *matHeaderCellDef> Date Ended</th>
-      <td mat-cell *matCellDef="let element"> {{element.dateEnded}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="discount">
-      <th mat-header-cell *matHeaderCellDef> Discount</th>
-      <td mat-cell *matCellDef="let element"> {{element.subscriptionType.discount}} </td>
+      <td mat-cell *matCellDef="let subscription"> {{subscription.publicationName}} </td>
     </ng-container>
 
     <ng-container matColumnDef="subscriptionType">
       <th mat-header-cell *matHeaderCellDef> Subscription Type</th>
-      <td mat-cell *matCellDef="let element"> {{element.subscriptionType.name}} </td>
+      <td mat-cell *matCellDef="let subscription"> {{subscription.subscriptionTypeName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateStarted">
+      <th mat-header-cell *matHeaderCellDef> Date Started</th>
+      <td mat-cell *matCellDef="let subscription"> {{subscription.dateStarted | date:'shortDate':'UTC+2':'hr'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateEnded">
+      <th mat-header-cell *matHeaderCellDef> Date Ended</th>
+      <td mat-cell *matCellDef="let subscription">
+        <div *ngIf="subscription.dateEnded != null">{{subscription.dateEnded | date:'shortDate':'UTC+2':'hr'}}</div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Price</th>
+      <td mat-cell *matCellDef="let subscription"> {{subscription.price | currency:'EUR'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="discount">
+      <th mat-header-cell *matHeaderCellDef> Discount</th>
+      <td mat-cell *matCellDef="let subscription"> {{subscription.subscriptionTypeDiscount + '%'}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: tableColumns;" (click)="openDetailsDialog()"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableColumns;" (click)="openDetailsDialog(row)"></tr>
   </table>
 </div>

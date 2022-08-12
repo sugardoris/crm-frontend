@@ -24,6 +24,14 @@ export class SubscriberService {
     );
   }
 
+  getSubscriber(id: string): Observable<Subscriber> {
+    const url = `${SUBSCRIBER_API_URL}/${id}`;
+    return this.http.get<Subscriber>(url).pipe(
+      tap(_ => console.log(`Fetched subscriber with id=${id}`)),
+      catchError(this.handleError<Subscriber>(`getSubscriber with id=${id}`))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(operation);

@@ -27,7 +27,6 @@ export class CityTableComponent implements OnInit {
     this.cityService.getCities().subscribe(
       (data) => {
         this.cities = data;
-        console.log(this.cities);
         this.dataSource = this.cities;
       }).add(() => this.loading = false);
   }

@@ -27,7 +27,6 @@ export class SubscriberTableComponent implements OnInit {
     this.subscriberService.getSubscribers().subscribe(
       (data) => {
         this.subscribers = data;
-        console.log(this.subscribers);
         this.dataSource = this.subscribers;
       }).add(() => this.loading = false);
   }

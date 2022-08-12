@@ -31,7 +31,6 @@ export class PublicationTableComponent implements OnInit {
     this.publicationService.getPublications().subscribe(
       (data) => {
         this.publications = data;
-        console.log(this.publications);
         this.dataSource = this.publications;
       }).add(() => this.loading = false);
   }

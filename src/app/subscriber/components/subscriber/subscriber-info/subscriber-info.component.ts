@@ -1,4 +1,11 @@
 import {Component, OnInit} from '@angular/core';
+import {Subscriber} from "../../../../domain/subscriber";
+import {ActivatedRoute} from "@angular/router";
+import {SubscriberService} from "../../../subscriber.service";
+
+import { registerLocaleData } from '@angular/common';
+import localeHr from '@angular/common/locales/hr';
+registerLocaleData(localeHr, 'hr');
 
 @Component({
   selector: 'app-subscriber-info',
@@ -7,9 +14,31 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SubscriberInfoComponent implements OnInit {
 
-  constructor() { }
+  subscriber?: Subscriber;
+  loading: boolean = false;
+
+  constructor(
+    private route: ActivatedRoute,
+    private subscriberService: SubscriberService,
+  ) { }
 
   ngOnInit(): void {
+    this.loading = true;
+    this.getSubscriber();
+  }
+
+  getSubscriber() {
+    const subscriberId = this.route.snapshot.paramMap.get('id');
+
+    if (subscriberId !== null) {
+      this.subscriberService.getSubscriber(subscriberId).subscribe(
+        (data) => {
+          this.subscriber = data;
+        }
+      ).add(() => this.loading = false)
+    } else {
+      console.error('Subscriber id cannot be null.')
+    }
   }
 
 }

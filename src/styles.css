@@ -68,14 +68,15 @@ table {
 
 .card-labels {
   font-size: medium;
-  font-weight: bold;
-  margin-top: 15px;
+  font-weight: 500;
+  margin-top: 20px;
   display: inline-block;
   width: 200px;
 }
 
 .card-data {
   font-weight: normal;
+  font-size: 15px;
   padding-left: 30px;
 }
 

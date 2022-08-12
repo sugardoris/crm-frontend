@@ -19,9 +19,17 @@ export class SubscriptionTypeService {
 
   getSubscriptionTypes(): Observable<SubscriptionType[]> {
     return this.http.get<SubscriptionType[]>(SUBSCRIPTION_TYPE_API_URL).pipe(
-      tap(data => console.log(data)),
+      tap(_ => console.log('Fetched subscription types')),
       catchError(this.handleError<SubscriptionType[]>('getSubscriptionTypes', []))
     );
+  }
+
+  getSubscriptionType(id: string): Observable<SubscriptionType> {
+    const url = `${SUBSCRIPTION_TYPE_API_URL}/${id}`;
+    return this.http.get<SubscriptionType>(url).pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError<SubscriptionType>(`getSubscriptionType with id=${id}`))
+    )
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

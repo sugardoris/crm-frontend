@@ -19,9 +19,17 @@ export class PublicationService {
 
   getPublications(): Observable<Publication[]> {
     return this.http.get<Publication[]>(PUBLICATION_API_URL).pipe(
-      tap(data => console.log(data)),
+      tap(_ => console.log('Fetched publications')),
       catchError(this.handleError<Publication[]>('getPublications', []))
     );
+  }
+
+  getPublication(id: string): Observable<Publication> {
+    const url = `${PUBLICATION_API_URL}/${id}`;
+    return this.http.get<Publication>(url).pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError<Publication>(`getPublication with id=${id}`))
+    )
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

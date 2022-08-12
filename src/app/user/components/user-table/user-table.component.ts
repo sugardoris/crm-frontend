@@ -27,7 +27,6 @@ export class UserTableComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (data) => {
         this.users = data;
-        console.log(this.users);
         this.dataSource = this.users;
       }).add(() => this.loading = false)
   }

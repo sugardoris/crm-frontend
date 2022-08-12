@@ -19,7 +19,7 @@ export class CityService {
 
   getCities(): Observable<City[]> {
     return this.http.get<City[]>(CITY_API_URL).pipe(
-      tap(data => console.log(data)),
+      tap(_ => console.log('Fetchet cities')),
       catchError(this.handleError<City[]>('getCities', []))
     );
   }

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {User} from "../../../domain/user";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Role, User} from "../../../domain/user";
 import {UserService} from "../../../service/user.service";
+import {MatMenuTrigger} from "@angular/material/menu";
+import {trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-user-table',
@@ -13,14 +15,16 @@ export class UserTableComponent implements OnInit {
   users: User[] = [];
   dataSource: User[] = [];
   loading: boolean = false;
+  isUserAdmin: boolean = false;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
   ) { }
 
   ngOnInit(): void {
     this.loading = true;
     this.getUsers();
+    this.checkIsUserAdmin();
   }
 
   getUsers() {
@@ -29,5 +33,9 @@ export class UserTableComponent implements OnInit {
         this.users = data;
         this.dataSource = this.users;
       }).add(() => this.loading = false)
+  }
+
+  checkIsUserAdmin() {
+    this.isUserAdmin = this.userService.isRoleAdmin();
   }
 }

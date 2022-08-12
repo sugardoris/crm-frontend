@@ -21,7 +21,6 @@ export class SidenavContentComponent implements OnInit {
 
   logout(): void {
     this.loginService.logout();
-    this.userService.currentUser = undefined;
     this.router.navigate(['/login']);
   }
 

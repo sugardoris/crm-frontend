@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {UserInputDialogComponent} from "../components/user-input-dialog/user-input-dialog.component";
+import {UserService} from "../../service/user.service";
+import {Role, User} from "../../domain/user";
 
 @Component({
   selector: 'app-user-landing-page',
@@ -9,9 +11,15 @@ import {UserInputDialogComponent} from "../components/user-input-dialog/user-inp
 })
 export class UserLandingPageComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  isUserAdmin: boolean = false;
+
+  constructor(
+    public dialog: MatDialog,
+    public userService: UserService
+  ) { }
 
   ngOnInit(): void {
+    this.checkIsUserAdmin();
   }
 
   openDialog() {
@@ -20,6 +28,10 @@ export class UserLandingPageComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  checkIsUserAdmin() {
+    this.isUserAdmin = this.userService.isRoleAdmin();
   }
 
 }

@@ -38,11 +38,11 @@
 </div>
 
 <mat-menu #menu="matMenu" xPosition="after" yPosition="below">
-  <button mat-menu-item>
+  <button mat-menu-item [disabled]="!isUserAdmin">
     <mat-icon>edit</mat-icon>
     <span>Edit</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item [disabled]="!isUserAdmin">
     <mat-icon>cancel</mat-icon>
     <span>Deactivate</span>
   </button>

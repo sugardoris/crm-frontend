@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SubscriptionTypeInputComponent} from "../components/subscription-type-input/subscription-type-input.component";
 import {MatDialog} from "@angular/material/dialog";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-subscription-types-landing',
@@ -9,9 +10,12 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class SubscriptionTypesLandingComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  isUserAdmin: boolean = false;
+
+  constructor(public dialog: MatDialog, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.checkIsUserAdmin();
   }
 
   openAddDialog() {
@@ -20,6 +24,10 @@ export class SubscriptionTypesLandingComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  checkIsUserAdmin() {
+    this.isUserAdmin = this.userService.isRoleAdmin();
   }
 
 }

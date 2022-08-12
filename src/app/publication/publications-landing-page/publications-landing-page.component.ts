@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {PublicationInputComponent} from "../components/publication-input/publication-input.component";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-publications-landing-page',
@@ -9,9 +10,12 @@ import {PublicationInputComponent} from "../components/publication-input/publica
 })
 export class PublicationsLandingPageComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  isUserAdmin: boolean = false;
+
+  constructor(public dialog: MatDialog, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.checkIsUserAdmin();
   }
 
   openAddDialog() {
@@ -22,4 +26,7 @@ export class PublicationsLandingPageComponent implements OnInit {
     });
   }
 
+  checkIsUserAdmin() {
+    this.isUserAdmin = this.userService.isRoleAdmin();
+  }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SubscriptionPeriod, SubscriptionType} from "../../../domain/subscriptionType";
 import {SubscriptionTypeInputComponent} from "../subscription-type-input/subscription-type-input.component";
 import {SubscriptionTypeService} from "../../../service/subscription-type.service";
+import {UserService} from "../../../service/user.service";
 
 @Component({
   selector: 'app-subscription-type-table',
@@ -14,15 +15,17 @@ export class SubscriptionTypeTableComponent implements OnInit {
   subscriptionTypes: SubscriptionType[] = [];
   dataSource: SubscriptionType[] = [];
   loading: boolean = false;
-
+  isUserAdmin: boolean = false;
 
   constructor(
-    private subscriptionTypeService: SubscriptionTypeService
+    private subscriptionTypeService: SubscriptionTypeService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
     this.loading = true;
     this.getSubscriptionTypes();
+    this.checkIsUserAdmin();
   }
 
   getSubscriptionTypes() {
@@ -31,5 +34,9 @@ export class SubscriptionTypeTableComponent implements OnInit {
         this.subscriptionTypes = data;
         this.dataSource = this.subscriptionTypes;
       }).add(() => this.loading = false);
+  }
+
+  checkIsUserAdmin() {
+    this.isUserAdmin = this.userService.isRoleAdmin();
   }
 }

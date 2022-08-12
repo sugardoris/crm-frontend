@@ -3,6 +3,7 @@ import {PublicationPeriod, Publication} from "../../../domain/publication";
 import {PublicationService} from "../../../service/publication.service";
 import { registerLocaleData } from '@angular/common';
 import localeHr from '@angular/common/locales/hr';
+import {UserService} from "../../../service/user.service";
 registerLocaleData(localeHr, 'hr');
 
 
@@ -17,14 +18,17 @@ export class PublicationTableComponent implements OnInit {
   publications: Publication[] = [];
   dataSource: Publication[] = [];
   loading: boolean = false;
+  isUserAdmin: boolean = false;
 
   constructor(
-    private publicationService: PublicationService
+    private publicationService: PublicationService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
     this.loading = true;
     this.getPublications();
+    this.checkIsUserAdmin();
   }
 
   getPublications() {
@@ -33,6 +37,10 @@ export class PublicationTableComponent implements OnInit {
         this.publications = data;
         this.dataSource = this.publications;
       }).add(() => this.loading = false);
+  }
+
+  checkIsUserAdmin() {
+    this.isUserAdmin = this.userService.isRoleAdmin();
   }
 
 }

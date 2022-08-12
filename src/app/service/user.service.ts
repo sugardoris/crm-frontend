@@ -9,7 +9,7 @@ import {USER_API_URL} from "../common/constants";
 })
 export class UserService {
 
-  currentUser: User | undefined;
+  currentUser?: User;
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -38,12 +38,19 @@ export class UserService {
     }
   }
 
+  setCurrentUser() {
+    this.getCurrentUser().subscribe(
+      (user) => {
+        this.currentUser = user;
+        localStorage.setItem('username', user.username);
+        localStorage.setItem('role', user.role);
+      }
+    )
+  }
+
   isRoleAdmin(): boolean {
-    if (this.currentUser) {
-      return this.currentUser.role === Role.ADMIN
-    } else {
-      return false;
-    }
+    let role = localStorage.getItem('role');
+    return role === "ADMIN";
   }
 
 

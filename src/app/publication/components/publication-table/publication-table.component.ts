@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PublicationPeriod, Publication} from "../../../domain/publication";
-import {PublicationService} from "../../publication.service";
+import {PublicationService} from "../../../service/publication.service";
 import { registerLocaleData } from '@angular/common';
 import localeHr from '@angular/common/locales/hr';
 registerLocaleData(localeHr, 'hr');

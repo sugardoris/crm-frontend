@@ -3,7 +3,7 @@ import {Ticket} from "../../../../domain/ticket";
 import {TicketDetailsComponent} from "../ticket-details/ticket-details.component";
 import {MatDialog} from "@angular/material/dialog";
 import {TicketInputComponent} from "../ticket-input/ticket-input.component";
-import {TicketService} from "../ticket.service";
+import {TicketService} from "../../../../service/ticket.service";
 import {ActivatedRoute} from "@angular/router";
 
 import { registerLocaleData } from '@angular/common';

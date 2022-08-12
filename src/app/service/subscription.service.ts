@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, of, tap} from "rxjs";
-import {SUBSCRIBER_API_URL} from "../../../common/constants";
-import {SUBSCRIPTION_API_URL} from "../../../common/constants";
-import {Subscription} from "../../../domain/subscription";
+import {SUBSCRIBER_API_URL} from "../common/constants";
+import {SUBSCRIPTION_API_URL} from "../common/constants";
+import {Subscription} from "../domain/subscription";
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from "../../auth/login/login.service";
 import {Router} from "@angular/router";
-import {UserService} from "../../user/user.service";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-sidenav-content',

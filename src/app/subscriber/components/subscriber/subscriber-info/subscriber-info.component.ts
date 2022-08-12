@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscriber} from "../../../../domain/subscriber";
 import {ActivatedRoute} from "@angular/router";
-import {SubscriberService} from "../../../subscriber.service";
+import {SubscriberService} from "../../../../service/subscriber.service";
 
 import { registerLocaleData } from '@angular/common';
 import localeHr from '@angular/common/locales/hr';

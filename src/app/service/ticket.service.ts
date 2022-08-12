@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, of, tap} from "rxjs";
-import {SUBSCRIBER_API_URL} from "../../../common/constants";
-import {Ticket} from "../../../domain/ticket";
+import {SUBSCRIBER_API_URL} from "../common/constants";
+import {Ticket} from "../domain/ticket";
 
 @Injectable({
   providedIn: 'root'

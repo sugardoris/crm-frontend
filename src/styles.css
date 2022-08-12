@@ -93,3 +93,20 @@ table {
   color: #004aad;
   padding-bottom: 20px;
 }
+
+.no-results-text {
+  font-size: large;
+  font-weight: lighter;
+  color: #004aad;
+}
+
+.no-results {
+  height: 400px;
+  text-align: center;
+}
+
+.no-results-icon {
+  width: 50px;
+  padding-top: 10px;
+  padding-left: 10px;
+}

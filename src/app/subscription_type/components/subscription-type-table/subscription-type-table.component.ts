@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SubscriptionPeriod, SubscriptionType} from "../../../domain/subscriptionType";
 import {SubscriptionTypeInputComponent} from "../subscription-type-input/subscription-type-input.component";
-import {SubscriptionTypeService} from "../../subscription-type.service";
+import {SubscriptionTypeService} from "../../../service/subscription-type.service";
 
 @Component({
   selector: 'app-subscription-type-table',

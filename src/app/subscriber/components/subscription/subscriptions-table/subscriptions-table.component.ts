@@ -3,7 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Subscription} from "../../../../domain/subscription";
 import {SubscriptionDetailsComponent} from "../subscription-details/subscription-details.component";
 import {SubscriptionInputComponent} from "../subscription-input/subscription-input.component";
-import {SubscriptionService} from "../subscription.service";
+import {SubscriptionService} from "../../../../service/subscription.service";
 import {ActivatedRoute} from "@angular/router";
 
 import { registerLocaleData } from '@angular/common';

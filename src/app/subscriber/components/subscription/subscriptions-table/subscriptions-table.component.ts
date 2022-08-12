@@ -2,8 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {Subscription} from "../../../../domain/subscription";
 import {SubscriptionDetailsComponent} from "../subscription-details/subscription-details.component";
-import {SubscriptionPeriod, SubscriptionType} from "../../../../domain/subscriptionType";
 import {SubscriptionInputComponent} from "../subscription-input/subscription-input.component";
+import {SubscriptionService} from "../../../../service/subscription.service";
+import {ActivatedRoute} from "@angular/router";
+
+import { registerLocaleData } from '@angular/common';
+import localeHr from '@angular/common/locales/hr';
+registerLocaleData(localeHr, 'hr');
 
 @Component({
   selector: 'app-subscriptions',
@@ -12,16 +17,41 @@ import {SubscriptionInputComponent} from "../subscription-input/subscription-inp
 })
 export class SubscriptionsTableComponent implements OnInit {
 
-  tableColumns: string[] = ["publicationName", "dateStarted", "dateEnded", "discount", "subscriptionType"];
-  dataSource = TABLE_DATA;
+  tableColumns: string[] = ["publicationName", "subscriptionType", "dateStarted", "dateEnded", "price", "discount"];
+  subscriptions: Subscription[] = [];
+  dataSource: Subscription[] = [];
+  loading: boolean = false;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private subscriptionService: SubscriptionService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.loading = true;
+    this.getSubscriptions();
   }
 
-  openDetailsDialog() {
-    const dialogRef = this.dialog.open(SubscriptionDetailsComponent);
+  getSubscriptions() {
+    const subscriberId = this.route.snapshot.paramMap.get('id');
+
+    if (subscriberId !== null) {
+      this.subscriptionService.getSubscriptions(subscriberId).subscribe(
+        (data) => {
+          this.subscriptions = data;
+          this.dataSource = this.subscriptions;
+        }
+      ).add(() => this.loading = false)
+    } else {
+      console.error('Subscriber id cannot be null.')
+    }
+  }
+
+  openDetailsDialog(subscription: Subscription) {
+    const dialogRef = this.dialog.open(
+      SubscriptionDetailsComponent,
+      {data: subscription});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -37,6 +67,3 @@ export class SubscriptionsTableComponent implements OnInit {
   }
 
 }
-
-const TABLE_DATA: Subscription[] = [
-]

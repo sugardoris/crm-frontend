@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "./login.service";
 import {Router} from "@angular/router";
 import {JwtToken} from "../../domain/jwt-token";
-import {UserService} from "../../user/user.service";
+import {UserService} from "../../service/user.service";
 import {User} from "../../domain/user";
 import {UserCredentials} from "../../domain/user-credentials";
 

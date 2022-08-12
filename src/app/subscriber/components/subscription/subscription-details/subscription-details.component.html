@@ -1,34 +1,43 @@
 <h1 mat-dialog-title class="details-title">Subscription details</h1>
 <mat-dialog-content class="content">
   <div>
-    <span class="card-labels">Publication name:</span><span class="card-data">Data</span>
+    <span class="card-labels">Publication name:</span><span class="card-data">{{subscription.publicationName}}</span>
   </div>
   <div>
-    <span class="card-labels">Date started:</span><span class="card-data">Data</span>
+    <span class="card-labels">Date started:</span><span class="card-data">{{subscription.dateStarted | date:'shortDate':'UTC+2':'hr'}}</span>
   </div>
   <div>
-    <span class="card-labels">Date ended:</span><span class="card-data">Data</span>
+    <span class="card-labels">Date ended:</span><span class="card-data">
+      <span *ngIf="subscription.dateEnded != null">{{subscription?.dateEnded | date:'shortDate':'UTC+2':'hr'}}</span>
+      <span *ngIf="subscription.dateEnded === null"> </span>
+  </span>
   </div>
   <div>
-    <span class="card-labels">Subscription period:</span><span class="card-data">Data</span>
+    <span class="card-labels">Subscription type:</span><span class="card-data">{{subscription.subscriptionTypeName}}</span>
   </div>
   <div>
-    <span class="card-labels">Discount:</span><span class="card-data">Data</span>
+    <span class="card-labels">Price:</span><span class="card-data">{{subscription.price | currency:'EUR'}}</span>
   </div>
   <div>
-    <span class="card-labels">Price per issue:</span><span class="card-data">Data</span>
+    <span class="card-labels">Discount:</span><span class="card-data">{{subscription.subscriptionTypeDiscount + '%'}}</span>
   </div>
   <div>
-    <span class="card-labels">Date created:</span><span class="card-data">Data</span>
+    <span class="card-labels">Date created:</span><span class="card-data">{{subscription.createDate | date:'medium':'UTC+2':'hr'}}</span>
   </div>
   <div>
-    <span class="card-labels">Created by:</span><span class="card-data">Data</span>
+    <span class="card-labels">Created by:</span><span class="card-data">{{subscription.createdBy}}</span>
   </div>
   <div>
-    <span class="card-labels">Last update:</span><span class="card-data">Data</span>
+    <span class="card-labels">Last update:</span><span class="card-data">
+      <span *ngIf="subscription.lastUpdate != null">{{subscription.lastUpdate | date:'medium':'UTC+2':'hr'}}</span>
+      <span *ngIf="subscription.lastUpdate === null"> </span>
+  </span>
   </div>
   <div>
-    <span class="card-labels">Updated by:</span><span class="card-data">Data</span>
+    <span class="card-labels">Updated by:</span><span class="card-data">
+      <span *ngIf="subscription.updatedBy != null">{{subscription.updatedBy}}</span>
+      <span *ngIf="subscription.updatedBy === null"> </span>
+  </span>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

@@ -50,6 +50,14 @@ table {
   margin-bottom: 20px;
 }
 
+.table-loading {
+  width: 100%;
+  margin-top: 200px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
 .mat-row .mat-cell {
   cursor: pointer;
 }
@@ -60,14 +68,15 @@ table {
 
 .card-labels {
   font-size: medium;
-  font-weight: bold;
-  margin-top: 15px;
+  font-weight: 500;
+  margin-top: 20px;
   display: inline-block;
   width: 200px;
 }
 
 .card-data {
   font-weight: normal;
+  font-size: 15px;
   padding-left: 30px;
 }
 
@@ -83,4 +92,21 @@ table {
 .details-title {
   color: #004aad;
   padding-bottom: 20px;
+}
+
+.no-results-text {
+  font-size: large;
+  font-weight: lighter;
+  color: #004aad;
+}
+
+.no-results {
+  height: 400px;
+  text-align: center;
+}
+
+.no-results-icon {
+  width: 50px;
+  padding-top: 10px;
+  padding-left: 10px;
 }

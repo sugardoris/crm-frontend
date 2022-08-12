@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+
+import { registerLocaleData } from '@angular/common';
+import localeHr from '@angular/common/locales/hr';
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {Ticket} from "../../../../domain/ticket";
+registerLocaleData(localeHr, 'hr');
+
 
 @Component({
   selector: 'app-ticket-details',
@@ -7,7 +14,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TicketDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public ticket: Ticket
+  ) { }
 
   ngOnInit(): void {
   }

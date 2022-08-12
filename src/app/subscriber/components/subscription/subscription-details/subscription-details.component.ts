@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {Subscription} from "../../../../domain/subscription";
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+
+import { registerLocaleData } from '@angular/common';
+import localeHr from '@angular/common/locales/hr';
+registerLocaleData(localeHr, 'hr');
 
 @Component({
   selector: 'app-subscription-details',
@@ -7,7 +13,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubscriptionDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public subscription: Subscription
+  ) { }
 
   ngOnInit(): void {
   }

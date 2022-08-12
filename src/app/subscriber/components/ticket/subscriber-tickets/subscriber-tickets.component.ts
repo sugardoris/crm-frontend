@@ -3,6 +3,12 @@ import {Ticket} from "../../../../domain/ticket";
 import {TicketDetailsComponent} from "../ticket-details/ticket-details.component";
 import {MatDialog} from "@angular/material/dialog";
 import {TicketInputComponent} from "../ticket-input/ticket-input.component";
+import {TicketService} from "../ticket.service";
+import {ActivatedRoute} from "@angular/router";
+
+import { registerLocaleData } from '@angular/common';
+import localeHr from '@angular/common/locales/hr';
+registerLocaleData(localeHr, 'hr');
 
 @Component({
   selector: 'app-subscriber-tickets',
@@ -11,16 +17,41 @@ import {TicketInputComponent} from "../ticket-input/ticket-input.component";
 })
 export class SubscriberTicketsComponent implements OnInit {
 
-  tableColumns: string[] = ["type", "dateCreated", "lastUpdate", "updatedBy", "resolved"];
-  dataSource = TABLE_DATA;
+  tableColumns: string[] = ["type", "dateCreated", "createdBy", "lastUpdate", "updatedBy", "resolved"];
+  tickets: Ticket[] = [];
+  dataSource: Ticket[] = [];
+  loading: boolean = false;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private ticketService: TicketService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.loading = true;
+    this.getTickets();
   }
 
-  openDetailsDialog() {
-    const dialogRef = this.dialog.open(TicketDetailsComponent);
+  getTickets() {
+    const subscriberId = this.route.snapshot.paramMap.get('id');
+
+    if (subscriberId !== null) {
+      this.ticketService.getTickets(subscriberId).subscribe(
+        (data) => {
+          this.tickets = data;
+          this.dataSource = this.tickets;
+        }
+      ).add(() => this.loading = false)
+    } else {
+      console.error('Subscriber id cannot be null.')
+    }
+  }
+
+  openDetailsDialog(ticket: Ticket) {
+    const dialogRef = this.dialog.open(
+      TicketDetailsComponent,
+      {data: ticket});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -36,6 +67,3 @@ export class SubscriberTicketsComponent implements OnInit {
   }
 
 }
-
-const TABLE_DATA: Ticket[] = [
-]

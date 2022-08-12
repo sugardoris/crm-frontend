@@ -4,7 +4,6 @@ import {catchError, Observable, of, tap} from "rxjs";
 import {SUBSCRIBER_API_URL} from "../../../common/constants";
 import {SUBSCRIPTION_API_URL} from "../../../common/constants";
 import {Subscription} from "../../../domain/subscription";
-import {Subscriber} from "../../../domain/subscriber";
 
 @Injectable({
   providedIn: 'root'

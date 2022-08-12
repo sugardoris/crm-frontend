@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {Subscription} from "../../../../domain/subscription";
 import {SubscriptionDetailsComponent} from "../subscription-details/subscription-details.component";
-import {SubscriptionPeriod, SubscriptionType} from "../../../../domain/subscriptionType";
 import {SubscriptionInputComponent} from "../subscription-input/subscription-input.component";
 import {SubscriptionService} from "../subscription.service";
 import {ActivatedRoute} from "@angular/router";
@@ -68,6 +67,3 @@ export class SubscriptionsTableComponent implements OnInit {
   }
 
 }
-
-const TABLE_DATA: Subscription[] = [
-]

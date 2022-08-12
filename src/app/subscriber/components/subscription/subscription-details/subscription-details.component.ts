@@ -13,8 +13,6 @@ registerLocaleData(localeHr, 'hr');
 })
 export class SubscriptionDetailsComponent implements OnInit {
 
-  loading: boolean = false;
-
   constructor(
     @Inject(MAT_DIALOG_DATA) public subscription: Subscription
   ) { }

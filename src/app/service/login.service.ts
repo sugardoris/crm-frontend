@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {UserCredentials} from "../../domain/user-credentials";
+import {UserCredentials} from "../domain/user-credentials";
 import {Observable} from "rxjs";
-import {JwtToken} from "../../domain/jwt-token";
-import {AUTHENTICATE_URL} from "../../common/constants";
+import {JwtToken} from "../domain/jwt-token";
+import {AUTHENTICATE_URL} from "../common/constants";
 
 @Injectable({
   providedIn: 'root'

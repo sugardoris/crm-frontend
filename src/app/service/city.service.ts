@@ -24,6 +24,13 @@ export class CityService {
     );
   }
 
+  addCity(city: City): Observable<City> {
+    return this.http.post<City>(CITY_API_URL, city, this.httpOptions).pipe(
+      tap((newCity) => console.log(newCity)),
+      catchError(this.handleError<City>('addCity'))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(operation);

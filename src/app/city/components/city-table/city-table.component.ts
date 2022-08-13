@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, DoCheck, Input, OnInit, SimpleChanges} from '@angular/core';
 import {City} from "../../../domain/city";
 import {CityService} from "../../../service/city.service";
 
@@ -7,28 +7,15 @@ import {CityService} from "../../../service/city.service";
   templateUrl: './city-table.component.html',
   styleUrls: ['./city-table.component.css']
 })
-export class CityTableComponent implements OnInit {
+export class CityTableComponent implements OnInit{
 
   tableColumns: string[] = ["name", "postNumber"];
-  cities: City[] = [];
-  dataSource: City[] = [];
-  loading: boolean = false;
+  @Input() dataSource: City[] = [];
 
   constructor(
-    private cityService: CityService
   ) { }
 
   ngOnInit(): void {
-    this.loading = true;
-    this.getCities();
-  }
-
-  getCities() {
-    this.cityService.getCities().subscribe(
-      (data) => {
-        this.cities = data;
-        this.dataSource = this.cities;
-      }).add(() => this.loading = false);
   }
 
 }

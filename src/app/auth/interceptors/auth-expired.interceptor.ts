@@ -6,7 +6,7 @@ import {
   HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
 import {Observable, tap} from 'rxjs';
-import {LoginService} from "../login/login.service";
+import {LoginService} from "../../service/login.service";
 import {Router} from "@angular/router";
 
 @Injectable()

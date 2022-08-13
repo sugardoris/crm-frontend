@@ -56,6 +56,7 @@ import { HomeLayoutComponent } from './common/layouts/home-layout/home-layout.co
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {AuthInterceptor} from "./auth/interceptors/auth.interceptor";
 import {AuthExpiredInterceptor} from "./auth/interceptors/auth-expired.interceptor";
+import { DeactivateModalComponent } from './common/deactivate-modal/deactivate-modal.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import {AuthExpiredInterceptor} from "./auth/interceptors/auth-expired.intercept
     PublicationInputComponent,
     LoginLayoutComponent,
     HomeLayoutComponent,
+    DeactivateModalComponent,
   ],
     imports: [
         BrowserModule,

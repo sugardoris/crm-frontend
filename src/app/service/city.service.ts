@@ -26,7 +26,7 @@ export class CityService {
 
   addCity(city: City): Observable<City> {
     return this.http.post<City>(CITY_API_URL, city, this.httpOptions).pipe(
-      tap((newCity) => console.log(newCity)),
+      tap((newCity) => console.log(`Added new city with name ${newCity.name}`)),
       catchError(this.handleError<City>('addCity'))
     );
   }

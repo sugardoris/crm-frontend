@@ -30,6 +30,22 @@ export class UserService {
     );
   }
 
+  addUser(user: User): Observable<User>{
+    return this.http.post<User>(USER_API_URL, user, this.httpOptions).pipe(
+      tap((newUser) => console.log(`Added new user with username ${newUser.username}`)),
+      catchError(this.handleError<User>('addUser'))
+    );
+  }
+
+  deactivateUser(id: number): Observable<User>{
+    const url = `${USER_API_URL}/${id}/deactivate`;
+
+    return this.http.post<User>(url, this.httpOptions).pipe(
+      tap(_ => console.log(`Deactivated user with id ${id}`)),
+      catchError(this.handleError<User>('deactivateUser'))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(operation);

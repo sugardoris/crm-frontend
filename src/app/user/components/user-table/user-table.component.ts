@@ -1,8 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {Role, User} from "../../../domain/user";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {User} from "../../../domain/user";
 import {UserService} from "../../../service/user.service";
-import {MatMenuTrigger} from "@angular/material/menu";
-import {trigger} from "@angular/animations";
+import {MatDialog} from "@angular/material/dialog";
+import {UserInputDialogComponent} from "../user-input-dialog/user-input-dialog.component";
+import {DeactivateModalComponent} from "../../../common/deactivate-modal/deactivate-modal.component";
 
 @Component({
   selector: 'app-user-table',
@@ -11,31 +12,43 @@ import {trigger} from "@angular/animations";
 })
 export class UserTableComponent implements OnInit {
 
-  tableColumns: string[] = ["username", "fullName", "role", "status"];
-  users: User[] = [];
-  dataSource: User[] = [];
-  loading: boolean = false;
   isUserAdmin: boolean = false;
+  @Output() deactivateUserEvent = new EventEmitter();
+
+  tableColumns: string[] = ["username", "fullName", "role", "status"];
+  @Input() dataSource: User[] = [];
 
   constructor(
     private userService: UserService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
-    this.loading = true;
-    this.getUsers();
     this.checkIsUserAdmin();
-  }
-
-  getUsers() {
-    this.userService.getUsers().subscribe(
-      (data) => {
-        this.users = data;
-        this.dataSource = this.users;
-      }).add(() => this.loading = false)
   }
 
   checkIsUserAdmin() {
     this.isUserAdmin = this.userService.isRoleAdmin();
   }
+
+  openDialog(id: number, entity = 'user') {
+    const dialogRef = this.dialog.open(DeactivateModalComponent,
+      {data: entity});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === "Deactivate") {
+        this.deactivateUser(id);
+      }
+    });
+  }
+
+  deactivateUser(id: number) {
+    this.userService.deactivateUser(id).subscribe(
+      (newUser) => {
+        console.log(newUser);
+        this.deactivateUserEvent.emit();
+      }
+    )
+  }
+
 }

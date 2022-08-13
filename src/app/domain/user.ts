@@ -1,10 +1,10 @@
 export interface User {
-  id: number,
+  id?: number,
   username: string,
   password?: string,
   name: string,
   role: Role,
-  active: boolean,
+  active?: boolean,
   createdBy?: string,
   updatedBy?: string,
   createDate?: string,

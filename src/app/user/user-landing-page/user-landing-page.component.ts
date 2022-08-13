@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {UserInputDialogComponent} from "../components/user-input-dialog/user-input-dialog.component";
 import {UserService} from "../../service/user.service";
-import {Role, User} from "../../domain/user";
+import {User} from "../../domain/user";
 
 @Component({
   selector: 'app-user-landing-page',
@@ -11,7 +11,9 @@ import {Role, User} from "../../domain/user";
 })
 export class UserLandingPageComponent implements OnInit {
 
+  users: User[] = [];
   isUserAdmin: boolean = false;
+  loading: boolean = false;
 
   constructor(
     public dialog: MatDialog,
@@ -19,14 +21,25 @@ export class UserLandingPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loading = true;
+    this.getUsers();
     this.checkIsUserAdmin();
+  }
+
+  getUsers() {
+    this.userService.getUsers().subscribe(
+      (data) => {
+        this.users = data;
+      }).add(() => this.loading = false)
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(UserInputDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if (result.event === "Submit") {
+        this.users = [...this.users, result.data];
+      }
     });
   }
 

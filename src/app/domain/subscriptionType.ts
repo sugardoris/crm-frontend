@@ -1,9 +1,9 @@
 export interface SubscriptionType {
-  id: number,
+  id?: number,
   name: string,
   discount: string,
   subscriptionPeriod: SubscriptionPeriod,
-  active: boolean,
+  active?: boolean,
   createdBy?: string,
   updatedBy?: string,
   createDate?: string,
@@ -11,7 +11,7 @@ export interface SubscriptionType {
 }
 
 export enum SubscriptionPeriod {
-  MONTHLY = "Monthly",
-  BIANNUALLY = "Every six months",
-  ANNUALLY = "Yearly"
+  MONTHLY = "MONTHLY",
+  BIANNUALLY = "BIANNUALY",
+  ANNUALLY = "ANNUALY"
 }

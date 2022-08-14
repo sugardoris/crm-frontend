@@ -1,8 +1,4 @@
-<div class="table-loading" *ngIf="loading">
-  <mat-spinner></mat-spinner>
-</div>
-
-<div class="subscription-type-table" *ngIf="!loading">
+<div class="subscription-type-table">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name</th>
@@ -32,17 +28,24 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: tableColumns;" [matMenuTriggerFor]="menu"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableColumns;" [matMenuTriggerFor]="menu"
+        [matMenuTriggerData]="{subscriptionType: row}"></tr>
   </table>
 </div>
 
 <mat-menu #menu="matMenu" xPosition="after" yPosition="below">
-  <button mat-menu-item [disabled]="!isUserAdmin">
-    <mat-icon>edit</mat-icon>
-    <span>Edit</span>
-  </button>
-  <button mat-menu-item [disabled]="!isUserAdmin">
-    <mat-icon>archive</mat-icon>
-    <span>Archive</span>
-  </button>
+  <ng-template matMenuContent let-subscriptionType="subscriptionType">
+    <button mat-menu-item (click)="openDetailsDialog(subscriptionType)">
+      <mat-icon>launch</mat-icon>
+      <span>View</span>
+    </button>
+    <button mat-menu-item [disabled]="!isUserAdmin" (click)="openEditDialog(subscriptionType)">
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+    </button>
+    <button mat-menu-item [disabled]="!isUserAdmin" (click)="openDeactivateDialog(subscriptionType.id)">
+      <mat-icon>archive</mat-icon>
+      <span>Deactivate</span>
+    </button>
+  </ng-template>
 </mat-menu>

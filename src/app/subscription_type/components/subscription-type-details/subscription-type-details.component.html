@@ -1,0 +1,46 @@
+<h1 mat-dialog-title class="details-title">Subscription type details</h1>
+<mat-dialog-content class="content">
+  <div>
+    <span class="card-labels">Subscription type:</span><span class="card-data">{{subscriptionType.name}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Period:</span><span class="card-data">{{subscriptionType.subscriptionPeriod}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Discount:</span><span class="card-data">{{subscriptionType.discount + '%'}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Active:</span><span class="card-data">
+        <span *ngIf="subscriptionType.active">
+          <mat-icon color="primary">check_circle_outline</mat-icon>
+        </span>
+        <span *ngIf="!subscriptionType.active">
+          <mat-icon color="accent">highlight_off</mat-icon>
+        </span>
+      </span>
+  </div>
+  <div>
+    <span class="card-labels">Date created:</span><span
+    class="card-data">{{subscriptionType.createDate | date:'medium':'UTC+2':'hr'}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Created by:</span><span class="card-data">{{subscriptionType.createdBy}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Last update:</span><span class="card-data">
+      <span
+        *ngIf="subscriptionType.lastUpdate != null">{{subscriptionType.lastUpdate | date:'medium':'UTC+2':'hr'}}</span>
+      <span *ngIf="subscriptionType.lastUpdate === null"> </span>
+  </span>
+  </div>
+  <div>
+    <span class="card-labels">Updated by:</span><span class="card-data">
+      <span *ngIf="subscriptionType.updatedBy != null">{{subscriptionType.updatedBy}}</span>
+      <span *ngIf="subscriptionType.updatedBy === null"> </span>
+  </span>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
+

@@ -36,17 +36,6 @@ export class UserTableComponent implements OnInit {
     this.isUserAdmin = this.userService.isRoleAdmin();
   }
 
-  openDeactivateDialog(id: number, entity = 'user') {
-    const dialogRef = this.dialog.open(DeactivateModalComponent,
-      {data: entity});
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result.event === "Deactivate") {
-        this.deactivateUser(id);
-      }
-    });
-  }
-
   openEditDialog(user: User) {
     const dialogRef = this.dialog.open(UserInputDialogComponent,
       {data: {user: user, mode: 'Edit'}});
@@ -58,19 +47,29 @@ export class UserTableComponent implements OnInit {
     });
   }
 
-  openDetailsDialog(user: User) {
-    const dialogRef = this.dialog.open(
-      UserDetailsComponent,
-      {data: user});
+  openDeactivateDialog(id: number, entity = 'user') {
+    const dialogRef = this.dialog.open(DeactivateModalComponent,
+      {data: entity});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === "Deactivate") {
+        this.deactivateUser(id);
+      }
+    });
   }
 
   deactivateUser(id: number) {
     this.userService.deactivateUser(id).subscribe(
-      (newUser) => {
-        console.log(newUser);
+      (data) => {
         this.userEvent.emit();
       }
     )
+  }
+
+  openDetailsDialog(user: User) {
+    const dialogRef = this.dialog.open(
+      UserDetailsComponent,
+      {data: user});
   }
 
 }

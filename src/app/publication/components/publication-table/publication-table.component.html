@@ -39,7 +39,8 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: tableColumns;" [matMenuTriggerFor]="menu" [matMenuTriggerData]="{publication: row}"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableColumns;" [matMenuTriggerFor]="menu"
+        [matMenuTriggerData]="{publication: row}"></tr>
   </table>
 </div>
 

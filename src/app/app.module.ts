@@ -59,6 +59,7 @@ import {AuthExpiredInterceptor} from "./auth/interceptors/auth-expired.intercept
 import { DeactivateModalComponent } from './common/deactivate-modal/deactivate-modal.component';
 import { UserDetailsComponent } from './user/components/user-details/user-details.component';
 import { PublicationDetailsComponent } from './publication/components/publication-details/publication-details.component';
+import { SubscriptionTypeDetailsComponent } from './subscription_type/components/subscription-type-details/subscription-type-details.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { PublicationDetailsComponent } from './publication/components/publicatio
     DeactivateModalComponent,
     UserDetailsComponent,
     PublicationDetailsComponent,
+    SubscriptionTypeDetailsComponent,
   ],
     imports: [
         BrowserModule,

@@ -1,9 +1,14 @@
 <div class="main-container">
   <h1 class="main-title">Subscription Types</h1>
   <div class="button-new-wrapper" *ngIf="isUserAdmin">
-    <button mat-raised-button color="primary" class="button-new" (click)="openAddDialog()">Add New Subscription Type</button>
+    <button mat-raised-button color="primary" class="button-new" (click)="openAddDialog()">Add New Subscription Type
+    </button>
   </div>
   <div class="table-container">
-    <app-subscription-type-table></app-subscription-type-table>
+    <div class="table-loading" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+    <app-subscription-type-table *ngIf="!loading" [dataSource]="subscriptionTypes"
+                                 (subscriptionTypeEvent)="getSubscriptionTypes()"></app-subscription-type-table>
   </div>
 </div>

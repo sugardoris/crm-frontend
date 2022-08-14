@@ -57,6 +57,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {AuthInterceptor} from "./auth/interceptors/auth.interceptor";
 import {AuthExpiredInterceptor} from "./auth/interceptors/auth-expired.interceptor";
 import { DeactivateModalComponent } from './common/deactivate-modal/deactivate-modal.component';
+import { UserDetailsComponent } from './user/components/user-details/user-details.component';
+import { PublicationDetailsComponent } from './publication/components/publication-details/publication-details.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +93,8 @@ import { DeactivateModalComponent } from './common/deactivate-modal/deactivate-m
     LoginLayoutComponent,
     HomeLayoutComponent,
     DeactivateModalComponent,
+    UserDetailsComponent,
+    PublicationDetailsComponent,
   ],
     imports: [
         BrowserModule,

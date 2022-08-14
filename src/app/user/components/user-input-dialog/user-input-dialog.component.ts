@@ -37,7 +37,6 @@ export class UserInputDialogComponent implements OnInit {
   checkMode() {
     if (this.data.mode === 'Edit') {
       this.editMode = true;
-      console.log(this.data.user)
       this.getUserData(this.data.user);
     }
   }

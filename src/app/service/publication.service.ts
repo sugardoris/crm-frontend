@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, of, tap} from "rxjs";
-import {PUBLICATION_API_URL} from "../common/constants";
+import {PUBLICATION_API_URL, USER_API_URL} from "../common/constants";
 import {Publication} from "../domain/publication";
+import {User} from "../domain/user";
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,29 @@ export class PublicationService {
       tap(data => console.log(data)),
       catchError(this.handleError<Publication>(`getPublication with id=${id}`))
     )
+  }
+
+  addPublication(publication: Publication): Observable<Publication>{
+    return this.http.post<Publication>(PUBLICATION_API_URL, publication, this.httpOptions).pipe(
+      tap((newPublication) => console.log(`Added new publication with name ${newPublication.name}`)),
+      catchError(this.handleError<Publication>('addPublication'))
+    );
+  }
+
+  editPublication(publication: Publication): Observable<Publication>{
+    return this.http.put<Publication>(PUBLICATION_API_URL, publication, this.httpOptions).pipe(
+      tap((newPublication) => console.log(`Edited publication with name ${newPublication.name}`)),
+      catchError(this.handleError<Publication>('editPublication'))
+    );
+  }
+
+  archivePublication(id: number): Observable<Publication>{
+    const url = `${PUBLICATION_API_URL}/${id}/archive`;
+
+    return this.http.post<Publication>(url, this.httpOptions).pipe(
+      tap(_ => console.log(`Archived publication with id ${id}`)),
+      catchError(this.handleError<Publication>('archivePublication'))
+    );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

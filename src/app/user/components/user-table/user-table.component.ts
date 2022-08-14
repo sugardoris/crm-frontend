@@ -40,9 +40,6 @@ export class UserTableComponent implements OnInit {
     const dialogRef = this.dialog.open(DeactivateModalComponent,
       {data: entity});
 
-    console.log(id);
-
-
     dialogRef.afterClosed().subscribe(result => {
       if (result.event === "Deactivate") {
         this.deactivateUser(id);

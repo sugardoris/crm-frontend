@@ -1,9 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {PublicationPeriod, Publication} from "../../../domain/publication";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Publication} from "../../../domain/publication";
 import {PublicationService} from "../../../service/publication.service";
 import { registerLocaleData } from '@angular/common';
 import localeHr from '@angular/common/locales/hr';
 import {UserService} from "../../../service/user.service";
+import {MatDialog} from "@angular/material/dialog";
+import {PublicationInputComponent} from "../publication-input/publication-input.component";
+import {DeactivateModalComponent} from "../../../common/deactivate-modal/deactivate-modal.component";
+import {PublicationDetailsComponent} from "../publication-details/publication-details.component";
 registerLocaleData(localeHr, 'hr');
 
 
@@ -15,32 +19,59 @@ registerLocaleData(localeHr, 'hr');
 export class PublicationTableComponent implements OnInit {
 
   tableColumns: string[] = ["name", "firstIssue", "issuePeriod", "comesOut", "price", "active"];
-  publications: Publication[] = [];
-  dataSource: Publication[] = [];
-  loading: boolean = false;
+  @Input() dataSource: Publication[] = [];
+
   isUserAdmin: boolean = false;
+  @Output() publicationEvent = new EventEmitter();
 
   constructor(
     private publicationService: PublicationService,
-    private userService: UserService
+    private userService: UserService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.loading = true;
-    this.getPublications();
     this.checkIsUserAdmin();
-  }
-
-  getPublications() {
-    this.publicationService.getPublications().subscribe(
-      (data) => {
-        this.publications = data;
-        this.dataSource = this.publications;
-      }).add(() => this.loading = false);
   }
 
   checkIsUserAdmin() {
     this.isUserAdmin = this.userService.isRoleAdmin();
+  }
+
+  openEditDialog(publication: Publication) {
+    const dialogRef = this.dialog.open(PublicationInputComponent,
+      {data: {publication: publication, mode: 'Edit'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === "Edit") {
+        this.publicationEvent.emit();
+      }
+    });
+  }
+
+  openDeactivateDialog(id: number, entity = 'publication') {
+    const dialogRef = this.dialog.open(DeactivateModalComponent,
+      {data: entity});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === "Deactivate") {
+        this.deactivatePublication(id);
+      }
+    });
+  }
+
+  deactivatePublication(id: number) {
+    this.publicationService.archivePublication(id).subscribe(
+      (data) => {
+        this.publicationEvent.emit();
+      }
+    )
+  }
+
+  openDetailsDialog(publication: Publication) {
+    const dialogRef = this.dialog.open(
+      PublicationDetailsComponent,
+      {data: publication});
   }
 
 }

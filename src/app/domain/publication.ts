@@ -1,8 +1,8 @@
 export interface Publication {
-  id: number,
+  id?: number,
   name: string,
   publishingInfo: PublishingInfo,
-  active: boolean,
+  active?: boolean,
   createdBy?: string,
   updatedBy?: string,
   createDate?: string,
@@ -10,7 +10,7 @@ export interface Publication {
 }
 
 export interface PublishingInfo {
-  id: number,
+  id?: number,
   firstIssueDate: string,
   issuePeriod: PublicationPeriod,
   comesOut: string,
@@ -18,7 +18,7 @@ export interface PublishingInfo {
 }
 
 export enum PublicationPeriod {
-  DAILY = "Daily",
-  WEEKLY = "Weekly",
-  MONTHLY = "Monthly",
+  DAILY = "DAILY",
+  WEEKLY = "WEEKLY",
+  MONTHLY = "MONTHLY",
 }

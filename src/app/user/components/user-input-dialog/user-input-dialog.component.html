@@ -2,7 +2,7 @@
   {{editMode ? 'Edit Publication' : 'Add Publication'}}
 </h1>
 <mat-dialog-content>
-  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" #formDirective)="ngForm">
+  <form [formGroup]="userForm" #formDirective)="ngForm">
     <div>
       <mat-form-field appearance="outline" class="input-field" color="accent">
         <mat-label>Username</mat-label>

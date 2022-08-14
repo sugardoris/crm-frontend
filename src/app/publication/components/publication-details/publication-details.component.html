@@ -1,0 +1,50 @@
+<h1 mat-dialog-title class="details-title">Publication details</h1>
+<mat-dialog-content class="content">
+  <div>
+    <span class="card-labels">Publication name:</span><span class="card-data">{{publication.name}}</span>
+  </div>
+  <div>
+    <span class="card-labels">First issue date:</span><span class="card-data">{{publication.publishingInfo.firstIssueDate | date:'shortDate':'UTC+2':'hr'}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Issue period:</span><span class="card-data">{{publication.publishingInfo.issuePeriod}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Price:</span><span class="card-data">{{publication.publishingInfo.price | currency:'EUR'}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Comes out:</span><span class="card-data">{{publication.publishingInfo.comesOut}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Active:</span><span class="card-data">
+        <span *ngIf="publication.active">
+          <mat-icon color="primary">check_circle_outline</mat-icon>
+        </span>
+        <span *ngIf="!publication.active">
+          <mat-icon color="accent">highlight_off</mat-icon>
+        </span>
+      </span>
+  </div>
+  <div>
+    <span class="card-labels">Date created:</span><span class="card-data">{{publication.createDate | date:'medium':'UTC+2':'hr'}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Created by:</span><span class="card-data">{{publication.createdBy}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Last update:</span><span class="card-data">
+      <span *ngIf="publication.lastUpdate != null">{{publication.lastUpdate | date:'medium':'UTC+2':'hr'}}</span>
+      <span *ngIf="publication.lastUpdate === null"> </span>
+  </span>
+  </div>
+  <div>
+    <span class="card-labels">Updated by:</span><span class="card-data">
+      <span *ngIf="publication.updatedBy != null">{{publication.updatedBy}}</span>
+      <span *ngIf="publication.updatedBy === null"> </span>
+  </span>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
+

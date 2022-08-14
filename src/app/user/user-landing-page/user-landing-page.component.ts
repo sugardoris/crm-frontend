@@ -33,12 +33,14 @@ export class UserLandingPageComponent implements OnInit {
       }).add(() => this.loading = false)
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(UserInputDialogComponent);
+  openAddDialog() {
+    const dialogRef = this.dialog.open(
+      UserInputDialogComponent,
+      {data: {mode: "Add"}});
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.event === "Submit") {
-        this.users = [...this.users, result.data];
+        this.getUsers();
       }
     });
   }

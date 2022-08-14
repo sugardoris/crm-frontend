@@ -27,29 +27,55 @@ export class UserInputDialogComponent implements OnInit {
   constructor(
     private userService: UserService,
     public dialogRef: MatDialogRef<UserInputDialogComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) public newUser: User
+    @Inject(MAT_DIALOG_DATA) public data: {user: User, mode: string}
   ) { }
 
   ngOnInit(): void {
+    this.checkMode();
+  }
+
+  checkMode() {
+    if (this.data.mode === 'Edit') {
+      this.editMode = true;
+      console.log(this.data.user)
+      this.getUserData(this.data.user);
+    }
   }
 
   onSubmit() {
-    this.newUser = {
+    this.user = {
       username: this.userForm.value.username.trim(),
       password: this.userForm.value.password.trim(),
       name: this.userForm.value.fullName.trim(),
       role: this.userForm.value.role
     }
 
-    this.userService.addUser(this.newUser).subscribe(
-      (newUser) => {
-        this.sendDataToTable(newUser);
-      }
-    );
+    if (this.editMode) {
+      this.user.id = this.data.user.id;
+      this.userService.editUser(this.user).subscribe(
+        (editedUser) => {
+          this.dialogRef.close({event: 'Edit'});
+        }
+      )
+
+    } else {
+      this.userService.addUser(this.user).subscribe(
+        (newUser) => {
+          this.dialogRef.close({event: 'Submit'});
+        }
+      );
+    }
   }
 
-  sendDataToTable(newUser: User) {
-    this.dialogRef.close({event: 'Submit', data: newUser});
+  getUserData(user: User) {
+    if (this.data.user) {
+      this.userForm.patchValue({
+        username: this.data.user.username,
+        password: this.data.user.password,
+        fullName: this.data.user.name,
+        role: this.data.user.role
+      });
+    }
   }
 
 }

@@ -29,17 +29,21 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: tableColumns;" [matMenuTriggerFor]="menu" [matMenuTriggerData]="row"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableColumns;" [matMenuTriggerFor]="menu" [matMenuTriggerData]="{user: row}"></tr>
   </table>
 </div>
 
 <mat-menu #menu="matMenu" xPosition="after" yPosition="below">
-  <ng-template matMenuContent let-aliasMenuItems="id">
-    <button mat-menu-item [disabled]="!isUserAdmin">
+  <ng-template matMenuContent let-user="user">
+    <button mat-menu-item (click)="openDetailsDialog(user)">
+      <mat-icon>launch</mat-icon>
+      <span>View</span>
+    </button>
+    <button mat-menu-item [disabled]="!isUserAdmin" (click)="openEditDialog(user)">
       <mat-icon>edit</mat-icon>
       <span>Edit</span>
     </button>
-    <button mat-menu-item [disabled]="!isUserAdmin" (click)="openDialog(aliasMenuItems)">
+    <button mat-menu-item [disabled]="!isUserAdmin" (click)="openDeactivateDialog(user.id)">
       <mat-icon>cancel</mat-icon>
       <span>Deactivate</span>
     </button>

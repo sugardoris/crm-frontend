@@ -4,6 +4,11 @@ import {UserService} from "../../../service/user.service";
 import {MatDialog} from "@angular/material/dialog";
 import {UserInputDialogComponent} from "../user-input-dialog/user-input-dialog.component";
 import {DeactivateModalComponent} from "../../../common/deactivate-modal/deactivate-modal.component";
+import {Subscription} from "../../../domain/subscription";
+import {
+  SubscriptionDetailsComponent
+} from "../../../subscriber/components/subscription/subscription-details/subscription-details.component";
+import {UserDetailsComponent} from "../user-details/user-details.component";
 
 @Component({
   selector: 'app-user-table',
@@ -13,7 +18,7 @@ import {DeactivateModalComponent} from "../../../common/deactivate-modal/deactiv
 export class UserTableComponent implements OnInit {
 
   isUserAdmin: boolean = false;
-  @Output() deactivateUserEvent = new EventEmitter();
+  @Output() userEvent = new EventEmitter();
 
   tableColumns: string[] = ["username", "fullName", "role", "status"];
   @Input() dataSource: User[] = [];
@@ -31,9 +36,12 @@ export class UserTableComponent implements OnInit {
     this.isUserAdmin = this.userService.isRoleAdmin();
   }
 
-  openDialog(id: number, entity = 'user') {
+  openDeactivateDialog(id: number, entity = 'user') {
     const dialogRef = this.dialog.open(DeactivateModalComponent,
       {data: entity});
+
+    console.log(id);
+
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.event === "Deactivate") {
@@ -42,11 +50,28 @@ export class UserTableComponent implements OnInit {
     });
   }
 
+  openEditDialog(user: User) {
+    const dialogRef = this.dialog.open(UserInputDialogComponent,
+      {data: {user: user, mode: 'Edit'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === "Edit") {
+        this.userEvent.emit();
+      }
+    });
+  }
+
+  openDetailsDialog(user: User) {
+    const dialogRef = this.dialog.open(
+      UserDetailsComponent,
+      {data: user});
+  }
+
   deactivateUser(id: number) {
     this.userService.deactivateUser(id).subscribe(
       (newUser) => {
         console.log(newUser);
-        this.deactivateUserEvent.emit();
+        this.userEvent.emit();
       }
     )
   }

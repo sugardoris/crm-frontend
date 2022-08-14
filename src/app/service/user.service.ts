@@ -37,6 +37,13 @@ export class UserService {
     );
   }
 
+  editUser(user: User): Observable<User>{
+    return this.http.put<User>(USER_API_URL, user, this.httpOptions).pipe(
+      tap((data) => console.log(`Edited user with username ${data.username}`)),
+      catchError(this.handleError<User>('editUser'))
+    );
+  }
+
   deactivateUser(id: number): Observable<User>{
     const url = `${USER_API_URL}/${id}/deactivate`;
 

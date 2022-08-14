@@ -56,13 +56,13 @@
 
 <mat-menu #menu="matMenu" xPosition="after" yPosition="below">
   <ng-template matMenuContent let-aliasMenuItems="id">
-    <button mat-menu-item routerLink="/subscriber/edit/{{aliasMenuItems}}">
-      <mat-icon>edit</mat-icon>
-      <span>Edit</span>
-    </button>
     <button mat-menu-item routerLink="/subscribers/{{(aliasMenuItems)}}">
       <mat-icon>launch</mat-icon>
       <span>View</span>
+    </button>
+    <button mat-menu-item routerLink="/subscriber/edit/{{aliasMenuItems}}">
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
     </button>
   </ng-template>
 </mat-menu>

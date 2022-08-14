@@ -2,79 +2,79 @@
   <mat-spinner></mat-spinner>
 </div>
 
-<div class="card-wrapper" *ngIf="!loading">
+<div class="card-wrapper" *ngIf="!loading && subscriber">
   <mat-card class="user-details">
     <mat-card-title class="card-title">
-      <div *ngIf="subscriber?.contactInfo?.legalEntity">
-        {{subscriber?.contactInfo?.companyName}}
+      <div *ngIf="subscriber.contactInfo?.legalEntity">
+        {{subscriber.contactInfo?.companyName}}
       </div>
-      <div *ngIf="!subscriber?.contactInfo?.legalEntity">
-        {{subscriber?.contactInfo?.firstName + ' ' + subscriber?.contactInfo?.lastName}}
+      <div *ngIf="!subscriber.contactInfo?.legalEntity">
+        {{subscriber.contactInfo?.firstName + ' ' + subscriber.contactInfo?.lastName}}
       </div>
     </mat-card-title>
     <mat-card-content class="card-content">
       <div>
-        <span class="card-labels">OIB:</span><span class="card-data">{{subscriber?.contactInfo?.oib}}</span>
+        <span class="card-labels">OIB:</span><span class="card-data">{{subscriber.contactInfo?.oib}}</span>
       </div>
       <div>
-        <span class="card-labels">Email:</span><span class="card-data">{{subscriber?.contactInfo?.email}}</span>
+        <span class="card-labels">Email:</span><span class="card-data">{{subscriber.contactInfo?.email}}</span>
       </div>
       <div>
-        <span class="card-labels">Phone1:</span><span class="card-data">{{subscriber?.contactInfo?.phone1}}</span>
+        <span class="card-labels">Phone1:</span><span class="card-data">{{subscriber.contactInfo?.phone1}}</span>
       </div>
       <div>
         <span class="card-labels">Phone2:</span><span class="card-data">
-          <span *ngIf="subscriber?.contactInfo?.phone2 != null">{{subscriber?.contactInfo?.phone2}}</span>
-          <span *ngIf="subscriber?.contactInfo?.phone2 === null"> </span>
+          <span *ngIf="subscriber.contactInfo?.phone2 != null">{{subscriber.contactInfo?.phone2}}</span>
+          <span *ngIf="subscriber.contactInfo?.phone2 === null"> </span>
         </span>
       </div>
       <div>
         <span class="card-labels">Address:</span><span class="card-data">
-        {{subscriber?.contactInfo?.billingAddress + ', ' + subscriber?.contactInfo?.city?.name + ', ' + subscriber?.contactInfo?.city?.postcode}}
+        {{subscriber.contactInfo?.billingAddress + ', ' + subscriber.contactInfo?.city?.name + ', ' + subscriber.contactInfo?.city?.postcode}}
       </span>
       </div>
       <div>
         <span class="card-labels">Legal entity:</span><span class="card-data">
-        <span *ngIf="subscriber?.contactInfo?.legalEntity">
+        <span *ngIf="subscriber.contactInfo?.legalEntity">
           <mat-icon color="primary">check_circle_outline</mat-icon>
         </span>
-        <span *ngIf="!subscriber?.contactInfo?.legalEntity">
+        <span *ngIf="!subscriber.contactInfo?.legalEntity">
           <mat-icon color="accent">highlight_off</mat-icon>
         </span>
       </span>
       </div>
       <div>
         <span class="card-labels">Active:</span><span class="card-data">
-        <span *ngIf="subscriber?.active">
+        <span *ngIf="subscriber.active">
           <mat-icon color="primary">check_circle_outline</mat-icon>
         </span>
-        <span *ngIf="!subscriber?.active">
+        <span *ngIf="!subscriber.active">
           <mat-icon color="accent">highlight_off</mat-icon>
         </span>
       </span>
       </div>
       <div>
-        <span class="card-labels">Date created:</span><span class="card-data">{{subscriber?.createDate | date:'medium':'UTC+2':'hr'}}</span>
+        <span class="card-labels">Date created:</span><span class="card-data">{{subscriber.createDate | date:'medium':'UTC+2':'hr'}}</span>
       </div>
       <div>
-        <span class="card-labels">Created by:</span><span class="card-data">{{subscriber?.createdBy}}</span>
+        <span class="card-labels">Created by:</span><span class="card-data">{{subscriber.createdBy}}</span>
       </div>
       <div>
         <span class="card-labels">Last update:</span><span class="card-data">
-          <span *ngIf="subscriber?.lastUpdate != null">{{subscriber?.lastUpdate | date:'medium':'UTC+2':'hr'}}</span>
-          <span *ngIf="subscriber?.lastUpdate === null"> </span>
+          <span *ngIf="subscriber.lastUpdate != null">{{subscriber.lastUpdate | date:'medium':'UTC+2':'hr'}}</span>
+          <span *ngIf="subscriber.lastUpdate === null"> </span>
       </span>
       </div>
       <div>
         <span class="card-labels">Updated by:</span><span class="card-data">
-          <span *ngIf="subscriber?.lastUpdate != null">{{subscriber?.updatedBy}}</span>
-          <span *ngIf="subscriber?.lastUpdate === null"> </span>
+          <span *ngIf="subscriber.lastUpdate != null">{{subscriber.updatedBy}}</span>
+          <span *ngIf="subscriber.lastUpdate === null"> </span>
       </span>
       </div>
     </mat-card-content>
     <mat-card-actions align="end">
-      <button mat-raised-button color="primary">Edit</button>
-      <button mat-raised-button color="accent">Deactivate</button>
+      <button mat-raised-button color="primary" routerLink="/subscriber/edit/{{subscriber.id!}}">Edit</button>
+      <button mat-raised-button color="accent" (click)="openDeactivateDialog(subscriber.id!)">Deactivate</button>
     </mat-card-actions>
   </mat-card>
 </div>

@@ -1,17 +1,17 @@
 import {City} from "./city";
 
 export interface Subscriber {
-  id: number,
-  active: boolean,
-  createdBy: string,
+  id?: number,
+  active?: boolean,
+  createdBy?: string,
   updatedBy?: string,
   createDate?: string,
-  lastUpdate: string,
+  lastUpdate?: string,
   contactInfo: ContactInfo,
 }
 
 export interface ContactInfo {
-  id: number,
+  id?: number,
   firstName?: string,
   lastName?: string,
   companyName?: string,

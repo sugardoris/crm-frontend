@@ -5,6 +5,8 @@ import {SubscriberService} from "../../../../service/subscriber.service";
 
 import { registerLocaleData } from '@angular/common';
 import localeHr from '@angular/common/locales/hr';
+import {DeactivateModalComponent} from "../../../../common/deactivate-modal/deactivate-modal.component";
+import {MatDialog} from "@angular/material/dialog";
 registerLocaleData(localeHr, 'hr');
 
 @Component({
@@ -20,6 +22,7 @@ export class SubscriberInfoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private subscriberService: SubscriberService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +42,25 @@ export class SubscriberInfoComponent implements OnInit {
     } else {
       console.error('Subscriber id cannot be null.')
     }
+  }
+
+  openDeactivateDialog(id: number, entity = 'subscriber') {
+    const dialogRef = this.dialog.open(DeactivateModalComponent,
+      {data: entity});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === "Deactivate") {
+        this.deactivateSubscriber(id);
+      }
+    });
+  }
+
+  deactivateSubscriber(id: number) {
+    this.subscriberService.deactivateSubscriber(id).subscribe(
+      (data) => {
+        this.getSubscriber();
+      }
+    )
   }
 
 }

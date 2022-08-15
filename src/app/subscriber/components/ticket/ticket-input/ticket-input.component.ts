@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { Ticket, TicketType } from '../../../../domain/ticket';
 import { TicketService } from '../../../../service/ticket.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -13,10 +13,11 @@ export class TicketInputComponent implements OnInit {
   editMode: boolean = false;
   ticket?: Ticket;
   typeOptions = Object.values(TicketType);
+  formError: boolean = false;
 
   ticketForm = new FormGroup({
-    type: new FormControl(''),
-    description: new FormControl(''),
+    type: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
   });
 
   constructor(
@@ -38,6 +39,13 @@ export class TicketInputComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.ticketForm.invalid) {
+      this.formError = true;
+      return;
+    } else {
+      this.formError = false;
+    }
+
     this.ticket = {
       subscriberId: this.data.subscriberId,
       type: this.ticketForm.value.type,

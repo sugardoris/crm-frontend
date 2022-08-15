@@ -13,6 +13,7 @@ export class UserInputDialogComponent implements OnInit {
   editMode: boolean = false;
   user?: User;
   roleOptions = Object.values(Role);
+  formError: boolean = false;
 
   userForm = new FormGroup({
     username: new FormControl('', [
@@ -55,6 +56,13 @@ export class UserInputDialogComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.userForm.invalid) {
+      this.formError = true;
+      return;
+    } else {
+      this.formError = false;
+    }
+
     this.user = {
       username: this.userForm.value.username.trim(),
       password: this.userForm.value.password.trim(),

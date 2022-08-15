@@ -33,12 +33,13 @@ export class SubscriptionInputComponent implements OnInit {
   subscription?: Subscription;
   publicationOptions: Publication[] = [];
   typeOptions: SubscriptionType[] = [];
+  formError: boolean = false;
 
   subscriptionForm = new FormGroup({
     publication: new FormControl('', Validators.required),
     subscriptionType: new FormControl('', Validators.required),
     startDate: new FormControl(new Date(), Validators.required),
-    endDate: new FormControl('', Validators.required),
+    endDate: new FormControl(''),
   });
 
   constructor(
@@ -68,6 +69,13 @@ export class SubscriptionInputComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.subscriptionForm.invalid) {
+      this.formError = true;
+      return;
+    } else {
+      this.formError = false;
+    }
+
     this.subscription = {
       subscriptionTypeId: this.subscriptionForm.value.subscriptionType.id,
       subscriberId: this.data.subscriberId,

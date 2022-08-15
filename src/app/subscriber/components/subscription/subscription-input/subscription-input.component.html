@@ -9,6 +9,9 @@
             {{publication.name}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="subscriptionForm.controls['publication'].hasError('required')">
+          Publication is required
+        </mat-error>
       </mat-form-field>
     </div>
     <div>
@@ -19,6 +22,9 @@
             {{type.name}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="subscriptionForm.controls['subscriptionType'].hasError('required')">
+          Subscription type is required
+        </mat-error>
       </mat-form-field>
     </div>
     <div>
@@ -27,6 +33,9 @@
         <input matInput [matDatepicker]="startDatePicker" formControlName="startDate">
         <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #startDatePicker></mat-datepicker>
+        <mat-error *ngIf="subscriptionForm.controls['startDate'].hasError('required')">
+          Start date is required
+        </mat-error>
       </mat-form-field>
     </div>
     <div>
@@ -38,6 +47,7 @@
       </mat-form-field>
     </div>
   </form>
+  <mat-error *ngIf="formError">Check the form and try again</mat-error>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-raised-button color="accent" (click)="onSubmit()">Submit</button>

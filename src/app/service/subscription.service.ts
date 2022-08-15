@@ -34,6 +34,20 @@ export class SubscriptionService {
     );
   }
 
+  addSubscription(subscription: Subscription): Observable<Subscription>{
+    return this.http.post<Subscription>(SUBSCRIPTION_API_URL, subscription, this.httpOptions).pipe(
+      tap((subscription) => console.log(`Added new subscription with id ${subscription.id}`)),
+      catchError(this.handleError<Subscription>('addSubscription'))
+    );
+  }
+
+  editSubscription(subscription: Subscription): Observable<Subscription>{
+    return this.http.put<Subscription>(SUBSCRIPTION_API_URL, subscription, this.httpOptions).pipe(
+      tap((subscription) => console.log(`Edited subscription with id ${subscription.id}`)),
+      catchError(this.handleError<Subscription>('addSubscription'))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(operation);

@@ -2,7 +2,7 @@ import {Publication} from "./publication";
 import {SubscriptionType} from "./subscriptionType";
 
 export interface Subscription {
-  id: number,
+  id?: number,
   subscriptionTypeId: number,
   subscriptionTypeName?: string,
   subscriptionTypeDiscount?: string,
@@ -11,7 +11,7 @@ export interface Subscription {
   publicationName?: number,
   dateStarted: string,
   dateEnded?: string,
-  price: string,
+  price?: string,
   createdBy?: string,
   updatedBy?: string,
   createDate?: string,

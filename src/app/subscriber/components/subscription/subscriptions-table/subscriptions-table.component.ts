@@ -26,7 +26,6 @@ export class SubscriptionsTableComponent implements OnInit {
     'price',
     'discount',
   ];
-  subscriptions: Subscription[] = [];
   dataSource: Subscription[] = [];
   loading: boolean = false;
 

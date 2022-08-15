@@ -1,9 +1,9 @@
 export interface Ticket {
-  id: number,
+  id?: number,
   subscriberId: number,
   type: TicketType,
   description: string,
-  resolved: boolean,
+  resolved?: boolean,
   createdBy?: string,
   updatedBy?: string,
   createDate?: string,
@@ -11,9 +11,9 @@ export interface Ticket {
 }
 
 export enum TicketType {
-  COMPLAINT = "Complaint",
-  INFO = "Subscription info",
-  PAYMENT = "Payment info",
-  NEW = "New subscription",
-  CANCELLATION = "Cancellation of subscription"
+  COMPLAINT = "COMPLAINT",
+  INFO = "INFO",
+  PAYMENT = "PAYMENT",
+  NEW = "NEW",
+  CANCELLATION = "CANCELLATION"
 }

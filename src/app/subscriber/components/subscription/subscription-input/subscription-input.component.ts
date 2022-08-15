@@ -9,7 +9,6 @@ import {MY_DATE_FORMAT} from "../../../../domain/date_format";
 import {PublicationService} from "../../../../service/publication.service";
 import {SubscriptionTypeService} from "../../../../service/subscription-type.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ActivatedRoute} from "@angular/router";
 import {SubscriptionService} from "../../../../service/subscription.service";
 
 @Component({
@@ -42,7 +41,6 @@ export class SubscriptionInputComponent implements OnInit {
     private subscriptionService: SubscriptionService,
     public dialogRef: MatDialogRef<SubscriptionInputComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { subscription: Subscription, mode: string, subscriberId: number },
-    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -55,8 +53,6 @@ export class SubscriptionInputComponent implements OnInit {
     if (this.data.mode === 'Edit') {
       this.editMode = true;
       this.getSubscriptionData(this.data.subscription);
-      console.log(this.data.subscriberId);
-      console.log(this.editMode);
     }
   }
 

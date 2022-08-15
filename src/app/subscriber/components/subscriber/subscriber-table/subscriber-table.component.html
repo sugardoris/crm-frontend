@@ -8,7 +8,8 @@
       <th mat-header-cell *matHeaderCellDef> Name</th>
       <td mat-cell *matCellDef="let subscriber">
         <div *ngIf="subscriber.contactInfo?.legalEntity">{{subscriber.contactInfo?.companyName}}</div>
-        <div *ngIf="!subscriber.contactInfo?.legalEntity">{{subscriber.contactInfo?.firstName + ' ' + subscriber.contactInfo?.lastName}}</div>
+        <div
+          *ngIf="!subscriber.contactInfo?.legalEntity">{{subscriber.contactInfo?.firstName + ' ' + subscriber.contactInfo?.lastName}}</div>
       </td>
     </ng-container>
 
@@ -56,13 +57,13 @@
 
 <mat-menu #menu="matMenu" xPosition="after" yPosition="below">
   <ng-template matMenuContent let-aliasMenuItems="id">
-    <button mat-menu-item routerLink="/subscriber/edit/{{aliasMenuItems}}">
-      <mat-icon>edit</mat-icon>
-      <span>Edit</span>
-    </button>
     <button mat-menu-item routerLink="/subscribers/{{(aliasMenuItems)}}">
       <mat-icon>launch</mat-icon>
       <span>View</span>
+    </button>
+    <button mat-menu-item routerLink="/subscriber/edit/{{aliasMenuItems}}">
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
     </button>
   </ng-template>
 </mat-menu>

@@ -1,10 +1,18 @@
-<h1 class="main-title-input">Add User</h1>
+<h1 class="main-title-input">
+  {{editMode ? 'Edit Publication' : 'Add Publication'}}
+</h1>
 <mat-dialog-content>
   <form [formGroup]="userForm">
     <div>
       <mat-form-field appearance="outline" class="input-field" color="accent">
         <mat-label>Username</mat-label>
         <input matInput formControlName="username">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password">
       </mat-form-field>
     </div>
     <div>
@@ -26,6 +34,6 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button color="accent">Submit</button>
+  <button mat-raised-button color="accent" (click)="onSubmit()">Submit</button>
   <button mat-raised-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>

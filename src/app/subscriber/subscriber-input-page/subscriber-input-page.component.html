@@ -1,12 +1,10 @@
-<!--<button mat-flat-button class="ms-4 mt-4 back" (click)="goBack()">Back</button>-->
-
 <div class="main-container">
   <h1 class="main-title">{{editMode ? 'Edit Subscriber' : 'Add Subscriber'}}</h1>
   <form [formGroup]="subscriberForm">
     <div>
       <mat-form-field appearance="outline" class="input-field">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name">
+        <mat-label>First name</mat-label>
+        <input matInput formControlName="firstName">
       </mat-form-field>
       <mat-form-field appearance="outline" class="input-field">
         <mat-label>Last name</mat-label>
@@ -42,13 +40,13 @@
     <div>
       <mat-form-field appearance="outline" class="input-field">
         <mat-label>Address</mat-label>
-        <input matInput formControlName="address">
+        <input matInput formControlName="billingAddress">
       </mat-form-field>
       <mat-form-field appearance="outline" class="input-field">
         <mat-label>City</mat-label>
-        <mat-select formControlName="city">
-          <mat-option *ngFor="let city of cities" [value]="city.name">
-            {{city.name}}
+        <mat-select formControlName="city" [compareWith]="compareCities">
+          <mat-option *ngFor="let city of cities" [value]="city">
+            {{city.postcode + ', ' + city.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -57,7 +55,7 @@
       <mat-checkbox formControlName="legalEntity" [color]="checkboxColor">Legal entity</mat-checkbox>
     </div>
     <div class="button-new-wrapper pe-4">
-      <button mat-raised-button color="primary" class="mt-3">Submit</button>
+      <button mat-raised-button color="primary" class="mt-3" (click)="onSubmit()">Submit</button>
     </div>
   </form>
 </div>

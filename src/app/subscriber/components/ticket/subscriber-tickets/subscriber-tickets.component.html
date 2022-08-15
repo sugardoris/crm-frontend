@@ -55,6 +55,28 @@
     </tr>
 
     <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: tableColumns;" (click)="openDetailsDialog(row)"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableColumns;" [matMenuTriggerFor]="menu"
+        [matMenuTriggerData]="{ticket: row}"></tr>
   </table>
 </div>
+
+<mat-menu #menu="matMenu" xPosition="after" yPosition="below">
+  <ng-template matMenuContent let-ticket="ticket">
+    <button mat-menu-item (click)="openDetailsDialog(ticket)">
+      <mat-icon>launch</mat-icon>
+      <span>View</span>
+    </button>
+    <button mat-menu-item (click)="openEditDialog(ticket)">
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+    </button>
+    <button mat-menu-item (click)="openResolveDialog(ticket.id)">
+      <mat-icon>check_circle_outline</mat-icon>
+      <span>Resolve</span>
+    </button>
+    <button mat-menu-item (click)="openDeleteDialog(ticket.id)">
+      <mat-icon>cancel</mat-icon>
+      <span>Delete</span>
+    </button>
+  </ng-template>
+</mat-menu>

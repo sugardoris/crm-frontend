@@ -1,0 +1,45 @@
+<h1 mat-dialog-title class="details-title">User details</h1>
+<mat-dialog-content class="content">
+  <div>
+    <span class="card-labels">Username:</span><span class="card-data">{{user.username}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Full name:</span><span class="card-data">{{user.name}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Role:</span><span class="card-data">{{user.role}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Active:</span><span class="card-data">
+        <span *ngIf="user?.active">
+          <mat-icon color="primary">check_circle_outline</mat-icon>
+        </span>
+        <span *ngIf="!user?.active">
+          <mat-icon color="accent">highlight_off</mat-icon>
+        </span>
+      </span>
+  </div>
+  <div>
+    <span class="card-labels">Date created:</span><span
+    class="card-data">{{user.createDate | date:'medium':'UTC+2':'hr'}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Created by:</span><span class="card-data">{{user.createdBy}}</span>
+  </div>
+  <div>
+    <span class="card-labels">Last update:</span><span class="card-data">
+      <span *ngIf="user.lastUpdate != null">{{user.lastUpdate | date:'medium':'UTC+2':'hr'}}</span>
+      <span *ngIf="user.lastUpdate === null"> </span>
+  </span>
+  </div>
+  <div>
+    <span class="card-labels">Updated by:</span><span class="card-data">
+      <span *ngIf="user.updatedBy != null">{{user.updatedBy}}</span>
+      <span *ngIf="user.updatedBy === null"> </span>
+  </span>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
+

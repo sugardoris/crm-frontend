@@ -1,28 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule, HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
+import {
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+  HttpClient,
+} from '@angular/common/http';
 
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatListModule} from "@angular/material/list";
-import {MatIconModule} from "@angular/material/icon";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatTableModule} from "@angular/material/table";
-import {MatInputModule} from "@angular/material/input";
-import {MatAutocompleteModule} from "@angular/material/autocomplete";
-import {MatButtonModule} from "@angular/material/button";
-import {MatTabsModule} from "@angular/material/tabs";
-import {MatCardModule} from "@angular/material/card";
-import {MatGridListModule} from "@angular/material/grid-list";
-import {MatMenuModule} from "@angular/material/menu";
-import {MatSelectModule} from "@angular/material/select";
-import {MatCheckboxModule} from "@angular/material/checkbox";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatMomentDateModule} from "@angular/material-moment-adapter";
-import {MatDialogModule} from "@angular/material/dialog";
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavContentComponent } from './common/sidenav-content/sidenav-content.component';
 import { SubscriberTableComponent } from './subscriber/components/subscriber/subscriber-table/subscriber-table.component';
@@ -53,9 +57,13 @@ import { SubscriptionTypeInputComponent } from './subscription_type/components/s
 import { PublicationInputComponent } from './publication/components/publication-input/publication-input.component';
 import { LoginLayoutComponent } from './common/layouts/login-layout/login-layout.component';
 import { HomeLayoutComponent } from './common/layouts/home-layout/home-layout.component';
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {AuthInterceptor} from "./auth/interceptors/auth.interceptor";
-import {AuthExpiredInterceptor} from "./auth/interceptors/auth-expired.interceptor";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
+import { AuthExpiredInterceptor } from './auth/interceptors/auth-expired.interceptor';
+import { DeactivateModalComponent } from './common/deactivate-modal/deactivate-modal.component';
+import { UserDetailsComponent } from './user/components/user-details/user-details.component';
+import { PublicationDetailsComponent } from './publication/components/publication-details/publication-details.component';
+import { SubscriptionTypeDetailsComponent } from './subscription_type/components/subscription-type-details/subscription-type-details.component';
 
 @NgModule({
   declarations: [
@@ -89,44 +97,48 @@ import {AuthExpiredInterceptor} from "./auth/interceptors/auth-expired.intercept
     PublicationInputComponent,
     LoginLayoutComponent,
     HomeLayoutComponent,
+    DeactivateModalComponent,
+    UserDetailsComponent,
+    PublicationDetailsComponent,
+    SubscriptionTypeDetailsComponent,
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        ReactiveFormsModule,
-        MatSidenavModule,
-        MatListModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatTableModule,
-        MatInputModule,
-        MatAutocompleteModule,
-        MatButtonModule,
-        MatTabsModule,
-        MatCardModule,
-        MatGridListModule,
-        MatMenuModule,
-        MatSelectModule,
-        MatCheckboxModule,
-        MatDatepickerModule,
-        MatMomentDateModule,
-        MatDialogModule,
-        AppRoutingModule,
-        MatProgressSpinnerModule,
-        HttpClientModule,
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatTableModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatCardModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
+    MatDialogModule,
+    AppRoutingModule,
+    MatProgressSpinnerModule,
+    HttpClientModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthExpiredInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

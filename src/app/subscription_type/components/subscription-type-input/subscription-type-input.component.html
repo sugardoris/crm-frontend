@@ -25,17 +25,9 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div>
-      <mat-form-field appearance="outline" class="input-field" color="accent">
-        <mat-label>Expiration date</mat-label>
-        <input matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </div>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button color="accent">Submit</button>
+  <button mat-raised-button color="accent" (click)="onSubmit()">Submit</button>
   <button mat-raised-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>

@@ -7,7 +7,8 @@
     <span class="card-labels">Description:</span><span class="card-data">{{ticket.description}}</span>
   </div>
   <div>
-    <span class="card-labels">Date created:</span><span class="card-data">{{ticket.createDate | date:'medium':'UTC+2':'hr'}}</span>
+    <span class="card-labels">Date created:</span><span
+    class="card-data">{{ticket.createDate | date:'medium':'UTC+2':'hr'}}</span>
   </div>
   <div>
     <span class="card-labels">Created by:</span><span class="card-data">{{ticket.createdBy}}</span>
@@ -36,8 +37,5 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end" class="action-buttons">
-  <button mat-raised-button color="primary">Edit</button>
-  <button mat-raised-button color="primary">Resolve</button>
-  <button mat-raised-button color="accent">Delete</button>
   <button mat-raised-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>

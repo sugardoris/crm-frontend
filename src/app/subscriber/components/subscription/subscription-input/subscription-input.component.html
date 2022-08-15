@@ -4,9 +4,9 @@
     <div>
       <mat-form-field appearance="outline" class="input-field" color="accent">
         <mat-label>Publication</mat-label>
-        <mat-select formControlName="publication">
+        <mat-select formControlName="publication" [compareWith]="compareEntities">
           <mat-option *ngFor="let publication of publicationOptions" [value]="publication">
-            {{publication}}
+            {{publication.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -14,9 +14,9 @@
     <div>
       <mat-form-field appearance="outline" class="input-field" color="accent">
         <mat-label>Subscription Type</mat-label>
-        <mat-select formControlName="subscriptionType">
+        <mat-select formControlName="subscriptionType" [compareWith]="compareEntities">
           <mat-option *ngFor="let type of typeOptions" [value]="type">
-            {{type}}
+            {{type.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -24,7 +24,7 @@
     <div>
       <mat-form-field appearance="outline" class="input-field" color="accent">
         <mat-label>Start Date</mat-label>
-        <input matInput [matDatepicker]="startDatePicker">
+        <input matInput [matDatepicker]="startDatePicker" formControlName="startDate">
         <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #startDatePicker></mat-datepicker>
       </mat-form-field>
@@ -32,7 +32,7 @@
     <div>
       <mat-form-field appearance="outline" class="input-field" color="accent">
         <mat-label>End Date</mat-label>
-        <input matInput [matDatepicker]="endDatePicker">
+        <input matInput [matDatepicker]="endDatePicker" formControlName="endDate">
         <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #endDatePicker></mat-datepicker>
       </mat-form-field>
@@ -40,6 +40,6 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button color="accent">Submit</button>
+  <button mat-raised-button color="accent" (click)="onSubmit()">Submit</button>
   <button mat-raised-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>

@@ -31,7 +31,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavContentComponent } from './common/sidenav-content/sidenav-content.component';
 import { SubscriberTableComponent } from './subscriber/components/subscriber/subscriber-table/subscriber-table.component';
 import { SubscriberLandingPageComponent } from './subscriber/subscriber-landing-page/subscriber-landing-page.component';
-import { SubscriberSearchComponent } from './subscriber/components/subscriber/subscriber-search/subscriber-search.component';
 import { SubscriberDetailsPageComponent } from './subscriber/subscriber-details-page/subscriber-details-page.component';
 import { SubscriberInfoComponent } from './subscriber/components/subscriber/subscriber-info/subscriber-info.component';
 import { SubscriptionsTableComponent } from './subscriber/components/subscription/subscriptions-table/subscriptions-table.component';
@@ -41,7 +40,6 @@ import { CitySearchComponent } from './city/components/city-search/city-search.c
 import { CityLandingPageComponent } from './city/city-landing-page/city-landing-page.component';
 import { UserLandingPageComponent } from './user/user-landing-page/user-landing-page.component';
 import { UserTableComponent } from './user/components/user-table/user-table.component';
-import { UserSearchComponent } from './user/components/user-search/user-search.component';
 import { PublicationsLandingPageComponent } from './publication/publications-landing-page/publications-landing-page.component';
 import { PublicationTableComponent } from './publication/components/publication-table/publication-table.component';
 import { SubscriberInputPageComponent } from './subscriber/subscriber-input-page/subscriber-input-page.component';
@@ -71,7 +69,6 @@ import { SubscriptionTypeDetailsComponent } from './subscription_type/components
     SidenavContentComponent,
     SubscriberTableComponent,
     SubscriberLandingPageComponent,
-    SubscriberSearchComponent,
     SubscriberDetailsPageComponent,
     SubscriberInfoComponent,
     SubscriptionsTableComponent,
@@ -81,7 +78,6 @@ import { SubscriptionTypeDetailsComponent } from './subscription_type/components
     CityLandingPageComponent,
     UserLandingPageComponent,
     UserTableComponent,
-    UserSearchComponent,
     PublicationsLandingPageComponent,
     PublicationTableComponent,
     SubscriberInputPageComponent,

@@ -3,34 +3,42 @@
   <div class="add">
     <h2 class="subtitle">Add new city</h2>
     <mat-card class="form-card mat-elevation-z6">
-      <form [formGroup]="cityFormGroup" class="mt-3 ps-3" (ngSubmit)="onSubmit()" #formDirective="ngForm">
+      <form [formGroup]="cityFormGroup" class="mt-3 ps-3">
         <div>
           <mat-form-field appearance="outline">
             <mat-label>City name</mat-label>
             <input matInput id="name" type="text" formControlName="name">
+            <mat-error *ngIf="cityFormGroup.controls['name'].hasError('required')">City name is required</mat-error>
           </mat-form-field>
         </div>
         <div>
           <mat-form-field appearance="outline">
             <mat-label>Postal number</mat-label>
             <input matInput id="postcode" type="text" formControlName="postcode">
+            <mat-error *ngIf="cityFormGroup.controls['postcode'].hasError('required')">Postcode is required</mat-error>
+            <mat-error
+              *ngIf="cityFormGroup.controls['postcode'].hasError('min') && !cityFormGroup.controls['postcode'].hasError('required')">
+              There are no postcodes lesser than 10 000
+            </mat-error>
+            <mat-error
+              *ngIf="cityFormGroup.controls['postcode'].hasError('max') && !cityFormGroup.controls['postcode'].hasError('required')">
+              There are no postcodes larger than 53 296
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="button-new-wrapper">
-          <button mat-raised-button color="primary" class="button-new">Add</button>
+          <button mat-raised-button color="primary" class="button-new" (click)="onSubmit()">Add</button>
         </div>
       </form>
+      <mat-error *ngIf="formError">Check the form and try again</mat-error>
     </mat-card>
   </div>
   <div class="view">
-    <div class="search-container">
-      <app-city-search></app-city-search>
-    </div>
     <div class="table-container">
       <div class="table-loading" *ngIf="loading">
         <mat-spinner></mat-spinner>
       </div>
-      <app-city-table [dataSource]="cities" *ngIf="!loading"></app-city-table>
+      <app-city-table [cities]="cities" *ngIf="!loading"></app-city-table>
     </div>
   </div>
 </div>

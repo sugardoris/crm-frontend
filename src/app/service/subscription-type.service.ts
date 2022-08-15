@@ -23,6 +23,16 @@ export class SubscriptionTypeService {
     );
   }
 
+  getActiveSubscriptionTypes(): Observable<SubscriptionType[]> {
+    const url = `${SUBSCRIPTION_TYPE_API_URL}/active`;
+    return this.http.get<SubscriptionType[]>(url).pipe(
+      tap((_) => console.log('Fetched active subscription types')),
+      catchError(
+        this.handleError<SubscriptionType[]>('getActiveSubscriptionTypes', [])
+      )
+    );
+  }
+
   getSubscriptionType(id: string): Observable<SubscriptionType> {
     const url = `${SUBSCRIPTION_TYPE_API_URL}/${id}`;
     return this.http.get<SubscriptionType>(url).pipe(

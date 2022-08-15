@@ -32,6 +32,7 @@ export class PublicationInputComponent implements OnInit {
   editMode: boolean = false;
   publication?: Publication;
   periodOptions = Object.values(PublicationPeriod);
+  formError: boolean = false;
 
   publicationForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -60,6 +61,13 @@ export class PublicationInputComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.publicationForm.invalid) {
+      this.formError = true;
+      return;
+    } else {
+      this.formError = false;
+    }
+
     let publishingInfo: PublishingInfo = {
       firstIssueDate: this.publicationForm.value.firstIssue,
       issuePeriod: this.publicationForm.value.issuePeriod,

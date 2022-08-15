@@ -2,3 +2,18 @@ th {
   color: #004aad;
   font-size: 16px;
 }
+
+.city-search {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.input-field {
+  margin-right: 15px;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}

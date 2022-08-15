@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import { FormControl, FormGroup,Validators } from '@angular/forms';
 import { CityService } from '../../service/city.service';
 import { City } from '../../domain/city';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class CityLandingPageComponent implements OnInit {
   cities: City[] = [];
   loading: boolean = false;
+  formError: boolean = false;
 
   cityFormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -21,8 +22,6 @@ export class CityLandingPageComponent implements OnInit {
       Validators.max(53296),
     ]),
   });
-
-  @ViewChild('formDirective') private formDirective?: NgForm;
 
   constructor(private cityService: CityService, private router: Router) {}
 
@@ -41,6 +40,13 @@ export class CityLandingPageComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.cityFormGroup.invalid) {
+      this.formError = true;
+      return;
+    } else {
+      this.formError = false;
+    }
+
     let newCity: City = {
       postcode: this.cityFormGroup.value.postcode.trim(),
       name: this.cityFormGroup.value.name.trim(),
@@ -55,6 +61,12 @@ export class CityLandingPageComponent implements OnInit {
       });
     });
 
-    this.formDirective?.resetForm();
+    this.clearValidationErrors();
+  }
+
+  clearValidationErrors() {
+    this.cityFormGroup.reset();
+    this.cityFormGroup.get('name')?.setErrors(null);
+    this.cityFormGroup.get('postcode')?.setErrors(null);
   }
 }

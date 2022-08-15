@@ -17,6 +17,7 @@ export class SubscriberInputPageComponent implements OnInit {
   subscriber?: Subscriber;
   cities: City[] = [];
   checkboxColor: ThemePalette = 'primary';
+  formError: boolean = false;
 
   subscriberForm = new FormGroup({
     firstName: new FormControl('', Validators.maxLength(50)),
@@ -92,6 +93,13 @@ export class SubscriberInputPageComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.subscriberForm.invalid) {
+      this.formError = true;
+      return;
+    } else {
+      this.formError = false;
+    }
+
     let contactInfo: ContactInfo = {
       firstName: this.subscriberForm.value.firstName,
       lastName: this.subscriberForm.value.lastName,

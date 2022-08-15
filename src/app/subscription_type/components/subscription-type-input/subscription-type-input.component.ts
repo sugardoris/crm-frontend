@@ -16,6 +16,7 @@ export class SubscriptionTypeInputComponent implements OnInit {
   editMode: boolean = false;
   subscriptionType?: SubscriptionType;
   periodOptions = Object.values(SubscriptionPeriod);
+  formError: boolean = false;
 
   subscriptionTypeForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -54,6 +55,13 @@ export class SubscriptionTypeInputComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.subscriptionTypeForm.invalid) {
+      this.formError = true;
+      return;
+    } else {
+      this.formError = false;
+    }
+
     this.subscriptionType = {
       name: this.subscriptionTypeForm.value.name,
       discount: this.subscriptionTypeForm.value.discount,

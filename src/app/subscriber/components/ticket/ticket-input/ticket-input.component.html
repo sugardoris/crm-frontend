@@ -9,15 +9,22 @@
             {{type}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="ticketForm.controls['type'].hasError('required')">
+          Ticket type is required
+        </mat-error>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field appearance="outline" class="input-field" color="accent">
         <mat-label>Description</mat-label>
         <textarea matInput formControlName="description" rows="8"></textarea>
+        <mat-error *ngIf="ticketForm.controls['description'].hasError('required')">
+          Description is required
+        </mat-error>
       </mat-form-field>
     </div>
   </form>
+  <mat-error *ngIf="formError">Check the form and try again</mat-error>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-raised-button color="accent" (click)="onSubmit()">Submit</button>

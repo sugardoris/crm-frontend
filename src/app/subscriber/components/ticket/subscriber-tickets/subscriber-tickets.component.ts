@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { registerLocaleData } from '@angular/common';
 import localeHr from '@angular/common/locales/hr';
-import { DeactivateModalComponent } from '../../../../common/deactivate-modal/deactivate-modal.component';
+import { ActionModalComponent } from '../../../../common/action-modal/action-modal.component';
 
 registerLocaleData(localeHr, 'hr');
 
@@ -93,12 +93,12 @@ export class SubscriberTicketsComponent implements OnInit {
   }
 
   openDeleteDialog(id: number, entity = 'ticket') {
-    const dialogRef = this.dialog.open(DeactivateModalComponent, {
-      data: entity,
+    const dialogRef = this.dialog.open(ActionModalComponent, {
+      data: {entity: entity, action: 'Delete'},
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result.event === 'Deactivate') {
+      if (result.event === 'Delete') {
         this.deleteTicket(id);
       }
     });
@@ -111,12 +111,12 @@ export class SubscriberTicketsComponent implements OnInit {
   }
 
   openResolveDialog(id: number, entity = 'ticket') {
-    const dialogRef = this.dialog.open(DeactivateModalComponent, {
-      data: entity,
+    const dialogRef = this.dialog.open(ActionModalComponent, {
+      data: {entity: entity, action: 'Resolve'},
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result.event === 'Deactivate') {
+      if (result.event === 'Resolve') {
         this.resolveTicket(id);
       }
     });

@@ -60,7 +60,7 @@ import { HomeLayoutComponent } from './common/layouts/home-layout/home-layout.co
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
 import { AuthExpiredInterceptor } from './auth/interceptors/auth-expired.interceptor';
-import { DeactivateModalComponent } from './common/deactivate-modal/deactivate-modal.component';
+import { ActionModalComponent } from './common/action-modal/action-modal.component';
 import { UserDetailsComponent } from './user/components/user-details/user-details.component';
 import { PublicationDetailsComponent } from './publication/components/publication-details/publication-details.component';
 import { SubscriptionTypeDetailsComponent } from './subscription_type/components/subscription-type-details/subscription-type-details.component';
@@ -97,7 +97,7 @@ import { SubscriptionTypeDetailsComponent } from './subscription_type/components
     PublicationInputComponent,
     LoginLayoutComponent,
     HomeLayoutComponent,
-    DeactivateModalComponent,
+    ActionModalComponent,
     UserDetailsComponent,
     PublicationDetailsComponent,
     SubscriptionTypeDetailsComponent,

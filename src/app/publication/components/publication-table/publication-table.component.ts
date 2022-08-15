@@ -6,7 +6,7 @@ import localeHr from '@angular/common/locales/hr';
 import { UserService } from '../../../service/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PublicationInputComponent } from '../publication-input/publication-input.component';
-import { DeactivateModalComponent } from '../../../common/deactivate-modal/deactivate-modal.component';
+import { ActionModalComponent } from '../../../common/action-modal/action-modal.component';
 import { PublicationDetailsComponent } from '../publication-details/publication-details.component';
 
 registerLocaleData(localeHr, 'hr');
@@ -56,19 +56,19 @@ export class PublicationTableComponent implements OnInit {
     });
   }
 
-  openDeactivateDialog(id: number, entity = 'publication') {
-    const dialogRef = this.dialog.open(DeactivateModalComponent, {
-      data: entity,
+  openArchiveDialog(id: number, entity = 'publication') {
+    const dialogRef = this.dialog.open(ActionModalComponent, {
+      data: {entity: entity, action: 'Archive'},
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result.event === 'Deactivate') {
-        this.deactivatePublication(id);
+      if (result.event === 'Archive') {
+        this.archivePublication(id);
       }
     });
   }
 
-  deactivatePublication(id: number) {
+  archivePublication(id: number) {
     this.publicationService.archivePublication(id).subscribe((data) => {
       this.publicationEvent.emit();
     });

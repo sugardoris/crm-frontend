@@ -4,7 +4,7 @@ import { SubscriptionTypeInputComponent } from '../subscription-type-input/subsc
 import { SubscriptionTypeService } from '../../../service/subscription-type.service';
 import { UserService } from '../../../service/user.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DeactivateModalComponent } from '../../../common/deactivate-modal/deactivate-modal.component';
+import { ActionModalComponent } from '../../../common/action-modal/action-modal.component';
 import { SubscriptionTypeDetailsComponent } from '../subscription-type-details/subscription-type-details.component';
 
 @Component({
@@ -45,8 +45,8 @@ export class SubscriptionTypeTableComponent implements OnInit {
   }
 
   openDeactivateDialog(id: number, entity = 'subscription type') {
-    const dialogRef = this.dialog.open(DeactivateModalComponent, {
-      data: entity,
+    const dialogRef = this.dialog.open(ActionModalComponent, {
+      data: {entity: entity, action: 'Deactivate'},
     });
 
     dialogRef.afterClosed().subscribe((result) => {

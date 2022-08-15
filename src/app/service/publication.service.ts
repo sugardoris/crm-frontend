@@ -21,11 +21,21 @@ export class PublicationService {
     );
   }
 
+  getActivePublications(): Observable<Publication[]> {
+    const url = `${PUBLICATION_API_URL}/active`;
+
+    return this.http.get<Publication[]>(url).pipe(
+      tap((_) => console.log('Fetched active publications')),
+      catchError(this.handleError<Publication[]>('getActivePublications', []))
+    );
+  }
+
   getPublication(id: string): Observable<Publication> {
     const url = `${PUBLICATION_API_URL}/${id}`;
     return this.http.get<Publication>(url).pipe(
       tap((publication) =>
-        console.log(`Fetched publication with name ${publication.name}`)),
+        console.log(`Fetched publication with name ${publication.name}`)
+      ),
       catchError(this.handleError<Publication>(`getPublication with id=${id}`))
     );
   }

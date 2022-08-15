@@ -3,7 +3,7 @@ import { User } from '../../../domain/user';
 import { UserService } from '../../../service/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserInputDialogComponent } from '../user-input-dialog/user-input-dialog.component';
-import { DeactivateModalComponent } from '../../../common/deactivate-modal/deactivate-modal.component';
+import { ActionModalComponent } from '../../../common/action-modal/action-modal.component';
 import { UserDetailsComponent } from '../user-details/user-details.component';
 
 @Component({
@@ -41,8 +41,8 @@ export class UserTableComponent implements OnInit {
   }
 
   openDeactivateDialog(id: number, entity = 'user') {
-    const dialogRef = this.dialog.open(DeactivateModalComponent, {
-      data: entity,
+    const dialogRef = this.dialog.open(ActionModalComponent, {
+      data: {entity: entity, action: 'Deactivate'}
     });
 
     dialogRef.afterClosed().subscribe((result) => {

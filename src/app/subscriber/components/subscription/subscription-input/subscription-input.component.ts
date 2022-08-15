@@ -101,7 +101,7 @@ export class SubscriptionInputComponent implements OnInit {
   }
 
   getPublications() {
-    this.publicationService.getPublications().subscribe((result) => {
+    this.publicationService.getActivePublications().subscribe((result) => {
       this.publicationOptions = result;
       if (this.editMode) {
         this.subscriptionForm.patchValue({
@@ -115,7 +115,7 @@ export class SubscriptionInputComponent implements OnInit {
   }
 
   getSubscriptionTypes() {
-    this.subscriptionTypeService.getSubscriptionTypes().subscribe((result) => {
+    this.subscriptionTypeService.getActiveSubscriptionTypes().subscribe((result) => {
       this.typeOptions = result;
       if (this.editMode) {
         this.subscriptionForm.patchValue({

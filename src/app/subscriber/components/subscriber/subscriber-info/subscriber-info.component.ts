@@ -5,7 +5,7 @@ import { SubscriberService } from '../../../../service/subscriber.service';
 
 import { registerLocaleData } from '@angular/common';
 import localeHr from '@angular/common/locales/hr';
-import { DeactivateModalComponent } from '../../../../common/deactivate-modal/deactivate-modal.component';
+import { ActionModalComponent } from '../../../../common/action-modal/action-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 
 registerLocaleData(localeHr, 'hr');
@@ -46,8 +46,8 @@ export class SubscriberInfoComponent implements OnInit {
   }
 
   openDeactivateDialog(id: number, entity = 'subscriber') {
-    const dialogRef = this.dialog.open(DeactivateModalComponent, {
-      data: entity,
+    const dialogRef = this.dialog.open(ActionModalComponent, {
+      data: {entity: entity, action: 'Deactivate'},
     });
 
     dialogRef.afterClosed().subscribe((result) => {

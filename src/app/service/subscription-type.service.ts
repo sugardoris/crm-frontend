@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of, tap } from 'rxjs';
-import {
-  SUBSCRIPTION_TYPE_API_URL,
-} from '../common/constants';
+import { SUBSCRIPTION_TYPE_API_URL } from '../common/constants';
 import { SubscriptionType } from '../domain/subscriptionType';
 
 @Injectable({
@@ -28,7 +26,11 @@ export class SubscriptionTypeService {
   getSubscriptionType(id: string): Observable<SubscriptionType> {
     const url = `${SUBSCRIPTION_TYPE_API_URL}/${id}`;
     return this.http.get<SubscriptionType>(url).pipe(
-      tap((data) => console.log(data)),
+      tap((subscriptionType) =>
+        console.log(
+          `Fetched subscription type with name ${subscriptionType.name}`
+        )
+      ),
       catchError(
         this.handleError<SubscriptionType>(`getSubscriptionType with id=${id}`)
       )

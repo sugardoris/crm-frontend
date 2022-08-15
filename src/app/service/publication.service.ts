@@ -24,7 +24,8 @@ export class PublicationService {
   getPublication(id: string): Observable<Publication> {
     const url = `${PUBLICATION_API_URL}/${id}`;
     return this.http.get<Publication>(url).pipe(
-      tap((data) => console.log(data)),
+      tap((publication) =>
+        console.log(`Fetched publication with name ${publication.name}`)),
       catchError(this.handleError<Publication>(`getPublication with id=${id}`))
     );
   }

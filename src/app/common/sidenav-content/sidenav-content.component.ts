@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../service/login.service';
 import { Router } from '@angular/router';
-import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-sidenav-content',
@@ -12,7 +11,6 @@ export class SidenavContentComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private userService: UserService
   ) {}
 
   ngOnInit(): void {}

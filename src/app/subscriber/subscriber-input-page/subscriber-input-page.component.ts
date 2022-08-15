@@ -77,7 +77,6 @@ export class SubscriberInputPageComponent implements OnInit {
   }
 
   setFormForEdit() {
-    console.log(this.subscriber);
     this.subscriberForm.patchValue({
       firstName: this.subscriber?.contactInfo.firstName,
       lastName: this.subscriber?.contactInfo.lastName,

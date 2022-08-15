@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { registerLocaleData } from '@angular/common';
 import localeHr from '@angular/common/locales/hr';
-import {DeactivateModalComponent} from "../../../../common/deactivate-modal/deactivate-modal.component";
+import { DeactivateModalComponent } from '../../../../common/deactivate-modal/deactivate-modal.component';
 
 registerLocaleData(localeHr, 'hr');
 
@@ -63,7 +63,10 @@ export class SubscriptionsTableComponent implements OnInit {
 
   openAddDialog() {
     const dialogRef = this.dialog.open(SubscriptionInputComponent, {
-      data: {mode: 'Add', subscriberId: this.route.snapshot.paramMap.get('id')},
+      data: {
+        mode: 'Add',
+        subscriberId: this.route.snapshot.paramMap.get('id'),
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -75,7 +78,11 @@ export class SubscriptionsTableComponent implements OnInit {
 
   openEditDialog(subscription: Subscription) {
     const dialogRef = this.dialog.open(SubscriptionInputComponent, {
-      data: { subscription: subscription, mode: 'Edit', subscriberId: this.route.snapshot.paramMap.get('id') },
+      data: {
+        subscription: subscription,
+        mode: 'Edit',
+        subscriberId: this.route.snapshot.paramMap.get('id'),
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -99,8 +106,10 @@ export class SubscriptionsTableComponent implements OnInit {
 
   deactivateSubscription(subscription: Subscription) {
     subscription.dateEnded = new Date().toISOString();
-    this.subscriptionService.editSubscription(subscription).subscribe((result) => {
-      this.getSubscriptions();
-    })
+    this.subscriptionService
+      .editSubscription(subscription)
+      .subscribe((result) => {
+        this.getSubscriptions();
+      });
   }
 }

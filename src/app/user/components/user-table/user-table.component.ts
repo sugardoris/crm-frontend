@@ -4,8 +4,6 @@ import { UserService } from '../../../service/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserInputDialogComponent } from '../user-input-dialog/user-input-dialog.component';
 import { DeactivateModalComponent } from '../../../common/deactivate-modal/deactivate-modal.component';
-import { Subscription } from '../../../domain/subscription';
-import { SubscriptionDetailsComponent } from '../../../subscriber/components/subscription/subscription-details/subscription-details.component';
 import { UserDetailsComponent } from '../user-details/user-details.component';
 
 @Component({

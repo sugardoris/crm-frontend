@@ -1,22 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import {Subscriber} from "../../../../domain/subscriber";
-import {SubscriberService} from "../../../../service/subscriber.service";
+import { Subscriber } from '../../../../domain/subscriber';
+import { SubscriberService } from '../../../../service/subscriber.service';
 
 @Component({
   selector: 'app-subscriber-table',
   templateUrl: './subscriber-table.component.html',
-  styleUrls: ['./subscriber-table.component.css']
+  styleUrls: ['./subscriber-table.component.css'],
 })
 export class SubscriberTableComponent implements OnInit {
-
-  tableColumns: string[] = ["name", "oib", "email", "phone", "address", "city", "active"];
+  tableColumns: string[] = [
+    'name',
+    'oib',
+    'email',
+    'phone',
+    'address',
+    'city',
+    'active',
+  ];
   subscribers: Subscriber[] = [];
   dataSource: Subscriber[] = [];
   loading: boolean = false;
 
-  constructor(
-    private subscriberService: SubscriberService
-  ) { }
+  constructor(private subscriberService: SubscriberService) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -24,12 +29,13 @@ export class SubscriberTableComponent implements OnInit {
   }
 
   getSubscribers() {
-    this.subscriberService.getSubscribers().subscribe(
-      (data) => {
+    this.subscriberService
+      .getSubscribers()
+      .subscribe((data) => {
         this.subscribers = data;
         this.dataSource = this.subscribers;
-      }).add(() => this.loading = false);
+      })
+      .add(() => (this.loading = false));
   }
-
 }
 

@@ -1,25 +1,22 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {catchError, Observable, of, tap} from "rxjs";
-import {CITY_API_URL} from "../common/constants";
-import {City} from "../domain/city";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, Observable, of, tap } from 'rxjs';
+import { CITY_API_URL } from '../common/constants';
+import { City } from '../domain/city';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CityService {
-
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
   getCities(): Observable<City[]> {
     return this.http.get<City[]>(CITY_API_URL).pipe(
-      tap(_ => console.log('Fetchet cities')),
+      tap((_) => console.log('Fetchet cities')),
       catchError(this.handleError<City[]>('getCities', []))
     );
   }
@@ -36,6 +33,6 @@ export class CityService {
       console.error(operation);
       console.error(error);
       return of(result as T);
-    }
+    };
   }
 }

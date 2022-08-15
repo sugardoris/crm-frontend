@@ -1,29 +1,29 @@
-import {Component, OnInit} from '@angular/core';
-import {Subscriber} from "../../../../domain/subscriber";
-import {ActivatedRoute} from "@angular/router";
-import {SubscriberService} from "../../../../service/subscriber.service";
+import { Component, OnInit } from '@angular/core';
+import { Subscriber } from '../../../../domain/subscriber';
+import { ActivatedRoute } from '@angular/router';
+import { SubscriberService } from '../../../../service/subscriber.service';
 
 import { registerLocaleData } from '@angular/common';
 import localeHr from '@angular/common/locales/hr';
-import {DeactivateModalComponent} from "../../../../common/deactivate-modal/deactivate-modal.component";
-import {MatDialog} from "@angular/material/dialog";
+import { DeactivateModalComponent } from '../../../../common/deactivate-modal/deactivate-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+
 registerLocaleData(localeHr, 'hr');
 
 @Component({
   selector: 'app-subscriber-info',
   templateUrl: './subscriber-info.component.html',
-  styleUrls: ['./subscriber-info.component.css']
+  styleUrls: ['./subscriber-info.component.css'],
 })
 export class SubscriberInfoComponent implements OnInit {
-
   subscriber?: Subscriber;
   loading: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private subscriberService: SubscriberService,
-    public dialog: MatDialog,
-  ) { }
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -34,33 +34,32 @@ export class SubscriberInfoComponent implements OnInit {
     const subscriberId = this.route.snapshot.paramMap.get('id');
 
     if (subscriberId !== null) {
-      this.subscriberService.getSubscriber(subscriberId).subscribe(
-        (data) => {
+      this.subscriberService
+        .getSubscriber(subscriberId)
+        .subscribe((data) => {
           this.subscriber = data;
-        }
-      ).add(() => this.loading = false)
+        })
+        .add(() => (this.loading = false));
     } else {
-      console.error('Subscriber id cannot be null.')
+      console.error('Subscriber id cannot be null.');
     }
   }
 
   openDeactivateDialog(id: number, entity = 'subscriber') {
-    const dialogRef = this.dialog.open(DeactivateModalComponent,
-      {data: entity});
+    const dialogRef = this.dialog.open(DeactivateModalComponent, {
+      data: entity,
+    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result.event === "Deactivate") {
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.event === 'Deactivate') {
         this.deactivateSubscriber(id);
       }
     });
   }
 
   deactivateSubscriber(id: number) {
-    this.subscriberService.deactivateSubscriber(id).subscribe(
-      (data) => {
-        this.getSubscriber();
-      }
-    )
+    this.subscriberService.deactivateSubscriber(id).subscribe((data) => {
+      this.getSubscriber();
+    });
   }
-
 }

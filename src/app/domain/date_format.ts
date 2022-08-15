@@ -6,6 +6,6 @@ export const MY_DATE_FORMAT = {
     dateInput: 'DD/MM/YYYY',
     monthYearLabel: 'MMMM YYYY',
     dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY'
-  }
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
 };

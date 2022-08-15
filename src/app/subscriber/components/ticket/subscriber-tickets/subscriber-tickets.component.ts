@@ -8,8 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { registerLocaleData } from '@angular/common';
 import localeHr from '@angular/common/locales/hr';
-import {SubscriptionInputComponent} from "../../subscription/subscription-input/subscription-input.component";
-import {DeactivateModalComponent} from "../../../../common/deactivate-modal/deactivate-modal.component";
+import { DeactivateModalComponent } from '../../../../common/deactivate-modal/deactivate-modal.component';
 
 registerLocaleData(localeHr, 'hr');
 
@@ -64,7 +63,10 @@ export class SubscriberTicketsComponent implements OnInit {
 
   openAddDialog() {
     const dialogRef = this.dialog.open(TicketInputComponent, {
-      data: {mode: 'Add', subscriberId: this.route.snapshot.paramMap.get('id')}
+      data: {
+        mode: 'Add',
+        subscriberId: this.route.snapshot.paramMap.get('id'),
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -76,7 +78,11 @@ export class SubscriberTicketsComponent implements OnInit {
 
   openEditDialog(ticket: Ticket) {
     const dialogRef = this.dialog.open(TicketInputComponent, {
-      data: { ticket: ticket, mode: 'Edit', subscriberId: this.route.snapshot.paramMap.get('id') },
+      data: {
+        ticket: ticket,
+        mode: 'Edit',
+        subscriberId: this.route.snapshot.paramMap.get('id'),
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -101,7 +107,7 @@ export class SubscriberTicketsComponent implements OnInit {
   deleteTicket(id: number) {
     this.ticketService.deleteTicket(id).subscribe((result) => {
       this.getTickets();
-    })
+    });
   }
 
   openResolveDialog(id: number, entity = 'ticket') {
@@ -119,6 +125,6 @@ export class SubscriberTicketsComponent implements OnInit {
   resolveTicket(id: number) {
     this.ticketService.resolveTicket(id).subscribe((result) => {
       this.getTickets();
-    })
+    });
   }
 }

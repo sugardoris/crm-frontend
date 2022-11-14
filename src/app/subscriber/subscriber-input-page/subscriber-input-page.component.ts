@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ContactInfo, Subscriber } from '../../domain/subscriber';
+import { Subscriber } from '../../domain/subscriber';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { City } from '../../domain/city';
 import { ThemePalette } from '@angular/material/core';
@@ -29,11 +29,10 @@ export class SubscriberInputPageComponent implements OnInit {
       Validators.maxLength(11),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone1: new FormControl('', [
+    phone: new FormControl('', [
       Validators.required,
       Validators.maxLength(50),
     ]),
-    phone2: new FormControl('', Validators.maxLength(50)),
     billingAddress: new FormControl('', [
       Validators.required,
       Validators.maxLength(100),
@@ -79,16 +78,15 @@ export class SubscriberInputPageComponent implements OnInit {
 
   setFormForEdit() {
     this.subscriberForm.patchValue({
-      firstName: this.subscriber?.contactInfo.firstName,
-      lastName: this.subscriber?.contactInfo.lastName,
-      companyName: this.subscriber?.contactInfo.companyName,
-      oib: this.subscriber?.contactInfo.oib,
-      email: this.subscriber?.contactInfo.email,
-      phone1: this.subscriber?.contactInfo.phone1,
-      phone2: this.subscriber?.contactInfo.phone2,
-      billingAddress: this.subscriber?.contactInfo.billingAddress,
-      legalEntity: this.subscriber?.contactInfo.legalEntity,
-      city: this.subscriber?.contactInfo.city,
+      firstName: this.subscriber?.firstName,
+      lastName: this.subscriber?.lastName,
+      companyName: this.subscriber?.companyName,
+      oib: this.subscriber?.oib,
+      email: this.subscriber?.email,
+      phone: this.subscriber?.phone,
+      billingAddress: this.subscriber?.billingAddress,
+      legalEntity: this.subscriber?.legalEntity,
+      city: this.subscriber?.city,
     });
   }
 
@@ -100,21 +98,16 @@ export class SubscriberInputPageComponent implements OnInit {
       this.formError = false;
     }
 
-    let contactInfo: ContactInfo = {
+    let subscriber: Subscriber = {
       firstName: this.subscriberForm.value.firstName,
       lastName: this.subscriberForm.value.lastName,
       companyName: this.subscriberForm.value.companyName,
       oib: this.subscriberForm.value.oib,
       email: this.subscriberForm.value.email,
-      phone1: this.subscriberForm.value.phone1,
-      phone2: this.subscriberForm.value.phone2,
+      phone: this.subscriberForm.value.phone,
       billingAddress: this.subscriberForm.value.billingAddress,
       legalEntity: this.subscriberForm.value.legalEntity,
       city: this.subscriberForm.value.city,
-    };
-
-    let subscriber: Subscriber = {
-      contactInfo: contactInfo,
     };
 
     if (this.editMode) {

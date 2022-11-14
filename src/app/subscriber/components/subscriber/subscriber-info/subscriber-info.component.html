@@ -5,40 +5,34 @@
 <div class="card-wrapper" *ngIf="!loading && subscriber">
   <mat-card class="user-details">
     <mat-card-title class="card-title">
-      <div *ngIf="subscriber.contactInfo?.legalEntity">
-        {{subscriber.contactInfo?.companyName}}
+      <div *ngIf="subscriber.legalEntity">
+        {{subscriber.companyName}}
       </div>
-      <div *ngIf="!subscriber.contactInfo?.legalEntity">
-        {{subscriber.contactInfo?.firstName + ' ' + subscriber.contactInfo?.lastName}}
+      <div *ngIf="!subscriber.legalEntity">
+        {{subscriber.firstName + ' ' + subscriber.lastName}}
       </div>
     </mat-card-title>
     <mat-card-content class="card-content">
       <div>
-        <span class="card-labels">OIB:</span><span class="card-data">{{subscriber.contactInfo?.oib}}</span>
+        <span class="card-labels">OIB:</span><span class="card-data">{{subscriber.oib}}</span>
       </div>
       <div>
-        <span class="card-labels">Email:</span><span class="card-data">{{subscriber.contactInfo?.email}}</span>
+        <span class="card-labels">Email:</span><span class="card-data">{{subscriber.email}}</span>
       </div>
       <div>
-        <span class="card-labels">Phone1:</span><span class="card-data">{{subscriber.contactInfo?.phone1}}</span>
-      </div>
-      <div>
-        <span class="card-labels">Phone2:</span><span class="card-data">
-          <span *ngIf="subscriber.contactInfo?.phone2 != null">{{subscriber.contactInfo?.phone2}}</span>
-          <span *ngIf="subscriber.contactInfo?.phone2 === null"> </span>
-        </span>
+        <span class="card-labels">Phone:</span><span class="card-data">{{subscriber.phone}}</span>
       </div>
       <div>
         <span class="card-labels">Address:</span><span class="card-data">
-        {{subscriber.contactInfo?.billingAddress + ', ' + subscriber.contactInfo?.city?.name + ', ' + subscriber.contactInfo?.city?.postcode}}
+        {{subscriber.billingAddress + ', ' + subscriber.city?.name + ', ' + subscriber.city?.postcode}}
       </span>
       </div>
       <div>
         <span class="card-labels">Legal entity:</span><span class="card-data">
-        <span *ngIf="subscriber.contactInfo?.legalEntity">
+        <span *ngIf="subscriber.legalEntity">
           <mat-icon color="primary">check_circle_outline</mat-icon>
         </span>
-        <span *ngIf="!subscriber.contactInfo?.legalEntity">
+        <span *ngIf="!subscriber.legalEntity">
           <mat-icon color="accent">highlight_off</mat-icon>
         </span>
       </span>

@@ -8,22 +8,22 @@
     <ng-container matColumnDef="firstIssue">
       <th mat-header-cell *matHeaderCellDef> First issue date</th>
       <td mat-cell *matCellDef="let publication">
-        {{publication.publishingInfo?.firstIssueDate | date:'shortDate':'UTC+2':'hr'}} </td>
+        {{publication.firstIssueDate | date:'shortDate':'UTC+2':'hr'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="issuePeriod">
       <th mat-header-cell *matHeaderCellDef> Issue period</th>
-      <td mat-cell *matCellDef="let publication"> {{publication.publishingInfo?.issuePeriod}} </td>
+      <td mat-cell *matCellDef="let publication"> {{publication.issuePeriod}} </td>
     </ng-container>
 
     <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef> Price</th>
-      <td mat-cell *matCellDef="let publication"> {{publication.publishingInfo?.price | currency:'EUR'}}</td>
+      <td mat-cell *matCellDef="let publication"> {{publication.price | currency:'EUR'}}</td>
     </ng-container>
 
     <ng-container matColumnDef="comesOut">
       <th mat-header-cell *matHeaderCellDef> Comes out</th>
-      <td mat-cell *matCellDef="let publication"> {{publication.publishingInfo?.comesOut}} </td>
+      <td mat-cell *matCellDef="let publication"> {{publication.comesOut}} </td>
     </ng-container>
 
     <ng-container matColumnDef="active">

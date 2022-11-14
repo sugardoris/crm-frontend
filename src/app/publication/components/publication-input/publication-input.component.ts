@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import {
   Publication,
   PublicationPeriod,
-  PublishingInfo,
 } from '../../../domain/publication';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
@@ -68,20 +67,15 @@ export class PublicationInputComponent implements OnInit {
       this.formError = false;
     }
 
-    let publishingInfo: PublishingInfo = {
+    let publication: Publication = {
+      name: this.publicationForm.value.name,
       firstIssueDate: this.publicationForm.value.firstIssue,
       issuePeriod: this.publicationForm.value.issuePeriod,
       comesOut: this.publicationForm.value.comesOut,
       price: this.publicationForm.value.price,
     };
 
-    let publication: Publication = {
-      name: this.publicationForm.value.name,
-      publishingInfo: publishingInfo,
-    };
-
     if (this.editMode) {
-      publication.publishingInfo.id = this.data.publication.publishingInfo.id;
       publication.id = this.data.publication.id;
 
       this.publicationService.editPublication(publication).subscribe((data) => {
@@ -97,10 +91,10 @@ export class PublicationInputComponent implements OnInit {
   getPublicationData(publication: Publication) {
     this.publicationForm.patchValue({
       name: publication.name,
-      firstIssue: new Date(publication.publishingInfo.firstIssueDate),
-      issuePeriod: publication.publishingInfo.issuePeriod,
-      price: publication.publishingInfo.price,
-      comesOut: publication.publishingInfo.comesOut,
+      firstIssue: new Date(publication.firstIssueDate),
+      issuePeriod: publication.issuePeriod,
+      price: publication.price,
+      comesOut: publication.comesOut,
     });
   }
 }

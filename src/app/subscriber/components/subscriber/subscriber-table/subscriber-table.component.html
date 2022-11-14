@@ -7,35 +7,35 @@
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name</th>
       <td mat-cell *matCellDef="let subscriber">
-        <div *ngIf="subscriber.contactInfo?.legalEntity">{{subscriber.contactInfo?.companyName}}</div>
+        <div *ngIf="subscriber.legalEntity">{{subscriber.companyName}}</div>
         <div
-          *ngIf="!subscriber.contactInfo?.legalEntity">{{subscriber.contactInfo?.firstName + ' ' + subscriber.contactInfo?.lastName}}</div>
+          *ngIf="!subscriber.legalEntity">{{subscriber.firstName + ' ' + subscriber.lastName}}</div>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="oib">
       <th mat-header-cell *matHeaderCellDef> OIB</th>
-      <td mat-cell *matCellDef="let subscriber"> {{subscriber.contactInfo?.oib}} </td>
+      <td mat-cell *matCellDef="let subscriber"> {{subscriber.oib}} </td>
     </ng-container>
 
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef> Email</th>
-      <td mat-cell *matCellDef="let subscriber"> {{subscriber.contactInfo?.email}} </td>
+      <td mat-cell *matCellDef="let subscriber"> {{subscriber.email}} </td>
     </ng-container>
 
     <ng-container matColumnDef="phone">
       <th mat-header-cell *matHeaderCellDef> Phone</th>
-      <td mat-cell *matCellDef="let subscriber"> {{subscriber.contactInfo?.phone1}} </td>
+      <td mat-cell *matCellDef="let subscriber"> {{subscriber.phone1}} </td>
     </ng-container>
 
     <ng-container matColumnDef="address">
       <th mat-header-cell *matHeaderCellDef> Address</th>
-      <td mat-cell *matCellDef="let subscriber"> {{subscriber.contactInfo?.billingAddress}} </td>
+      <td mat-cell *matCellDef="let subscriber"> {{subscriber.billingAddress}} </td>
     </ng-container>
 
     <ng-container matColumnDef="city">
       <th mat-header-cell *matHeaderCellDef> City</th>
-      <td mat-cell *matCellDef="let subscriber"> {{subscriber.contactInfo?.city.name}} </td>
+      <td mat-cell *matCellDef="let subscriber"> {{subscriber.city.name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="active">

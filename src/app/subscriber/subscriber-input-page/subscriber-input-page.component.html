@@ -48,22 +48,12 @@
           Email must be valid
         </mat-error>
       </mat-form-field>
-    </div>
-    <div>
       <mat-form-field appearance="outline" class="input-field">
-        <mat-label>Phone 1</mat-label>
-        <input matInput formControlName="phone1">
-        <mat-error *ngIf="subscriberForm.controls['phone1'].hasError('required')">Phone number is required</mat-error>
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone">
+        <mat-error *ngIf="subscriberForm.controls['phone'].hasError('required')">Phone number is required</mat-error>
         <mat-error
-          *ngIf="subscriberForm.controls['phone1'].hasError('maxlength') && !subscriberForm.controls['phone1'].hasError('required')">
-          Phone number must have less than 50 characters
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="input-field">
-        <mat-label>Phone 2</mat-label>
-        <input matInput formControlName="phone2">
-        <mat-error
-          *ngIf="subscriberForm.controls['phone2'].hasError('maxlength')">
+          *ngIf="subscriberForm.controls['phone'].hasError('maxlength') && !subscriberForm.controls['phone'].hasError('required')">
           Phone number must have less than 50 characters
         </mat-error>
       </mat-form-field>

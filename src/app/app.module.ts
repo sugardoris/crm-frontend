@@ -36,7 +36,6 @@ import { SubscriberInfoComponent } from './subscriber/components/subscriber/subs
 import { SubscriptionsTableComponent } from './subscriber/components/subscription/subscriptions-table/subscriptions-table.component';
 import { SubscriberTicketsComponent } from './subscriber/components/ticket/subscriber-tickets/subscriber-tickets.component';
 import { CityTableComponent } from './city/components/city-table/city-table.component';
-import { CitySearchComponent } from './city/components/city-search/city-search.component';
 import { CityLandingPageComponent } from './city/city-landing-page/city-landing-page.component';
 import { UserLandingPageComponent } from './user/user-landing-page/user-landing-page.component';
 import { UserTableComponent } from './user/components/user-table/user-table.component';
@@ -74,7 +73,6 @@ import { SubscriptionTypeDetailsComponent } from './subscription_type/components
     SubscriptionsTableComponent,
     SubscriberTicketsComponent,
     CityTableComponent,
-    CitySearchComponent,
     CityLandingPageComponent,
     UserLandingPageComponent,
     UserTableComponent,

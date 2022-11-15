@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscriber } from '../../../../domain/subscriber';
 import { SubscriberService } from '../../../../service/subscriber.service';
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-subscriber-table',
@@ -18,7 +19,7 @@ export class SubscriberTableComponent implements OnInit {
     'active',
   ];
   subscribers: Subscriber[] = [];
-  dataSource: Subscriber[] = [];
+  dataSource = new MatTableDataSource<Subscriber>();
   loading: boolean = false;
 
   constructor(private subscriberService: SubscriberService) {}
@@ -33,9 +34,14 @@ export class SubscriberTableComponent implements OnInit {
       .getSubscribers()
       .subscribe((data) => {
         this.subscribers = data;
-        this.dataSource = this.subscribers;
+        this.dataSource = new MatTableDataSource<Subscriber>(this.subscribers);
       })
       .add(() => (this.loading = false));
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
 

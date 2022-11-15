@@ -2,3 +2,19 @@ th {
   color: #004aad;
   font-size: 16px;
 }
+
+.subscriber-search {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.input-field {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}

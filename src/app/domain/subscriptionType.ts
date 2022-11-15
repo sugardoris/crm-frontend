@@ -3,6 +3,8 @@ export interface SubscriptionType {
   name: string;
   discount: string;
   subscriptionPeriod: SubscriptionPeriod;
+  validFrom: string;
+  validTo?: string;
   active?: boolean;
   createdBy?: string;
   updatedBy?: string;

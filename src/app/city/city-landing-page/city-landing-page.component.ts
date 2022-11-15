@@ -1,8 +1,8 @@
-import { Component, OnInit} from '@angular/core';
-import { FormControl, FormGroup,Validators } from '@angular/forms';
-import { CityService } from '../../service/city.service';
-import { City } from '../../domain/city';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {CityService} from '../../service/city.service';
+import {City} from '../../domain/city';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-city-landing-page',

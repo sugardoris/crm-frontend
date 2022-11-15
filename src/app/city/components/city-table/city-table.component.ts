@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import { City } from '../../../domain/city';
 import {MatTableDataSource} from "@angular/material/table";
 
@@ -15,6 +15,10 @@ export class CityTableComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    this.dataSource = new MatTableDataSource<City>(this.cities);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
     this.dataSource = new MatTableDataSource<City>(this.cities);
   }
 

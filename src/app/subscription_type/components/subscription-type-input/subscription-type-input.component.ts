@@ -66,6 +66,8 @@ export class SubscriptionTypeInputComponent implements OnInit {
       name: this.subscriptionTypeForm.value.name,
       discount: this.subscriptionTypeForm.value.discount,
       subscriptionPeriod: this.subscriptionTypeForm.value.period,
+      validFrom: '',
+      validTo: ''
     };
 
     if (this.editMode) {

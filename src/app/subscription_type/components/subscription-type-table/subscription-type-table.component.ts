@@ -13,7 +13,7 @@ import { SubscriptionTypeDetailsComponent } from '../subscription-type-details/s
   styleUrls: ['./subscription-type-table.component.css'],
 })
 export class SubscriptionTypeTableComponent implements OnInit {
-  tableColumns: string[] = ['name', 'period', 'discount', 'active'];
+  tableColumns: string[] = ['name', 'period', 'discount', 'validFrom', 'validTo', 'active'];
   @Input() dataSource: SubscriptionType[] = [];
   isUserAdmin: boolean = false;
   @Output() subscriptionTypeEvent = new EventEmitter();

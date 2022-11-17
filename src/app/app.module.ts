@@ -61,6 +61,7 @@ import { ActionModalComponent } from './common/action-modal/action-modal.compone
 import { UserDetailsComponent } from './user/components/user-details/user-details.component';
 import { PublicationDetailsComponent } from './publication/components/publication-details/publication-details.component';
 import { SubscriptionTypeDetailsComponent } from './subscription_type/components/subscription-type-details/subscription-type-details.component';
+import { ContentHeaderComponent } from './common/content-header/content-header.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { SubscriptionTypeDetailsComponent } from './subscription_type/components
     UserDetailsComponent,
     PublicationDetailsComponent,
     SubscriptionTypeDetailsComponent,
+    ContentHeaderComponent,
   ],
   imports: [
     BrowserModule,

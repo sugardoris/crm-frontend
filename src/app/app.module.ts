@@ -62,6 +62,9 @@ import { UserDetailsComponent } from './user/components/user-details/user-detail
 import { PublicationDetailsComponent } from './publication/components/publication-details/publication-details.component';
 import { SubscriptionTypeDetailsComponent } from './subscription_type/components/subscription-type-details/subscription-type-details.component';
 import { ContentHeaderComponent } from './common/content-header/content-header.component';
+import { TableComponent } from './common/table/table.component';
+import { MainTitleComponent } from './common/main-title/main-title.component';
+import { AddButtonComponent } from './common/add-button/add-button.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +100,9 @@ import { ContentHeaderComponent } from './common/content-header/content-header.c
     PublicationDetailsComponent,
     SubscriptionTypeDetailsComponent,
     ContentHeaderComponent,
+    TableComponent,
+    MainTitleComponent,
+    AddButtonComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,9 @@
 <div class="main-container">
-  <app-content-header [entity]="'Publication'"></app-content-header>
+  <app-main-title [entity]="'Publications'"></app-main-title>
+
+  <div class="button-new-wrapper" *ngIf="isUserAdmin">
+    <button mat-raised-button color="primary" class="button-new" (click)="openAddDialog()">Add New Publication</button>
+  </div>
 
   <div class="table-container">
     <div class="table-loading" *ngIf="loading">

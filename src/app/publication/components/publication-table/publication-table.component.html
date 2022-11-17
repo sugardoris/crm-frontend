@@ -54,9 +54,9 @@
       <mat-icon>edit</mat-icon>
       <span>Edit</span>
     </button>
-    <button mat-menu-item [disabled]="!isUserAdmin" (click)="openArchiveDialog(publication.id)">
+    <button mat-menu-item [disabled]="!isUserAdmin" (click)="openDeactivateDialog(publication.id)">
       <mat-icon>archive</mat-icon>
-      <span>Archive</span>
+      <span>Deactivate</span>
     </button>
   </ng-template>
 </mat-menu>

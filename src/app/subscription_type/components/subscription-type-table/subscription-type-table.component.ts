@@ -1,11 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SubscriptionType } from '../../../domain/subscriptionType';
-import { SubscriptionTypeInputComponent } from '../subscription-type-input/subscription-type-input.component';
 import { SubscriptionTypeService } from '../../../service/subscription-type.service';
 import { UserService } from '../../../service/user.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ActionModalComponent } from '../../../common/action-modal/action-modal.component';
-import { SubscriptionTypeDetailsComponent } from '../subscription-type-details/subscription-type-details.component';
 
 @Component({
   selector: 'app-subscription-type-table',
@@ -15,8 +12,12 @@ import { SubscriptionTypeDetailsComponent } from '../subscription-type-details/s
 export class SubscriptionTypeTableComponent implements OnInit {
   tableColumns: string[] = ['name', 'period', 'discount', 'validFrom', 'validTo', 'active'];
   @Input() dataSource: SubscriptionType[] = [];
+
   isUserAdmin: boolean = false;
-  @Output() subscriptionTypeEvent = new EventEmitter();
+
+  @Output() editEvent = new EventEmitter();
+  @Output() deactivateEvent = new EventEmitter();
+  @Output() detailsEvent = new EventEmitter();
 
   constructor(
     private subscriptionTypeService: SubscriptionTypeService,
@@ -33,40 +34,14 @@ export class SubscriptionTypeTableComponent implements OnInit {
   }
 
   openEditDialog(subscriptionType: SubscriptionType) {
-    const dialogRef = this.dialog.open(SubscriptionTypeInputComponent, {
-      data: { subscriptionType: subscriptionType, mode: 'Edit' },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result.event === 'Edit') {
-        this.subscriptionTypeEvent.emit();
-      }
-    });
+    this.editEvent.emit(subscriptionType);
   }
 
-  openDeactivateDialog(id: number, entity = 'subscription type') {
-    const dialogRef = this.dialog.open(ActionModalComponent, {
-      data: {entity: entity, action: 'Deactivate'},
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result.event === 'Deactivate') {
-        this.deactivateSubscriptionType(id);
-      }
-    });
-  }
-
-  deactivateSubscriptionType(id: number) {
-    this.subscriptionTypeService
-      .deactivateSubscriptionType(id)
-      .subscribe((data) => {
-        this.subscriptionTypeEvent.emit();
-      });
+  openDeactivateDialog(id: number) {
+    this.deactivateEvent.emit(id);
   }
 
   openDetailsDialog(subscriptionType: SubscriptionType) {
-    const dialogRef = this.dialog.open(SubscriptionTypeDetailsComponent, {
-      data: subscriptionType,
-    });
+    this.detailsEvent.emit(subscriptionType);
   }
 }

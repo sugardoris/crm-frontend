@@ -5,9 +5,6 @@ import { registerLocaleData } from '@angular/common';
 import localeHr from '@angular/common/locales/hr';
 import { UserService } from '../../../service/user.service';
 import { MatDialog } from '@angular/material/dialog';
-import { PublicationInputComponent } from '../publication-input/publication-input.component';
-import { ActionModalComponent } from '../../../common/action-modal/action-modal.component';
-import { PublicationDetailsComponent } from '../publication-details/publication-details.component';
 
 registerLocaleData(localeHr, 'hr');
 
@@ -28,7 +25,9 @@ export class PublicationTableComponent implements OnInit {
   @Input() dataSource: Publication[] = [];
 
   isUserAdmin: boolean = false;
-  @Output() publicationEvent = new EventEmitter();
+  @Output() editEvent = new EventEmitter();
+  @Output() deactivateEvent = new EventEmitter();
+  @Output() detailsEvent = new EventEmitter();
 
   constructor(
     private publicationService: PublicationService,
@@ -45,38 +44,14 @@ export class PublicationTableComponent implements OnInit {
   }
 
   openEditDialog(publication: Publication) {
-    const dialogRef = this.dialog.open(PublicationInputComponent, {
-      data: { publication: publication, mode: 'Edit' },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result.event === 'Edit') {
-        this.publicationEvent.emit();
-      }
-    });
+    this.editEvent.emit(publication);
   }
 
-  openArchiveDialog(id: number, entity = 'publication') {
-    const dialogRef = this.dialog.open(ActionModalComponent, {
-      data: {entity: entity, action: 'Archive'},
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result.event === 'Archive') {
-        this.archivePublication(id);
-      }
-    });
-  }
-
-  archivePublication(id: number) {
-    this.publicationService.archivePublication(id).subscribe((data) => {
-      this.publicationEvent.emit();
-    });
+  openDeactivateDialog(id: number) {
+    this.deactivateEvent.emit(id);
   }
 
   openDetailsDialog(publication: Publication) {
-    const dialogRef = this.dialog.open(PublicationDetailsComponent, {
-      data: publication,
-    });
+    this.detailsEvent.emit(publication);
   }
 }

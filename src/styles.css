@@ -23,6 +23,13 @@ h1 {font-family: Roboto, "Helvetica Neue", sans-serif;}
   padding-bottom: 20px;
 }
 
+.add-button-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
 .search-button {
   margin-top: 18px;
 }

@@ -2,9 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from '../../../domain/user';
 import { UserService } from '../../../service/user.service';
 import { MatDialog } from '@angular/material/dialog';
-import { UserInputDialogComponent } from '../user-input-dialog/user-input-dialog.component';
-import { ActionModalComponent } from '../../../common/action-modal/action-modal.component';
-import { UserDetailsComponent } from '../user-details/user-details.component';
 
 @Component({
   selector: 'app-user-table',
@@ -13,10 +10,13 @@ import { UserDetailsComponent } from '../user-details/user-details.component';
 })
 export class UserTableComponent implements OnInit {
   isUserAdmin: boolean = false;
-  @Output() userEvent = new EventEmitter();
 
   tableColumns: string[] = ['username', 'fullName', 'role', 'status'];
   @Input() dataSource: User[] = [];
+
+  @Output() editEvent = new EventEmitter();
+  @Output() deactivateEvent = new EventEmitter();
+  @Output() detailsEvent = new EventEmitter();
 
   constructor(private userService: UserService, public dialog: MatDialog) {}
 
@@ -29,36 +29,14 @@ export class UserTableComponent implements OnInit {
   }
 
   openEditDialog(user: User) {
-    const dialogRef = this.dialog.open(UserInputDialogComponent, {
-      data: { user: user, mode: 'Edit' },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result.event === 'Edit') {
-        this.userEvent.emit();
-      }
-    });
+    this.editEvent.emit(user);
   }
 
-  openDeactivateDialog(id: number, entity = 'user') {
-    const dialogRef = this.dialog.open(ActionModalComponent, {
-      data: {entity: entity, action: 'Deactivate'}
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result.event === 'Deactivate') {
-        this.deactivateUser(id);
-      }
-    });
-  }
-
-  deactivateUser(id: number) {
-    this.userService.deactivateUser(id).subscribe((data) => {
-      this.userEvent.emit();
-    });
+  openDeactivateDialog(id: number) {
+    this.deactivateEvent.emit(id);
   }
 
   openDetailsDialog(user: User) {
-    const dialogRef = this.dialog.open(UserDetailsComponent, { data: user });
+    this.detailsEvent.emit(user);
   }
 }

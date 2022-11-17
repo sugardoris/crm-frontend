@@ -62,12 +62,12 @@ export class PublicationService {
       );
   }
 
-  archivePublication(id: number): Observable<Publication> {
+  deactivatePublication(id: number): Observable<Publication> {
     const url = `${PUBLICATION_API_URL}/${id}/archive`;
 
     return this.http.post<Publication>(url, this.httpOptions).pipe(
-      tap((_) => console.log(`Archived publication with id ${id}`)),
-      catchError(this.handleError<Publication>('archivePublication'))
+      tap((_) => console.log(`Deactivated publication with id ${id}`)),
+      catchError(this.handleError<Publication>('deactivatePublication'))
     );
   }
 

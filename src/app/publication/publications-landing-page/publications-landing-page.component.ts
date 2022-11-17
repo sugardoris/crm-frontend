@@ -4,6 +4,8 @@ import { PublicationInputComponent } from '../components/publication-input/publi
 import { UserService } from '../../service/user.service';
 import { Publication } from '../../domain/publication';
 import { PublicationService } from '../../service/publication.service';
+import {ActionModalComponent} from "../../common/action-modal/action-modal.component";
+import {PublicationDetailsComponent} from "../components/publication-details/publication-details.component";
 
 @Component({
   selector: 'app-publications-landing-page',
@@ -32,10 +34,42 @@ export class PublicationsLandingPageComponent implements OnInit {
       data: { mode: 'Add' },
     });
 
+    dialogRef.afterClosed().subscribe(() => {
+      this.getPublications();
+    });
+  }
+
+  openEditDialog(publication: Publication) {
+    const dialogRef = this.dialog.open(PublicationInputComponent, {
+      data: { publication: publication, mode: 'Edit' },
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.getPublications();
+    });
+  }
+
+  openDeactivateDialog(id: number, entity = 'publication') {
+    const dialogRef = this.dialog.open(ActionModalComponent, {
+      data: {entity: entity, action: 'Deactivate'},
+    });
+
     dialogRef.afterClosed().subscribe((result) => {
-      if (result.event === 'Submit') {
-        this.getPublications();
+      if (result.event === 'Deactivate') {
+        this.deactivatePublication(id);
       }
+    });
+  }
+
+  openDetailsDialog(publication: Publication) {
+    this.dialog.open(PublicationDetailsComponent, {
+      data: publication,
+    });
+  }
+
+  deactivatePublication(id: number) {
+    this.publicationService.deactivatePublication(id).subscribe(() => {
+      this.getPublications();
     });
   }
 

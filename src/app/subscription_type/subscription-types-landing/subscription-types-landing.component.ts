@@ -4,6 +4,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../service/user.service';
 import { SubscriptionType } from '../../domain/subscriptionType';
 import { SubscriptionTypeService } from '../../service/subscription-type.service';
+import {ActionModalComponent} from "../../common/action-modal/action-modal.component";
+import {
+  SubscriptionTypeDetailsComponent
+} from "../components/subscription-type-details/subscription-type-details.component";
 
 @Component({
   selector: 'app-subscription-types-landing',
@@ -32,11 +36,45 @@ export class SubscriptionTypesLandingComponent implements OnInit {
       data: { mode: 'Add' },
     });
 
+    dialogRef.afterClosed().subscribe(() => {
+      this.getSubscriptionTypes();
+    });
+  }
+
+  openEditDialog(subscriptionType: SubscriptionType) {
+    const dialogRef = this.dialog.open(SubscriptionTypeInputComponent, {
+      data: { subscriptionType: subscriptionType, mode: 'Edit' },
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.getSubscriptionTypes();
+    });
+  }
+
+  openDeactivateDialog(id: number, entity = 'subscription type') {
+    const dialogRef = this.dialog.open(ActionModalComponent, {
+      data: {entity: entity, action: 'Deactivate'},
+    });
+
     dialogRef.afterClosed().subscribe((result) => {
-      if (result.event === 'Submit') {
-        this.getSubscriptionTypes();
+      if (result.event === 'Deactivate') {
+        this.deactivateSubscriptionType(id);
       }
     });
+  }
+
+  openDetailsDialog(subscriptionType: SubscriptionType) {
+    this.dialog.open(SubscriptionTypeDetailsComponent, {
+      data: subscriptionType,
+    });
+  }
+
+  deactivateSubscriptionType(id: number) {
+    this.subscriptionTypeService
+      .deactivateSubscriptionType(id)
+      .subscribe(() => {
+        this.getSubscriptionTypes();
+      });
   }
 
   getSubscriptionTypes() {

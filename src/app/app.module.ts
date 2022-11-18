@@ -34,7 +34,7 @@ import { SubscriberLandingPageComponent } from './subscriber/subscriber-landing-
 import { SubscriberDetailsPageComponent } from './subscriber/subscriber-details-page/subscriber-details-page.component';
 import { SubscriberInfoComponent } from './subscriber/components/subscriber/subscriber-info/subscriber-info.component';
 import { SubscriptionsTableComponent } from './subscriber/components/subscription/subscriptions-table/subscriptions-table.component';
-import { SubscriberTicketsComponent } from './subscriber/components/ticket/subscriber-tickets/subscriber-tickets.component';
+import { TicketsTableComponent } from './subscriber/components/ticket/tickets-table/tickets-table.component';
 import { CityTableComponent } from './city/components/city-table/city-table.component';
 import { CityLandingPageComponent } from './city/city-landing-page/city-landing-page.component';
 import { UserLandingPageComponent } from './user/user-landing-page/user-landing-page.component';
@@ -75,7 +75,7 @@ import { AddButtonComponent } from './common/add-button/add-button.component';
     SubscriberDetailsPageComponent,
     SubscriberInfoComponent,
     SubscriptionsTableComponent,
-    SubscriberTicketsComponent,
+    TicketsTableComponent,
     CityTableComponent,
     CityLandingPageComponent,
     UserLandingPageComponent,

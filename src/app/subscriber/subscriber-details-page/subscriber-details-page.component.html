@@ -4,11 +4,33 @@
     <mat-tab label="Contact Info">
       <app-subscriber-info></app-subscriber-info>
     </mat-tab>
+
     <mat-tab label="Subscriptions">
-      <app-subscriptions></app-subscriptions>
+      <div class="table-margin"></div>
+
+      <app-add-button [adminCheck]="false" entity="Subscription" (openAddDialogEvent)="openSubscriptionAddDialog()"></app-add-button>
+
+      <div class="table-loading" *ngIf="loading">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <app-subscriptions-table *ngIf="!loading" [dataSource]="subscriptions" (editEvent)="openSubscriptionEditDialog($event)"
+                         (deactivateEvent)="openSubscriptionDeactivateDialog($event)"
+                         (detailsEvent)="openSubscriptionDetailsDialog($event)"></app-subscriptions-table>
     </mat-tab>
+
     <mat-tab label="Tickets">
-      <app-subscriber-tickets></app-subscriber-tickets>
+      <div class="table-margin"></div>
+
+      <app-add-button [adminCheck]="false" entity="Ticket" (openAddDialogEvent)="openTicketAddDialog()"></app-add-button>
+
+      <div class="table-loading" *ngIf="loading">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <app-tickets-table *ngIf="!loading" [dataSource]="tickets" (editEvent)="openTicketEditDialog($event)"
+                              (deleteEvent)="openTicketDeleteDialog($event)" (resolveEvent)="openTicketResolveDialog($event)"
+                              (detailsEvent)="openTicketDetailsDialog($event)"></app-tickets-table>
     </mat-tab>
   </mat-tab-group>
 </div>

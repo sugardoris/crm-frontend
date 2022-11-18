@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Subscriber } from '../../../../domain/subscriber';
-import { SubscriberService } from '../../../../service/subscriber.service';
 import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
@@ -18,30 +17,24 @@ export class SubscriberTableComponent implements OnInit {
     'city',
     'active',
   ];
-  subscribers: Subscriber[] = [];
-  dataSource = new MatTableDataSource<Subscriber>();
-  loading: boolean = false;
 
-  constructor(private subscriberService: SubscriberService) {}
+  @Input() subscribers: Subscriber[] = [];
+  dataSource = new MatTableDataSource<Subscriber>();
+  @Output() openDetailsPageEvent = new EventEmitter();
+
+  constructor() {}
 
   ngOnInit(): void {
-    this.loading = true;
-    this.getSubscribers();
-  }
-
-  getSubscribers() {
-    this.subscriberService
-      .getSubscribers()
-      .subscribe((data) => {
-        this.subscribers = data;
-        this.dataSource = new MatTableDataSource<Subscriber>(this.subscribers);
-      })
-      .add(() => (this.loading = false));
+    this.dataSource = new MatTableDataSource<Subscriber>(this.subscribers);
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  openDetailsPage(id: number) {
+    this.openDetailsPageEvent.emit(id);
   }
 }
 

@@ -32,7 +32,7 @@ import { SidenavContentComponent } from './common/sidenav-content/sidenav-conten
 import { SubscriberTableComponent } from './subscriber/components/subscriber/subscriber-table/subscriber-table.component';
 import { SubscriberLandingPageComponent } from './subscriber/subscriber-landing-page/subscriber-landing-page.component';
 import { SubscriberDetailsPageComponent } from './subscriber/subscriber-details-page/subscriber-details-page.component';
-import { SubscriberInfoComponent } from './subscriber/components/subscriber/subscriber-info/subscriber-info.component';
+import { SubscriberDetailsComponent } from './subscriber/components/subscriber/subscriber-details/subscriber-details.component';
 import { SubscriptionsTableComponent } from './subscriber/components/subscription/subscriptions-table/subscriptions-table.component';
 import { TicketsTableComponent } from './subscriber/components/ticket/tickets-table/tickets-table.component';
 import { CityTableComponent } from './city/components/city-table/city-table.component';
@@ -65,6 +65,7 @@ import { ContentHeaderComponent } from './common/content-header/content-header.c
 import { TableComponent } from './common/table/table.component';
 import { MainTitleComponent } from './common/main-title/main-title.component';
 import { AddButtonComponent } from './common/add-button/add-button.component';
+import { SubscriberInputComponent } from './subscriber/components/subscriber/subscriber-input/subscriber-input.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,7 @@ import { AddButtonComponent } from './common/add-button/add-button.component';
     SubscriberTableComponent,
     SubscriberLandingPageComponent,
     SubscriberDetailsPageComponent,
-    SubscriberInfoComponent,
+    SubscriberDetailsComponent,
     SubscriptionsTableComponent,
     TicketsTableComponent,
     CityTableComponent,
@@ -103,6 +104,7 @@ import { AddButtonComponent } from './common/add-button/add-button.component';
     TableComponent,
     MainTitleComponent,
     AddButtonComponent,
+    SubscriberInputComponent,
   ],
   imports: [
     BrowserModule,

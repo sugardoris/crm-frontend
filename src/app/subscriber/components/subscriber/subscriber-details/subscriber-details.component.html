@@ -68,7 +68,7 @@
       </div>
     </mat-card-content>
     <mat-card-actions align="end">
-      <button mat-raised-button color="primary" routerLink="/subscriber/edit/{{subscriber.id!}}">Edit</button>
+      <button mat-raised-button color="primary" (click)="openEditDialog(subscriber)">Edit</button>
       <button mat-raised-button color="accent" (click)="openDeactivateDialog(subscriber.id!)">Deactivate</button>
     </mat-card-actions>
   </mat-card>

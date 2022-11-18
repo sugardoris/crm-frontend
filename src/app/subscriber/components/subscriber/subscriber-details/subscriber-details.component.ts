@@ -7,15 +7,19 @@ import { registerLocaleData } from '@angular/common';
 import localeHr from '@angular/common/locales/hr';
 import { ActionModalComponent } from '../../../../common/action-modal/action-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import {
+  PublicationInputComponent
+} from "../../../../publication/components/publication-input/publication-input.component";
+import {SubscriberInputComponent} from "../subscriber-input/subscriber-input.component";
 
 registerLocaleData(localeHr, 'hr');
 
 @Component({
   selector: 'app-subscriber-info',
-  templateUrl: './subscriber-info.component.html',
-  styleUrls: ['./subscriber-info.component.css'],
+  templateUrl: './subscriber-details.component.html',
+  styleUrls: ['./subscriber-details.component.css'],
 })
-export class SubscriberInfoComponent implements OnInit {
+export class SubscriberDetailsComponent implements OnInit {
   subscriber?: Subscriber;
   loading: boolean = false;
 
@@ -61,5 +65,15 @@ export class SubscriberInfoComponent implements OnInit {
     this.subscriberService.deactivateSubscriber(id).subscribe((data) => {
       this.getSubscriber();
     });
+  }
+
+  openEditDialog(subscriber: Subscriber) {
+    const dialogRef = this.dialog.open(SubscriberInputComponent, {
+      data: { subscriber: subscriber, mode: 'Edit'}
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.getSubscriber();
+    })
   }
 }

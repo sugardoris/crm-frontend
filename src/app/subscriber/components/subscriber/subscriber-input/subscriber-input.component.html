@@ -1,0 +1,100 @@
+<h1 mat-dialog-title class="main-title-input">
+  {{editMode ? 'Edit Subscriber' : 'Add Subscriber'}}
+</h1>
+<mat-dialog-content>
+  <form [formGroup]="subscriberForm">
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>First name</mat-label>
+        <input matInput formControlName="firstName">
+        <mat-error *ngIf="subscriberForm.controls['firstName'].hasError('maxlength')">First name must have less than 50 characters
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>Last name</mat-label>
+        <input matInput formControlName="lastName">
+        <mat-error *ngIf="subscriberForm.controls['lastName'].hasError('maxlength')">Last name must have less than 50
+          characters
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>Company name</mat-label>
+        <input matInput formControlName="companyName">
+        <mat-error *ngIf="subscriberForm.controls['companyName'].hasError('maxlength')">Company name must have less than
+          70 characters
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>OIB</mat-label>
+        <input matInput formControlName="oib">
+        <mat-error *ngIf="subscriberForm.controls['oib'].hasError('required')">OIB is required</mat-error>
+        <mat-error
+          *ngIf="subscriberForm.controls['oib'].hasError('minlength') && !subscriberForm.controls['oib'].hasError('required')">
+          OIB must have 11 characters
+        </mat-error>
+        <mat-error
+          *ngIf="subscriberForm.controls['oib'].hasError('maxlength') && !subscriberForm.controls['oib'].hasError('required')">
+          OIB must have 11 characters
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error *ngIf="subscriberForm.controls['email'].hasError('required')">Email is required</mat-error>
+        <mat-error
+          *ngIf="subscriberForm.controls['email'].hasError('email') && !subscriberForm.controls['email'].hasError('required')">
+          Email must be valid
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone">
+        <mat-error *ngIf="subscriberForm.controls['phone'].hasError('required')">Phone number is required</mat-error>
+        <mat-error
+          *ngIf="subscriberForm.controls['phone'].hasError('maxlength') && !subscriberForm.controls['phone'].hasError('required')">
+          Phone number must have less than 50 characters
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="billingAddress">
+        <mat-error *ngIf="subscriberForm.controls['billingAddress'].hasError('required')">Billing address is required</mat-error>
+        <mat-error
+          *ngIf="subscriberForm.controls['billingAddress'].hasError('maxlength') && !subscriberForm.controls['billingAddress'].hasError('required')">
+          Billing address must have less than 100 characters
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="input-field" color="accent">
+        <mat-label>City</mat-label>
+        <mat-select formControlName="city" [compareWith]="compareCities">
+          <mat-option *ngFor="let city of cities" [value]="city">
+            {{city.postcode + ', ' + city.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="subscriberForm.controls['city'].hasError('required')">City is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="checkbox">
+      <mat-checkbox formControlName="legalEntity" [color]="checkboxColor">Legal entity</mat-checkbox>
+    </div>
+  </form>
+  <mat-error *ngIf="formError">Check the form and try again</mat-error>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="accent" (click)="onSubmit()">Submit</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

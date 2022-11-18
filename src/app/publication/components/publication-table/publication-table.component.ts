@@ -1,10 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Publication } from '../../../domain/publication';
-import { PublicationService } from '../../../service/publication.service';
 import { registerLocaleData } from '@angular/common';
 import localeHr from '@angular/common/locales/hr';
 import { UserService } from '../../../service/user.service';
-import { MatDialog } from '@angular/material/dialog';
 
 registerLocaleData(localeHr, 'hr');
 
@@ -30,9 +28,7 @@ export class PublicationTableComponent implements OnInit {
   @Output() detailsEvent = new EventEmitter();
 
   constructor(
-    private publicationService: PublicationService,
     private userService: UserService,
-    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {

@@ -1,7 +1,3 @@
-<div class="table-loading" *ngIf="loading">
-  <mat-spinner></mat-spinner>
-</div>
-
 <div class="subscriber-search">
   <div class="input-field">
     <mat-form-field appearance="standard">
@@ -12,7 +8,7 @@
   </div>
 </div>
 
-<div class="subsciber-table" *ngIf="!loading">
+<div class="subsciber-table">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name</th>
@@ -61,19 +57,16 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: tableColumns;" [matMenuTriggerFor]="menu" [matMenuTriggerData]="row"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableColumns;"
+        [matMenuTriggerFor]="menu" [matMenuTriggerData]="{subscriber: row}"></tr>
   </table>
 </div>
 
 <mat-menu #menu="matMenu" xPosition="after" yPosition="below">
-  <ng-template matMenuContent let-aliasMenuItems="id">
-    <button mat-menu-item routerLink="/subscribers/{{(aliasMenuItems)}}">
+  <ng-template matMenuContent let-subscriber="subscriber">
+    <button mat-menu-item (click)="openDetailsPage(subscriber.id)">
       <mat-icon>launch</mat-icon>
       <span>View</span>
-    </button>
-    <button mat-menu-item routerLink="/subscriber/edit/{{aliasMenuItems}}">
-      <mat-icon>edit</mat-icon>
-      <span>Edit</span>
     </button>
   </ng-template>
 </mat-menu>

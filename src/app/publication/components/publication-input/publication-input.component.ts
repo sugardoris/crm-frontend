@@ -78,11 +78,11 @@ export class PublicationInputComponent implements OnInit {
     if (this.editMode) {
       publication.id = this.data.publication.id;
 
-      this.publicationService.editPublication(publication).subscribe((data) => {
+      this.publicationService.editPublication(publication).subscribe(() => {
         this.dialogRef.close({ event: 'Edit' });
       });
     } else {
-      this.publicationService.addPublication(publication).subscribe((data) => {
+      this.publicationService.addPublication(publication).subscribe(() => {
         this.dialogRef.close({ event: 'Submit' });
       });
     }
